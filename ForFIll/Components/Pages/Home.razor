@@ -1,0 +1,47 @@
+﻿@page "/"
+@using Microsoft.AspNetCore.Authorization
+@inject NavigationManager Navigation
+@using ForFIll.Models;
+
+
+@using Microsoft.AspNetCore.Components.Authorization
+@using MudBlazor
+@rendermode InteractiveServer
+
+
+
+<PageTitle>Home</PageTitle>
+
+<h1>Hello, world!</h1>
+
+<CascadingAuthenticationState>
+    <AuthorizeView>
+        <Authorized>
+            @* <MudText Typo="Typo.h6">Welcome, @loginModel.Username</MudText> *@
+            Welcome to your new app.
+            <MudText Typo="Typo.h6">Welcome, @context.User.Identity.Name!</MudText>
+            <MudButton OnClick="NavigateToLogout" Variant="Variant.Filled" Color="Color.Primary">logout</MudButton>
+        </Authorized>
+        <NotAuthorized>
+            <MudText Typo="Typo.h6">You are not authorized to view this page. Please <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="NavigateToLogin">login</MudButton>.</MudText>
+        </NotAuthorized>
+    </AuthorizeView>
+</CascadingAuthenticationState>
+
+
+
+
+Welcome to your new app.
+@code {
+
+    private void NavigateToLogin()
+    {
+        Navigation.NavigateTo("/login");
+
+    }
+    private void NavigateToLogout()
+    {
+        Navigation.NavigateTo("/logout");
+
+    }
+}

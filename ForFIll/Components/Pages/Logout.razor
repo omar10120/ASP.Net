@@ -1,0 +1,61 @@
+﻿@page "/logout"
+@using Microsoft.AspNetCore.Authentication
+@using Microsoft.AspNetCore.Authentication.Cookies
+@using Microsoft.AspNetCore.Components.Authorization
+@using MudBlazor
+@rendermode InteractiveServer
+@inject ISnackbar Snackbar
+
+
+
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@inject NavigationManager Navigation
+@inject IHttpContextAccessor HttpContextAccessor
+
+<CascadingAuthenticationState>
+    <AuthorizeView>
+        <Authorized>
+            
+            <button class="btn btn-primary" @onclick="LogoutUser1">Display Products</button>
+
+        </Authorized>
+        <NotAuthorized>
+            <NavLink href="login" Match="NavLinkMatch.All">Login</NavLink>
+        </NotAuthorized>
+    </AuthorizeView>
+</CascadingAuthenticationState>
+
+
+
+
+@code {
+    protected override async Task OnInitializedAsync()
+    {
+        await LogoutUser();
+    }
+
+
+    private async Task LogoutUser()
+    {
+        try
+        {
+
+            await HttpContextAccessor.HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            ((CustomAuthenticationStateProvider)AuthenticationStateProvider).NotifyUserLogout();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+
+        Snackbar.Add("logout Done Successflly", Severity.Success);
+        StateHasChanged();
+
+
+    }
+    private async Task LogoutUser1()
+    {
+        Navigation.NavigateTo("/products");
+
+    }
+}

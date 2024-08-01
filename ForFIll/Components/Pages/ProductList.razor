@@ -1,0 +1,256 @@
+﻿@page "/products"
+@using MudBlazor
+@using ForFIll.Models;
+@using System.Collections.Generic;
+@using System.Net.Http;
+@using System.Net.Http.Json;
+@using System.Threading.Tasks;
+@using ForFIll.Data
+@using System.ComponentModel.DataAnnotations
+@inject IDialogService DialogService
+@using ForFIll.Controllers
+@inject Microsoft.AspNetCore.Antiforgery.IAntiforgery Antiforgery
+@using System.Text.RegularExpressions
+
+
+
+@inject ISnackbar Snackbar
+@inject NavigationManager NavigationManager
+@inject ProductService ProductService
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize]
+
+
+@rendermode InteractiveServer
+
+<h3>Products</h3>
+
+
+<MudGrid>
+    <MudItem xs="12" sm="7">
+        <MudPaper Class="pa-4">
+            <MudForm @ref="form" @bind-IsValid="@success" @bind-Errors="@errors">
+                <MudTextField T="string" Label="Name" @bind-Value="Name" Required="true" RequiredError="Name name is required!" />
+                <MudTextField T="decimal" Label="Price" @bind-Value="Price" Required="true" RequiredError="Price name is required!" />
+                <MudTextField T="string" Label="Category" @bind-Value="Category" Required="true" RequiredError="Category name is required!" />
+                <div class="d-flex align-center justify-space-between">
+                    <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="AddProduct" Disabled="@(!success)" Class="ml-auto">Add Product</MudButton>
+                </div>
+            </MudForm>
+        </MudPaper>
+        <MudPaper Class="pa-4 mt-4">
+            <MudButton Variant="Variant.Filled" Color="Color.Primary" DropShadow="false" OnClick="@(()=>form.Validate())">Validate</MudButton>
+            <MudButton Variant="Variant.Filled" Color="Color.Secondary" DropShadow="false" OnClick="@(()=>form.ResetAsync())" Class="mx-2">Reset</MudButton>
+
+        </MudPaper>
+    </MudItem>
+
+</MudGrid>
+
+
+
+
+
+
+
+@if (products == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <MudTable Items="@filteredProducts"
+              Hover="true"
+              Breakpoint="Breakpoint.Sm"
+              Loading="@_loading"
+              LoadingProgressColor="Color.Info"
+              EditTrigger="@TableEditTrigger.EditButton"
+              ReadOnly="false"
+              Striped="true">
+        <ToolBarContent>
+            <MudTextField T="string" Label="Search" @bind-Value="searchString" TextChanged="FilterProducts" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0"></MudTextField>
+        </ToolBarContent>
+
+        <HeaderContent>
+            <MudTh>Id</MudTh>
+            <MudTh>Product Name</MudTh>
+            <MudTh>Price</MudTh>
+            <MudTh>Category</MudTh>
+            <MudTh>Actions</MudTh>
+        </HeaderContent>
+        <RowTemplate>
+            <MudTd DataLabel="Id">@context.Id</MudTd>
+            <MudTd DataLabel="Name">@context.Name</MudTd>
+            <MudTd DataLabel="Price">@context.Price</MudTd>
+            <MudTd DataLabel="Category">@context.Category</MudTd>
+            <MudTd DataLabel="Actions">
+                <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="@(() => show())">Edit</MudButton>
+                <MudButton Variant="Variant.Outlined" Color="Color.Error" OnClick="@(() => DeleteProduct(context.Id))">Delete</MudButton>
+
+            </MudTd>
+
+            @if (_readOnly == true)
+            {
+                <MudTd>
+                    <MudForm @ref="form" @bind-IsValid="@success" @bind-Errors="@errors">
+                        <MudTextField T="string" Label="Name" @bind-Value="Name" Required="true" RequiredError="Name name is required!" />
+                        <MudTextField T="decimal" Label="Price" @bind-Value="Price" Required="true" RequiredError="Price name is required!" />
+                        <MudTextField T="string" Label="Category" @bind-Value="Category" Required="true" RequiredError="Category name is required!" />
+                        <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="@(() => EditProduct(context.Id))"  Class="ml-auto">Update</MudButton>
+                    </MudForm>
+                </MudTd>
+            }
+
+
+        </RowTemplate>
+    </MudTable>
+
+
+
+
+
+    @if (result == true)
+    {
+        <MudAlert Severity="Severity.Success" Variant="Variant.Filled">Delete Done Sucssuflly</MudAlert>
+    }
+
+    @if (resultAdd == true)
+    {
+        <MudAlert Severity="Severity.Success" Variant="Variant.Filled">Add Done Sucssuflly</MudAlert>
+    }
+
+    <h1>@ExceptionMessage</h1>
+}
+
+@code {
+
+    private bool _readOnly;
+    private bool _isCellEditMode;
+    private bool _editTriggerRowClick;
+
+
+    public IEnumerable<Product> products = new List<Product>();
+    public IEnumerable<Product> filteredProducts = new List<Product>();
+    private string searchString = "";
+    public string ExceptionMessage { get; set; }
+    private string antiforgeryToken;
+
+
+    public bool result { get; set; } = false;
+    public bool resultAdd { get; set; } = false;
+    private bool _loading;
+    private string currentCountstring = "";
+
+    public string Name { get; set; }
+    public decimal Price { get; set; }
+    public string Category { get; set; }
+    public void show() => _readOnly = true;
+    protected override async Task OnInitializedAsync()
+    {
+
+        try
+        {
+            products = await ProductService.GetProducts();
+            filteredProducts = products;
+
+
+            // antiforgeryToken = Antiforgery.GetAndStoreTokens(HttpContextAccessor.HttpContext).RequestToken;
+
+
+        }
+        catch (Exception ex)
+        {
+            ExceptionMessage = ex.Message;
+            Console.WriteLine(ex.Message);
+        }
+    }
+
+    private async Task AddProduct()
+    {
+
+
+        var response = await ProductService.CreateProduct(new Product { Name = Name, Price = Price, Category = Category });
+        if (response.IsSuccessStatusCode)
+        {
+            products = await ProductService.GetProducts();
+            filteredProducts = products;
+            StateHasChanged();
+
+            FilterProducts();
+            Snackbar.Add("Add Done Successfully ", Severity.Success);
+            resultAdd = true;
+        }
+        else
+        {
+            Snackbar.Add("Add Not Done", Severity.Error);
+        }
+    }
+    private async Task EditProduct(int id)
+    {
+        // Navigate to edit product page
+        // NavigationManager.NavigateTo($"/products/edit/{id}");
+
+        _readOnly = false;
+
+        var response = await ProductService.UpdateProduct(id, new Product { Name = Name, Price = Price, Category = Category });
+        if (response.IsSuccessStatusCode)
+        {
+            products = await ProductService.GetProducts();
+            filteredProducts = products;
+            StateHasChanged();
+            FilterProducts();
+            Snackbar.Add("Add Done Successfully ", Severity.Success);
+
+        }
+        else
+        {
+            Snackbar.Add("Remove Not Done", Severity.Error);
+        }
+
+    }
+
+    private async Task DeleteProduct(int id)
+    {
+
+        var response = await ProductService.DeleteProduct(id);
+        if (response.IsSuccessStatusCode)
+        {
+            products = await ProductService.GetProducts();
+            filteredProducts = products;
+            StateHasChanged();
+
+            result = true;
+            // FilterProducts();
+        }
+        else
+        {
+            Snackbar.Add("Remove Not Done", Severity.Error);
+        }
+    }
+
+    private void FilterProducts()
+    {
+        if (string.IsNullOrWhiteSpace(searchString))
+        {
+            filteredProducts = products;
+        }
+        else
+        {
+            filteredProducts = products.Where(p => p.Name.Contains(searchString, StringComparison.OrdinalIgnoreCase) || p.Id.ToString().Contains(searchString, StringComparison.OrdinalIgnoreCase)).ToList();
+
+
+        }
+    }
+
+    /// <summary> add prodcut
+
+    //start form
+    bool success;
+    string[] errors = { };
+    MudTextField<string> pwField1;
+    MudForm form;
+
+
+    //end form
+    /// </summary>
+}

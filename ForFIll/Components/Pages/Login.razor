@@ -1,0 +1,94 @@
+﻿@page "/login"
+@using Microsoft.AspNetCore.Authentication
+@using Microsoft.AspNetCore.Authentication.Cookies
+@using Microsoft.AspNetCore.Components.Authorization
+@using System.Security.Claims
+@inject NavigationManager Navigation
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@using ForFIll.Models
+@using MudBlazor
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+@inject ISnackbar Snackbar
+@inject Microsoft.AspNetCore.Antiforgery.IAntiforgery Antiforgery
+@using ForFIll.Components
+
+
+@* @rendermode InteractiveServer *@
+
+
+<EditForm Model="@loginModel" OnValidSubmit="@HandleLogin" FormName="loginForm">
+
+     <AntiforgeryRequestToken /> 
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <MudTextField T="string" @bind-Value="loginModel.Username" Label="Username" Required="true" />
+    <MudTextField T="string" @bind-Value="loginModel.Password" Label="Password" InputType="InputType.Password" Required="true" />
+                
+    <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary">Login</MudButton>
+</EditForm>
+
+    
+@code {
+
+
+
+
+
+    public LoginModel loginModel = new LoginModel();
+    
+    // private string antiforgeryToken;
+
+
+    private async Task HandleLogin()
+    {
+        
+        loginModel.Password = "admin";
+        loginModel.Username = "admin";
+        
+
+        // Simulate user authentication
+
+        if (loginModel.Username == "admin" && loginModel.Password== "admin")
+        {
+            try
+            {
+                var claims = new List<Claim>
+                {
+                    new Claim(ClaimTypes.Name, loginModel.Username)
+                };
+
+                var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                var authProperties = new AuthenticationProperties
+                {
+                    IsPersistent = true
+                };
+
+
+                await HttpContextAccessor.HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,new ClaimsPrincipal(claimsIdentity),authProperties);
+
+                ((CustomAuthenticationStateProvider)AuthenticationStateProvider).NotifyUserAuthentication(new ClaimsPrincipal(claimsIdentity));
+
+                Snackbar.Add("Login Done Successflly", Severity.Success);
+
+               
+
+            }
+            catch (Exception ex)
+            {
+
+                Snackbar.Add(ex.Message, Severity.Warning);
+
+            }
+            
+            
+        }
+        else 
+        {
+            Snackbar.Add("Username or password not valid", Severity.Warning);
+            // Snackbar.Add(ex.Message, Severity.Warning);
+        }
+
+    }
+
+
+}

@@ -1,0 +1,87 @@
+using ForFIll.Components;
+using MudBlazor.Services;
+
+using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Web;
+using ForFIll.Data;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using System;
+using System.Net.Http;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Components.Authorization;
+using Microsoft.AspNetCore.Mvc;
+
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+
+
+
+
+
+
+
+var builder = WebApplication.CreateBuilder(args);
+
+
+// Add services to the container.
+builder.Services.AddRazorComponents().AddInteractiveServerComponents();
+builder.Services.AddRazorPages();
+builder.Services.AddServerSideBlazor();
+builder.Services.AddControllersWithViews();
+
+
+
+/*************************************************************User Auther*/
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
+    {
+        options.LoginPath = "/login";
+        options.LogoutPath = "/logout";
+    });
+builder.Services.AddAuthorization();
+// Register IHttpContextAccessor
+builder.Services.AddScoped<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddAntiforgery(options => options.HeaderName = "X-CSRF-TOKEN");
+
+
+
+/*************************************************************User Auther*/
+// Add DbContext with the connection string
+
+
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddMudServices(); // Add MudBlazor services
+builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://localhost:5001") });
+builder.Services.AddScoped<ProductService>();
+var app = builder.Build();
+
+// Configure the HTTP request pipeline.
+if (!app.Environment.IsDevelopment())
+{
+app.UseExceptionHandler("/Error", createScopeForErrors: true);
+
+app.UseHsts();
+}
+
+app.UseHttpsRedirection();
+app.UseStaticFiles();
+app.UseRouting();
+app.UseAuthorization();
+app.MapControllers();
+app.MapBlazorHub("/App"); //problem here
+app.UseAntiforgery();
+app.MapRazorComponents<App>().AddInteractiveServerRenderMode();
+
+
+app.Run();
+
+
+
+
+
+
+
