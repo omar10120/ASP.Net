@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ForFIll")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+187d675093be34c4573eec890a0efadf1b33c4c4")]
 [assembly: System.Reflection.AssemblyProductAttribute("ForFIll")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ForFIll")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

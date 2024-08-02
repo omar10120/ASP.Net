@@ -5883,11 +5883,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Dell\\Desktop\\lap version\\ForFIll\\ForFIll\\ForFIll.csproj",
+      "projectUniqueName": "C:\\Users\\Dell\\source\\repos\\ForFIll\\ForFIll\\ForFIll.csproj",
       "projectName": "ForFIll",
-      "projectPath": "C:\\Users\\Dell\\Desktop\\lap version\\ForFIll\\ForFIll\\ForFIll.csproj",
+      "projectPath": "C:\\Users\\Dell\\source\\repos\\ForFIll\\ForFIll\\ForFIll.csproj",
       "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Dell\\Desktop\\lap version\\ForFIll\\ForFIll\\obj\\",
+      "outputPath": "C:\\Users\\Dell\\source\\repos\\ForFIll\\ForFIll\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
