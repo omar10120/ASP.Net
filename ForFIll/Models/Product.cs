@@ -17,5 +17,7 @@ namespace ForFIll.Models
         [Required]
         public string Category { get; set; }
 
+        public bool IsDeleted { get; set; }
+
     }
 }

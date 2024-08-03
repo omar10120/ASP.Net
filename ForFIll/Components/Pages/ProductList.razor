@@ -145,11 +145,14 @@ else
     public decimal Price { get; set; }
     public string Category { get; set; }
     public void show() => _readOnly = true;
+
+
     protected override async Task OnInitializedAsync()
     {
 
         try
         {
+
             products = await ProductService.GetProducts();
             filteredProducts = products;
 

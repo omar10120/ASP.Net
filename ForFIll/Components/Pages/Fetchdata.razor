@@ -14,14 +14,17 @@
 @using ForFIll.Controllers
 @inject Microsoft.AspNetCore.Antiforgery.IAntiforgery Antiforgery
 @using System.Text.RegularExpressions
-@using ForFIll.Services.Interfaces
-@inject IProductService ProductServiceI
+
 @inject ProductService ProductService
 
+@* @using ForFIll.Services.Interfaces
+@inject IProductService ProductServiceI *@
+
+@using MudBlazor
+@inject HttpClient httpClient
 
 
-
-
+@rendermode InteractiveServer
 
 @inject ISnackbar Snackbar
 @inject NavigationManager NavigationManager
@@ -33,39 +36,234 @@
 
 <h3>Data</h3>
 
-<ul>
-    @foreach (var item in products)
-    {
-        <li>@item.Name</li>
-        <li>@item.Price</li>
-        <li>@item.Category</li>
-        
-    }
-</ul>
+<MudGrid>
+    <MudItem xs="12" sm="7">
+        <MudPaper Class="pa-4">
+            <MudForm @ref="form" @bind-IsValid="@successShow"  @bind-Errors="@errors">
+                <MudTextField T="string" Label="Name" @bind-Value="Name" Required="true" RequiredError="Name name is required!" />
+                <MudTextField T="decimal" Label="Price" @bind-Value="Price" Required="true" RequiredError="Price name is required!" />
+                <MudTextField T="string" Label="Category" @bind-Value="Category" Required="true" RequiredError="Category name is required!" />
+                
+                <div class="d-flex align-center justify-space-between">
+                    <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="AddProduct" Disabled="@(!successShow)" Class="ml-auto">Add Product</MudButton>
+                </div>
+            </MudForm>
+        </MudPaper>
+        <MudPaper Class="pa-4 mt-4">
+            <MudButton Variant="Variant.Filled" Color="Color.Primary" DropShadow="false" OnClick="@(()=>form.Validate())">Validate</MudButton>
+            <MudButton Variant="Variant.Filled" Color="Color.Secondary" DropShadow="false" OnClick="@(()=>form.ResetAsync())" Class="mx-2">Reset</MudButton>
+
+        </MudPaper>
+    </MudItem>
+
+</MudGrid>
+
+
+
+@if (products == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <MudTable Items="@filteredProducts"
+              Hover="true"
+              Breakpoint="Breakpoint.Sm"
+              Loading="@_loading"
+              LoadingProgressColor="Color.Info"
+              EditTrigger="@TableEditTrigger.EditButton"
+              ReadOnly="false"
+              Striped="true">
+            <ToolBarContent>
+    <MudTextField T="string" Label="Search" @bind-Value="searchString" TextChanged="FilterProducts" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0"></MudTextField>
+    </ToolBarContent>
+
+        <HeaderContent>
+            <MudTh>Id</MudTh>
+            <MudTh>Product Name</MudTh>
+            <MudTh>Price</MudTh>
+            <MudTh>Category</MudTh>
+            <MudTh>Actions</MudTh>
+        </HeaderContent>
+        <RowTemplate>
+            <MudTd DataLabel="Id">@context.Id</MudTd>
+            <MudTd DataLabel="Name">@context.Name</MudTd>
+            <MudTd DataLabel="Price">@context.Price</MudTd>
+            <MudTd DataLabel="Category">@context.Category</MudTd>
+     
+            <MudTd DataLabel="Actions">
+                @*        <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="@(() => show())">Edit</MudButton>*@
+                <MudButton Variant="Variant.Outlined" Color="Color.Error" OnClick="@(() => deleteData(context.Id))">Delete</MudButton>
+
+
+
+            </MudTd>
+
+
+
+        </RowTemplate>
+    </MudTable>
+}
+
 
 @code {
-    // private List<Product> data;
-    // private List<Product> data;
-  
+
+    public string Name { get; set; }
+    public decimal Price { get; set; }
+    public string Category { get; set; }
+    public bool IsDeleted { get; set; }
+
+
+    public bool resultAdd { get; set; } = false;
+    private string searchString = "";
+    private bool _readOnly;
+    private bool _loading;
+
+    private bool showInnerComponent = false;
+    private bool showInnerComponentDone = false;
+    Product createProduct = new Product();
+    bool successShow;
     public IEnumerable<Product> products = new List<Product>();
+    public IEnumerable<Product> filteredProducts = new List<Product>();
+    private readonly ApplicationDbContext _context;
+    public void show() => _readOnly = true;
+    private void OpenDialogDone() => showInnerComponentDone = true;
+    private void CancelDone() => showInnerComponentDone = false;
 
 
+    [CascadingParameter]
+    private MudDialogInstance MudDialog { get; set; }
     protected override async Task OnInitializedAsync()
     {
-        // data = await ProductServiceI
-        var request = await ProductServiceI.GetAllProductsAsync();
-        if(request.Success)
+
+        try
         {
-            products = request.Data!;
-        }  
-          
+            var request = await ProductService.GetProductsApi();
+            if (request.Success)
+            {
+                products = request.Data!;
+                filteredProducts = products;
+            }
+
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+    }
+    private async Task deleteData(int id)
+    {
+
+        success = true;
+        var product = createProduct;
+ 
+        Console.WriteLine(createProduct.Name);
+        Console.WriteLine(createProduct.Category);
+        Console.WriteLine(createProduct.Price);
+        Console.WriteLine(createProduct.IsDeleted);
+ 
+        try
+        {
+
+            // var requestRefresh = await ProductService.GetProductsApi();
+            var requestRefresh = await ProductService.GetProductsApiByid(id);
+            var request = await ProductService.DeleteProductAsyncsql(id);
+            // if (request.Success)
+            // {
+                products.Append(product);
+                // products = requestRefresh.Data!;
+                filteredProducts = products;
+                StateHasChanged();
+
+
+                Snackbar.Add("Remove Done", Severity.Success);
+
+            // }
+            // else
+            // {
+            //     Snackbar.Add(request.Message, Severity.Error);
+
+            // }
+        }catch
+        {
+            Console.WriteLine("Error");
+        }
+    }
+    /// <summary> add prodcut
+    private async void OnValidSubmit(EditContext context)
+    {
+
+        success = true;
+
+        var product = createProduct;
+   
+        var request = await ProductService.CreateProductAsync(product);
+        var requestRefresh = await ProductService.GetProductsApi();
+
+        if (request.Success)
+        {
+
+            products.Append(product);
+            products = requestRefresh.Data!;
+            filteredProducts = products;
+            StateHasChanged();
+        }
+        else
+        {
+            Snackbar.Add(request.Message, Severity.Error);
+
+        }
+        // OpenDialogDone();
+
 
     }
-    // var request = await ProductService.GetAllProductsAsync();
-    // if(request.Success)
-    // {
-    //     products = request.Data!;
-    // }
 
-    // filteredProducts = products;
+    private async Task AddProduct()
+    {
+
+        success = true;
+        var product = createProduct;
+
+        createProduct.Name = Name;
+        createProduct.Price = Price;
+        createProduct.Category = Category;
+        createProduct.IsDeleted = IsDeleted;
+        var request = await ProductService.CreateProductAsync(product);
+        var requestRefresh = await ProductService.GetProductsApi();
+        Console.WriteLine(request.Success);
+        Console.WriteLine(IsDeleted.ToString());
+        if (request.Success)
+        {
+            products.Append(product);
+            products = requestRefresh.Data!;
+            filteredProducts = products;
+            StateHasChanged();
+        }
+        else
+        {
+            Snackbar.Add("Add Not Done", Severity.Error);
+        }
+    }
+    private void FilterProducts()
+    {
+        if (string.IsNullOrWhiteSpace(searchString))
+        {
+            filteredProducts = products;
+        }
+        else
+        {
+            filteredProducts = products.Where(p => p.Name.Contains(searchString, StringComparison.OrdinalIgnoreCase) || p.Id.ToString().Contains(searchString, StringComparison.OrdinalIgnoreCase)).ToList();
+
+
+        }
+    }
+    //start form
+    bool success;
+    string[] errors = { };
+    MudTextField<string> pwField1;
+    MudForm form;
+
+
+    //end form
+    /// </summary>
 }

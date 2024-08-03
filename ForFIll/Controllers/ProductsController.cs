@@ -1,4 +1,5 @@
-﻿using ForFIll.Models;
+﻿using ForFIll.Data;
+using ForFIll.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,15 +7,18 @@ namespace ForFIll.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-
     public class ProductsController : ControllerBase
     {
-        private static  List<Product> Products = new List<Product>
+        //private static List<Product> Products = new List<Product>();
+
+        
+        private static List<Product> Products = new List<Product>
         {
             new Product { Id = 1, Name = "Product 1", Price = 10.99M, Category = "Category 1" },
             new Product { Id = 2, Name = "Product 2", Price = 20.99M, Category = "Category 2" },
             new Product { Id = 3, Name = "Product 3", Price = 21.99M, Category = "Category 3" },
             new Product { Id = 4, Name = "Product 4", Price = 40.99M, Category = "Category 4" },
+
         };
 
         [HttpGet]
