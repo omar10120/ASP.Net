@@ -36,6 +36,15 @@
 
 <h3>Data</h3>
 
+@if (success == true)
+{
+    <MudAlert Severity="Severity.Success" Variant="Variant.Filled">Add Done Sucssuflly</MudAlert>
+    wait();
+
+    success = false ;
+    return;
+}
+
 <MudGrid>
     <MudItem xs="12" sm="7">
         <MudPaper Class="pa-4">
@@ -94,13 +103,7 @@ else
             <MudTd DataLabel="Actions">
                 @*        <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="@(() => show())">Edit</MudButton>*@
                 <MudButton Variant="Variant.Outlined" Color="Color.Error" OnClick="@(() => deleteData(context.Id))">Delete</MudButton>
-
-
-
             </MudTd>
-
-
-
         </RowTemplate>
     </MudTable>
 }
@@ -124,6 +127,7 @@ else
     Product createProduct = new Product();
     bool successShow;
     public IEnumerable<Product> products = new List<Product>();
+
     public IEnumerable<Product> filteredProducts = new List<Product>();
     private readonly ApplicationDbContext _context;
     public void show() => _readOnly = true;
@@ -155,68 +159,62 @@ else
     {
 
         success = true;
-        var product = createProduct;
- 
-        Console.WriteLine(createProduct.Name);
-        Console.WriteLine(createProduct.Category);
-        Console.WriteLine(createProduct.Price);
-        Console.WriteLine(createProduct.IsDeleted);
- 
         try
         {
 
-            // var requestRefresh = await ProductService.GetProductsApi();
-            var requestRefresh = await ProductService.GetProductsApiByid(id);
             var request = await ProductService.DeleteProductAsyncsql(id);
-            // if (request.Success)
-            // {
-                products.Append(product);
-                // products = requestRefresh.Data!;
-                filteredProducts = products;
-                StateHasChanged();
+            if (request.Success)
+            {
+
+                var requestrefresh = await ProductService.GetProductsApi();
+                if (request.Success)
+                {
+                    products = requestrefresh.Data!;
+                    filteredProducts = products;
+                    StateHasChanged();
+                    Console.WriteLine("Add Done");
+                }
+            }
+            else
+            {
+                Snackbar.Add(request.Message, Severity.Error);
+                Console.WriteLine("Error Shows ");
+            }
 
 
-                Snackbar.Add("Remove Done", Severity.Success);
-
-            // }
-            // else
-            // {
-            //     Snackbar.Add(request.Message, Severity.Error);
-
-            // }
-        }catch
+        }catch (Exception ex)
         {
-            Console.WriteLine("Error");
+            Console.WriteLine(ex.Message);
         }
     }
     /// <summary> add prodcut
-    private async void OnValidSubmit(EditContext context)
-    {
+    // private async void OnValidSubmit(EditContext context)
+    // {
 
-        success = true;
+    //     success = true;
 
-        var product = createProduct;
-   
-        var request = await ProductService.CreateProductAsync(product);
-        var requestRefresh = await ProductService.GetProductsApi();
+    //     var product = createProduct;
 
-        if (request.Success)
-        {
+    //     var request = await ProductService.CreateProductAsync(product);
+    //     var requestRefresh = await ProductService.GetProductsApi();
 
-            products.Append(product);
-            products = requestRefresh.Data!;
-            filteredProducts = products;
-            StateHasChanged();
-        }
-        else
-        {
-            Snackbar.Add(request.Message, Severity.Error);
+    //     if (request.Success)
+    //     {
 
-        }
-        // OpenDialogDone();
+    //         products.Append(product);
+    //         products = requestRefresh.Data!;
+    //         filteredProducts = products;
+    //         StateHasChanged();
+    //     }
+    //     else
+    //     {
+    //         Snackbar.Add(request.Message, Severity.Error);
+
+    //     }
+    //     // OpenDialogDone();
 
 
-    }
+    // }
 
     private async Task AddProduct()
     {
@@ -230,8 +228,7 @@ else
         createProduct.IsDeleted = IsDeleted;
         var request = await ProductService.CreateProductAsync(product);
         var requestRefresh = await ProductService.GetProductsApi();
-        Console.WriteLine(request.Success);
-        Console.WriteLine(IsDeleted.ToString());
+
         if (request.Success)
         {
             products.Append(product);
@@ -263,7 +260,12 @@ else
     MudTextField<string> pwField1;
     MudForm form;
 
+    private async Task wait()
+    {
+        await Task.Delay(30000);
+        
 
+    }
     //end form
     /// </summary>
 }

@@ -61,8 +61,10 @@ namespace ForFIll.Data
             Console.WriteLine(id);
             try
             {
-                var request = await _context.Products.Where(p  => p.Id == id).ToListAsync(); 
-                
+                //var request = await _context.Products.Where(p  => p.Id == id).ToListAsync();
+                var request = await _context.Products.Where(p=> p.Id ==id ).ToListAsync();
+
+
                 return new DataBaseRequest<IEnumerable<Product>>
                 {
                     Data = request,
@@ -198,11 +200,12 @@ namespace ForFIll.Data
         }
         public async Task<DataBaseRequest<Product>> GetProductByIdAsync(int id)
         {
-            var request = await _context.Products
-                                 .Include(p => p.Name )
-                                 .Include(p => p.Category)
-                                 .Include(p => p.Price)
-                                 .FirstOrDefaultAsync(p => p.Id == id);
+            //var request = await _context.Products
+            //                     .Include(p => p.Name )
+            //                     .Include(p => p.Category)
+            //                     .Include(p => p.Price)
+            //                     .FirstOrDefaultAsync(p => p.Id == id);
+            var request = await _context.Products.Where(p => p.Id == id).FirstOrDefaultAsync(p=>p.Id == id);
             if (request != null)
             {
                 return new DataBaseRequest<Product>

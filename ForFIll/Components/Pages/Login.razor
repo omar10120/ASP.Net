@@ -30,28 +30,16 @@
                 
     <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary">Login</MudButton>
 </EditForm>
-
+<h1>@loginModel.Password</h1>
     
 @code {
-
-
-
-
-
     public LoginModel loginModel = new LoginModel();
-    
     // private string antiforgeryToken;
-
-
     private async Task HandleLogin()
     {
-        
         loginModel.Password = "admin";
         loginModel.Username = "admin";
-        
-
         // Simulate user authentication
-
         if (loginModel.Username == "admin" && loginModel.Password== "admin")
         {
             try
