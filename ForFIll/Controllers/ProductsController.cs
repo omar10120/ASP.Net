@@ -11,7 +11,7 @@ namespace ForFIll.Controllers
     {
         //private static List<Product> Products = new List<Product>();
 
-        
+
         private static List<Product> Products = new List<Product>
         {
             new Product { Id = 1, Name = "Product 1", Price = 10.99M, Category = "Category 1" },

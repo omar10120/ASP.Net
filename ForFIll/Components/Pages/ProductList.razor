@@ -97,6 +97,7 @@ else
                         <MudTextField T="decimal" Label="Price" @bind-Value="Price" Required="true" RequiredError="Price name is required!" />
                         <MudTextField T="string" Label="Category" @bind-Value="Category" Required="true" RequiredError="Category name is required!" />
                         <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="@(() => EditProduct(context.Id))"  Class="ml-auto">Update</MudButton>
+                        <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="@(() => Close())"  Class="ml-auto">Close</MudButton>
                     </MudForm>
                 </MudTd>
             }
@@ -145,6 +146,7 @@ else
     public decimal Price { get; set; }
     public string Category { get; set; }
     public void show() => _readOnly = true;
+    public void Close() => _readOnly = false;
 
 
     protected override async Task OnInitializedAsync()

@@ -39,10 +39,6 @@
 @if (success == true)
 {
     <MudAlert Severity="Severity.Success" Variant="Variant.Filled">Add Done Sucssuflly</MudAlert>
-    wait();
-
-    success = false ;
-    return;
 }
 
 <MudGrid>
@@ -103,19 +99,36 @@ else
             <MudTd DataLabel="Actions">
                 @*        <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="@(() => show())">Edit</MudButton>*@
                 <MudButton Variant="Variant.Outlined" Color="Color.Error" OnClick="@(() => deleteData(context.Id))">Delete</MudButton>
+                <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="@(() => show())">Edit</MudButton>
             </MudTd>
+            @if (_readOnly == true)
+            {
+                <MudTd>
+                    <MudForm @ref="form" @bind-IsValid="@success" @bind-Errors="@errors" >
+                        <MudTextField T="string" Label="Name" @bind-Value="NameUpdate" Required="true" RequiredError="Name name is required!" />
+                        <MudTextField T="decimal" Label="Price" @bind-Value="PriceUpdate" Required="true" RequiredError="Price name is required!" />
+                        <MudTextField T="string" Label="Category" @bind-Value="CategoryUpdate" Required="true" RequiredError="Category name is required!" />
+                        <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="@(() => EditProduct(context.Id))" Class="ml-auto">Update</MudButton>
+                        <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="@(() => Close())" Class="ml-auto">Close</MudButton>
+                    </MudForm>
+                </MudTd>
+            }
         </RowTemplate>
     </MudTable>
 }
 
 
 @code {
-
+        //create new product
     public string Name { get; set; }
     public decimal Price { get; set; }
     public string Category { get; set; }
     public bool IsDeleted { get; set; }
-
+    //update product
+    public string NameUpdate { get; set; }
+    public decimal PriceUpdate { get; set; }
+    public string CategoryUpdate { get; set; }
+    public bool IsDeletedUpdate { get; set; }
 
     public bool resultAdd { get; set; } = false;
     private string searchString = "";
@@ -131,6 +144,7 @@ else
     public IEnumerable<Product> filteredProducts = new List<Product>();
     private readonly ApplicationDbContext _context;
     public void show() => _readOnly = true;
+    public void Close() => _readOnly = false;
     private void OpenDialogDone() => showInnerComponentDone = true;
     private void CancelDone() => showInnerComponentDone = false;
 
@@ -158,7 +172,7 @@ else
     private async Task deleteData(int id)
     {
 
-        success = true;
+
         try
         {
 
@@ -172,7 +186,16 @@ else
                     products = requestrefresh.Data!;
                     filteredProducts = products;
                     StateHasChanged();
-                    Console.WriteLine("Add Done");
+                    Console.WriteLine("Delete Done Scussflly");
+                    success = true;
+                    await Task.Delay(3000);
+                    success = false;
+                    
+                    
+
+
+
+
                 }
             }
             else
@@ -188,33 +211,38 @@ else
         }
     }
     /// <summary> add prodcut
-    // private async void OnValidSubmit(EditContext context)
-    // {
+    private async Task EditProduct(int id)
+    {
 
-    //     success = true;
+        createProduct.Name = NameUpdate;
+        createProduct.Price = PriceUpdate;
+        createProduct.Category = CategoryUpdate;
+        createProduct.IsDeleted = IsDeletedUpdate;
 
-    //     var product = createProduct;
+        var product = createProduct;
+        _readOnly = false;
 
-    //     var request = await ProductService.CreateProductAsync(product);
-    //     var requestRefresh = await ProductService.GetProductsApi();
+        var response = await ProductService.UpdateProductAsync(id, product);
+        var requestRefresh = await ProductService.GetProductsApi();
 
-    //     if (request.Success)
-    //     {
+        if (response.Success)
+        {
+            products = await ProductService.GetProducts();
+            filteredProducts = products;
+            StateHasChanged();
+            FilterProducts();
+            Snackbar.Add("Add Done Successfully ", Severity.Success);
 
-    //         products.Append(product);
-    //         products = requestRefresh.Data!;
-    //         filteredProducts = products;
-    //         StateHasChanged();
-    //     }
-    //     else
-    //     {
-    //         Snackbar.Add(request.Message, Severity.Error);
+            products = requestRefresh.Data!;
+            filteredProducts = products;
+            StateHasChanged();
+        }
+        else
+        {
+            Snackbar.Add("Remove Not Done", Severity.Error);
+        }
 
-    //     }
-    //     // OpenDialogDone();
-
-
-    // }
+    }
 
     private async Task AddProduct()
     {

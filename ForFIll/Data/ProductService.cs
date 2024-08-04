@@ -200,12 +200,9 @@ namespace ForFIll.Data
         }
         public async Task<DataBaseRequest<Product>> GetProductByIdAsync(int id)
         {
-            //var request = await _context.Products
-            //                     .Include(p => p.Name )
-            //                     .Include(p => p.Category)
-            //                     .Include(p => p.Price)
-            //                     .FirstOrDefaultAsync(p => p.Id == id);
+
             var request = await _context.Products.Where(p => p.Id == id).FirstOrDefaultAsync(p=>p.Id == id);
+            
             if (request != null)
             {
                 return new DataBaseRequest<Product>
@@ -224,6 +221,95 @@ namespace ForFIll.Data
                 };
 
             }
+        }
+        //public async Task<DataBaseRequest<Product>> UpdateProductAsync(int id ,Product createProduct)
+        //{
+
+        //    //var request = await _context.Products.Where(p => p.Id == id).FirstOrDefaultAsync(p => p.Id == id);
+
+        //    var request = await GetProductByIdAsync(id);
+        //    var product = request.Success ? request.Data : null;
+
+        //    if (request == null)Console.WriteLine("request is null");
+        //    product.Name = createProduct.Name;
+        //    product.Price = createProduct.Price;
+        //    product.Category = createProduct.Category;
+        //    product.IsDeleted = createProduct.IsDeleted;
+            
+
+
+        //    _context.Products.Update(product);
+
+
+        //    if (request != null)
+        //    {
+        //        return new DataBaseRequest<Product>
+        //        {
+        //            Data = product,
+        //            Message = "Product Found!",
+        //            Success = true,
+        //        };
+        //    }
+        //    else
+        //    {
+        //        return new DataBaseRequest<Product>
+        //        {
+        //            Data = new Product(),
+        //            Message = $"The Product with {id} not Found"
+        //        };
+
+        //    }
+        //}
+        public async Task<DataBaseRequest> UpdateProductAsync(int id, Product createProduct)
+        {
+            var request = await GetProductByIdAsync(id);
+            var product = request.Success ? request.Data : null;
+
+            product.Name = createProduct.Name;
+            product.Price = createProduct.Price;
+            product.Category = createProduct.Category;
+            product.IsDeleted = createProduct.IsDeleted;
+
+            if (product == null || product.IsDeleted)
+            {
+
+                return new DataBaseRequest { Message = ($"Product with ID {id} not found or already deleted."), Success = false };
+
+            }
+            try
+            {
+                product.IsDeleted = true;
+                //product.DeletedAt = DateTime.UtcNow;
+                _context.Products.Update(product);
+                var result = await _context.SaveChangesAsync();
+                if (result > 0)
+                {
+                    return new DataBaseRequest
+                    {
+                        Message = $"Product {product.Name} Deleted Successfully",
+                        Success = true
+                    };
+                }
+                else
+                {
+                    return new DataBaseRequest
+                    {
+                        Message = $"an error occurred while Deleting {product.Name} ",
+                        Success = false
+                    };
+                }
+            }
+            catch (Exception)
+            {
+                //TODO
+                return new DataBaseRequest
+                {
+                    Message = "يوجد سلة لهذا المنتج"
+                    ,
+                    Success = false
+                };
+            }
+
         }
         //end crud opreation from sql
         public async Task<List<Product>> GetProducts()
