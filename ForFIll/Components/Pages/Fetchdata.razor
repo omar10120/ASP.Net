@@ -105,10 +105,10 @@ else
             {
                 <MudTd>
                     <MudForm @ref="form" @bind-IsValid="@success" @bind-Errors="@errors" >
-                        <MudTextField T="string" Label="Name" @bind-Value="NameUpdate" Required="true" RequiredError="Name name is required!" />
-                        <MudTextField T="decimal" Label="Price" @bind-Value="PriceUpdate" Required="true" RequiredError="Price name is required!" />
-                        <MudTextField T="string" Label="Category" @bind-Value="CategoryUpdate" Required="true" RequiredError="Category name is required!" />
-                        <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="@(() => EditProduct(context.Id))" Class="ml-auto">Update</MudButton>
+                        <MudTextField T="string" Label="Name" @bind-Value="context.Name" Required="true" RequiredError="Name name is required!" />
+                        <MudTextField T="decimal" Label="Price" @bind-Value="context.Price" Required="true" RequiredError="Price name is required!" />
+                        <MudTextField T="string" Label="Category" @bind-Value="context.Category" Required="true" RequiredError="Category name is required!" />
+                        <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="@(() => EditProduct(context.Id,context.Name,context.Price,context.Category , context.IsDeleted))" Class="ml-auto">Update</MudButton>
                         <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="@(() => Close())" Class="ml-auto">Close</MudButton>
                     </MudForm>
                 </MudTd>
@@ -211,13 +211,13 @@ else
         }
     }
     /// <summary> add prodcut
-    private async Task EditProduct(int id)
+    private async Task EditProduct(int id, string Name, decimal price, string Category , bool IsDeleted)
     {
 
-        createProduct.Name = NameUpdate;
-        createProduct.Price = PriceUpdate;
-        createProduct.Category = CategoryUpdate;
-        createProduct.IsDeleted = IsDeletedUpdate;
+        createProduct.Name = Name;
+        createProduct.Price = price;
+        createProduct.Category = Category;
+        createProduct.IsDeleted = IsDeleted;
 
         var product = createProduct;
         _readOnly = false;
