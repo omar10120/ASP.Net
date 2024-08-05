@@ -92,34 +92,40 @@ else
         </HeaderContent>
         <RowTemplate>
             <MudTd DataLabel="Id">@context.Id</MudTd>
-            <MudTd DataLabel="Name">@context.Name</MudTd>
+            <MudTd DataLabel="Name"><MudTextField T="string" ReadOnly=_readOnly @bind-Value="context.Name">@context.Name</MudTextField></MudTd>
             <MudTd DataLabel="Price">@context.Price</MudTd>
             <MudTd DataLabel="Category">@context.Category</MudTd>
      
             <MudTd DataLabel="Actions">
                 @*        <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="@(() => show())">Edit</MudButton>*@
-                <MudButton Variant="Variant.Outlined" Color="Color.Error" OnClick="@(() => deleteData(context.Id))">Delete</MudButton>
-                <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="@(() => show())">Edit</MudButton>
+                @* <MudButton Variant="Variant.Outlined" Color="Color.Error" OnClick="@(() => deleteData(context.Id))">Delete</MudButton> *@
+                <MudIconButton Icon="@Icons.Material.Filled.Delete" OnClick="@(() => deleteData(context.Id))" Variant="Variant.Filled" Color="Color.Primary" Size="Size.Medium" />
+                <MudIconButton Icon="@Icons.Material.Filled.Edit" OnClick="@(() => show())" Variant="Variant.Filled" Color="Color.Primary" Size="Size.Medium" />
+                @* <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="@(() => show())">Edit</MudButton> *@
             </MudTd>
-            @if (_readOnly == true)
+            @if (_readOnly == false)
             {
                 <MudTd>
                     <MudForm @ref="form" @bind-IsValid="@success" @bind-Errors="@errors" >
                         <MudTextField T="string" Label="Name" @bind-Value="context.Name" Required="true" RequiredError="Name name is required!" />
                         <MudTextField T="decimal" Label="Price" @bind-Value="context.Price" Required="true" RequiredError="Price name is required!" />
-                        <MudTextField T="string" Label="Category" @bind-Value="context.Category" Required="true" RequiredError="Category name is required!" />
-                        <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="@(() => EditProduct(context.Id,context.Name,context.Price,context.Category , context.IsDeleted))" Class="ml-auto">Update</MudButton>
+                        <MudTextField T="string" Label="Category" AdornmentIcon="@Icons.Material.Filled.Edit" @bind-Value="context.Category" Required="true" RequiredError="Category name is required!" />
+                        <MudButton Variant="Variant.Filled"  Color="Color.Primary"  OnClick="@(() => EditProduct(context.Id,context.Name,context.Price,context.Category , context.IsDeleted))" Class="ml-auto">Update</MudButton>
                         <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="@(() => Close())" Class="ml-auto">Close</MudButton>
                     </MudForm>
                 </MudTd>
             }
         </RowTemplate>
     </MudTable>
+
+    <MudScrollToTop>
+        <MudFab Color="Color.Tertiary" StartIcon="@Icons.Material.Filled.ArrowCircleUp" />
+    </MudScrollToTop>
 }
 
 
 @code {
-        //create new product
+    //create new product
     public string Name { get; set; }
     public decimal Price { get; set; }
     public string Category { get; set; }
@@ -132,7 +138,7 @@ else
 
     public bool resultAdd { get; set; } = false;
     private string searchString = "";
-    private bool _readOnly;
+    private bool _readOnly = true; 
     private bool _loading;
 
     private bool showInnerComponent = false;
@@ -143,8 +149,8 @@ else
 
     public IEnumerable<Product> filteredProducts = new List<Product>();
     private readonly ApplicationDbContext _context;
-    public void show() => _readOnly = true;
-    public void Close() => _readOnly = false;
+    public void show() => _readOnly = false;
+    public void Close() => _readOnly = true;
     private void OpenDialogDone() => showInnerComponentDone = true;
     private void CancelDone() => showInnerComponentDone = false;
 
