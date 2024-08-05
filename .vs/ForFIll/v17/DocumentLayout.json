@@ -1,53 +1,57 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\amr-d\\Desktop\\TestNo\\asp2\\",
+  "WorkspaceRootPath": "C:\\Users\\Dell\\source\\repos\\ForFIll\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|c:\\users\\amr-d\\desktop\\testno\\asp2\\forfill\\components\\pages\\fetchdata.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|c:\\users\\dell\\source\\repos\\forfill\\forfill\\components\\pages\\fetchdata.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|solutionrelative:forfill\\components\\pages\\fetchdata.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|c:\\users\\amr-d\\desktop\\testno\\asp2\\forfill\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|solutionrelative:forfill\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|c:\\users\\amr-d\\desktop\\testno\\asp2\\forfill\\components\\pages\\productlist.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|c:\\users\\dell\\source\\repos\\forfill\\forfill\\components\\pages\\productlist.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|solutionrelative:forfill\\components\\pages\\productlist.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|c:\\users\\amr-d\\desktop\\testno\\asp2\\forfill\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|solutionrelative:forfill\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|c:\\users\\amr-d\\desktop\\testno\\asp2\\forfill\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|solutionrelative:forfill\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|c:\\users\\amr-d\\desktop\\testno\\asp2\\forfill\\data\\databaserequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|solutionrelative:forfill\\data\\databaserequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|c:\\users\\amr-d\\desktop\\testno\\asp2\\forfill\\data\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|c:\\users\\dell\\source\\repos\\forfill\\forfill\\data\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|solutionrelative:forfill\\data\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|c:\\users\\amr-d\\desktop\\testno\\asp2\\forfill\\services\\interfaces\\iproductservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|c:\\users\\dell\\source\\repos\\forfill\\forfill\\controllers\\customauthenticationstateprovider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|solutionrelative:forfill\\controllers\\customauthenticationstateprovider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|c:\\users\\dell\\source\\repos\\forfill\\forfill\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|solutionrelative:forfill\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|c:\\users\\dell\\source\\repos\\forfill\\forfill\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|solutionrelative:forfill\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|c:\\users\\dell\\source\\repos\\forfill\\forfill\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|solutionrelative:forfill\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|c:\\users\\dell\\source\\repos\\forfill\\forfill\\data\\databaserequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|solutionrelative:forfill\\data\\databaserequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|c:\\users\\dell\\source\\repos\\forfill\\forfill\\services\\interfaces\\iproductservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|solutionrelative:forfill\\services\\interfaces\\iproductservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|c:\\users\\amr-d\\desktop\\testno\\asp2\\forfill\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|c:\\users\\dell\\source\\repos\\forfill\\forfill\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|solutionrelative:forfill\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|c:\\users\\amr-d\\desktop\\testno\\asp2\\forfill\\components\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|c:\\users\\dell\\source\\repos\\forfill\\forfill\\components\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|solutionrelative:forfill\\components\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|c:\\users\\amr-d\\desktop\\testno\\asp2\\forfill\\components\\pages\\protected.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|c:\\users\\dell\\source\\repos\\forfill\\forfill\\components\\pages\\protected.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|solutionrelative:forfill\\components\\pages\\protected.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|c:\\users\\amr-d\\desktop\\testno\\asp2\\forfill\\models\\loginmodel .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|c:\\users\\dell\\source\\repos\\forfill\\forfill\\models\\loginmodel .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|solutionrelative:forfill\\models\\loginmodel .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -58,35 +62,15 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 5,
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
-            {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ProductsController.cs",
-              "DocumentMoniker": "C:\\Users\\amr-d\\Desktop\\TestNo\\asp2\\ForFIll\\Controllers\\ProductsController.cs",
-              "RelativeDocumentMoniker": "ForFIll\\Controllers\\ProductsController.cs",
-              "ToolTip": "C:\\Users\\amr-d\\Desktop\\TestNo\\asp2\\ForFIll\\Controllers\\ProductsController.cs",
-              "RelativeToolTip": "ForFIll\\Controllers\\ProductsController.cs",
-              "ViewState": "AQIAACkAAAAAAAAAAAAWwD8AAAAaAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-04T20:57:51.89Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "ApplicationDbContext.cs",
-              "DocumentMoniker": "C:\\Users\\amr-d\\Desktop\\TestNo\\asp2\\ForFIll\\Data\\ApplicationDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\Dell\\source\\repos\\ForFIll\\ForFIll\\Data\\ApplicationDbContext.cs",
               "RelativeDocumentMoniker": "ForFIll\\Data\\ApplicationDbContext.cs",
-              "ToolTip": "C:\\Users\\amr-d\\Desktop\\TestNo\\asp2\\ForFIll\\Data\\ApplicationDbContext.cs",
+              "ToolTip": "C:\\Users\\Dell\\source\\repos\\ForFIll\\ForFIll\\Data\\ApplicationDbContext.cs",
               "RelativeToolTip": "ForFIll\\Data\\ApplicationDbContext.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -94,11 +78,36 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ProductList.razor",
+              "DocumentMoniker": "C:\\Users\\Dell\\source\\repos\\ForFIll\\ForFIll\\Components\\Pages\\ProductList.razor",
+              "RelativeDocumentMoniker": "ForFIll\\Components\\Pages\\ProductList.razor",
+              "ToolTip": "C:\\Users\\Dell\\source\\repos\\ForFIll\\ForFIll\\Components\\Pages\\ProductList.razor",
+              "RelativeToolTip": "ForFIll\\Components\\Pages\\ProductList.razor",
+              "ViewState": "AQIAAKwAAAAAAAAAAADwv8MAAAA7AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-04T19:09:35.748Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 5,
+              "Title": "ProductsController.cs",
+              "DocumentMoniker": "C:\\Users\\Dell\\source\\repos\\ForFIll\\ForFIll\\Controllers\\ProductsController.cs",
+              "RelativeDocumentMoniker": "ForFIll\\Controllers\\ProductsController.cs",
+              "ToolTip": "C:\\Users\\Dell\\source\\repos\\ForFIll\\ForFIll\\Controllers\\ProductsController.cs",
+              "RelativeToolTip": "ForFIll\\Controllers\\ProductsController.cs",
+              "ViewState": "AQIAACkAAAAAAAAAAAAWwD8AAAAaAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-04T20:57:51.89Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "DataBaseRequest.cs",
-              "DocumentMoniker": "C:\\Users\\amr-d\\Desktop\\TestNo\\asp2\\ForFIll\\Data\\DataBaseRequest.cs",
+              "DocumentMoniker": "C:\\Users\\Dell\\source\\repos\\ForFIll\\ForFIll\\Data\\DataBaseRequest.cs",
               "RelativeDocumentMoniker": "ForFIll\\Data\\DataBaseRequest.cs",
-              "ToolTip": "C:\\Users\\amr-d\\Desktop\\TestNo\\asp2\\ForFIll\\Data\\DataBaseRequest.cs",
+              "ToolTip": "C:\\Users\\Dell\\source\\repos\\ForFIll\\ForFIll\\Data\\DataBaseRequest.cs",
               "RelativeToolTip": "ForFIll\\Data\\DataBaseRequest.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -106,60 +115,62 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "ProductService.cs",
-              "DocumentMoniker": "C:\\Users\\amr-d\\Desktop\\TestNo\\asp2\\ForFIll\\Data\\ProductService.cs",
-              "RelativeDocumentMoniker": "ForFIll\\Data\\ProductService.cs",
-              "ToolTip": "C:\\Users\\amr-d\\Desktop\\TestNo\\asp2\\ForFIll\\Data\\ProductService.cs",
-              "RelativeToolTip": "ForFIll\\Data\\ProductService.cs",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAAAP4AAAA1AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-04T19:21:33.158Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "ProductList.razor",
-              "DocumentMoniker": "C:\\Users\\amr-d\\Desktop\\TestNo\\asp2\\ForFIll\\Components\\Pages\\ProductList.razor",
-              "RelativeDocumentMoniker": "ForFIll\\Components\\Pages\\ProductList.razor",
-              "ToolTip": "C:\\Users\\amr-d\\Desktop\\TestNo\\asp2\\ForFIll\\Components\\Pages\\ProductList.razor",
-              "RelativeToolTip": "ForFIll\\Components\\Pages\\ProductList.razor",
-              "ViewState": "AQIAAD8AAAAAAAAAAAAjwFYAAABJAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-08-04T19:09:35.748Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\amr-d\\Desktop\\TestNo\\asp2\\ForFIll\\appsettings.json",
-              "RelativeDocumentMoniker": "ForFIll\\appsettings.json",
-              "ToolTip": "C:\\Users\\amr-d\\Desktop\\TestNo\\asp2\\ForFIll\\appsettings.json",
-              "RelativeToolTip": "ForFIll\\appsettings.json",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAEAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-08-04T14:53:58.092Z"
+              "Title": "ProductService.cs",
+              "DocumentMoniker": "C:\\Users\\Dell\\source\\repos\\ForFIll\\ForFIll\\Data\\ProductService.cs",
+              "RelativeDocumentMoniker": "ForFIll\\Data\\ProductService.cs",
+              "ToolTip": "C:\\Users\\Dell\\source\\repos\\ForFIll\\ForFIll\\Data\\ProductService.cs",
+              "RelativeToolTip": "ForFIll\\Data\\ProductService.cs",
+              "ViewState": "AQIAAP8AAAAAAAAAAAArwAYBAAA9AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-04T19:21:33.158Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Fetchdata.razor",
-              "DocumentMoniker": "C:\\Users\\amr-d\\Desktop\\TestNo\\asp2\\ForFIll\\Components\\Pages\\Fetchdata.razor",
+              "DocumentMoniker": "C:\\Users\\Dell\\source\\repos\\ForFIll\\ForFIll\\Components\\Pages\\Fetchdata.razor",
               "RelativeDocumentMoniker": "ForFIll\\Components\\Pages\\Fetchdata.razor",
-              "ToolTip": "C:\\Users\\amr-d\\Desktop\\TestNo\\asp2\\ForFIll\\Components\\Pages\\Fetchdata.razor",
+              "ToolTip": "C:\\Users\\Dell\\source\\repos\\ForFIll\\ForFIll\\Components\\Pages\\Fetchdata.razor",
               "RelativeToolTip": "ForFIll\\Components\\Pages\\Fetchdata.razor",
-              "ViewState": "AQIAAIkAAAAAAAAAAAAAAJUAAABHAAAA",
+              "ViewState": "AQIAANEAAAAAAAAAAADwv+cAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-07-31T17:57:41.333Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 3,
+              "Title": "CustomAuthenticationStateProvider.cs",
+              "DocumentMoniker": "C:\\Users\\Dell\\source\\repos\\ForFIll\\ForFIll\\Controllers\\CustomAuthenticationStateProvider.cs",
+              "RelativeDocumentMoniker": "ForFIll\\Controllers\\CustomAuthenticationStateProvider.cs",
+              "ToolTip": "C:\\Users\\Dell\\source\\repos\\ForFIll\\ForFIll\\Controllers\\CustomAuthenticationStateProvider.cs",
+              "RelativeToolTip": "ForFIll\\Controllers\\CustomAuthenticationStateProvider.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-05T19:21:11.718Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\Dell\\source\\repos\\ForFIll\\ForFIll\\appsettings.json",
+              "RelativeDocumentMoniker": "ForFIll\\appsettings.json",
+              "ToolTip": "C:\\Users\\Dell\\source\\repos\\ForFIll\\ForFIll\\appsettings.json",
+              "RelativeToolTip": "ForFIll\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-08-04T14:53:58.092Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "IProductService.cs",
-              "DocumentMoniker": "C:\\Users\\amr-d\\Desktop\\TestNo\\asp2\\ForFIll\\Services\\Interfaces\\IProductService.cs",
+              "DocumentMoniker": "C:\\Users\\Dell\\source\\repos\\ForFIll\\ForFIll\\Services\\Interfaces\\IProductService.cs",
               "RelativeDocumentMoniker": "ForFIll\\Services\\Interfaces\\IProductService.cs",
-              "ToolTip": "C:\\Users\\amr-d\\Desktop\\TestNo\\asp2\\ForFIll\\Services\\Interfaces\\IProductService.cs",
+              "ToolTip": "C:\\Users\\Dell\\source\\repos\\ForFIll\\ForFIll\\Services\\Interfaces\\IProductService.cs",
               "RelativeToolTip": "ForFIll\\Services\\Interfaces\\IProductService.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAqwA8AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -167,11 +178,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "LoginModel .cs",
-              "DocumentMoniker": "C:\\Users\\amr-d\\Desktop\\TestNo\\asp2\\ForFIll\\Models\\LoginModel .cs",
+              "DocumentMoniker": "C:\\Users\\Dell\\source\\repos\\ForFIll\\ForFIll\\Models\\LoginModel .cs",
               "RelativeDocumentMoniker": "ForFIll\\Models\\LoginModel .cs",
-              "ToolTip": "C:\\Users\\amr-d\\Desktop\\TestNo\\asp2\\ForFIll\\Models\\LoginModel .cs",
+              "ToolTip": "C:\\Users\\Dell\\source\\repos\\ForFIll\\ForFIll\\Models\\LoginModel .cs",
               "RelativeToolTip": "ForFIll\\Models\\LoginModel .cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -179,11 +190,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "Protected.razor",
-              "DocumentMoniker": "C:\\Users\\amr-d\\Desktop\\TestNo\\asp2\\ForFIll\\Components\\Pages\\Protected.razor",
+              "DocumentMoniker": "C:\\Users\\Dell\\source\\repos\\ForFIll\\ForFIll\\Components\\Pages\\Protected.razor",
               "RelativeDocumentMoniker": "ForFIll\\Components\\Pages\\Protected.razor",
-              "ToolTip": "C:\\Users\\amr-d\\Desktop\\TestNo\\asp2\\ForFIll\\Components\\Pages\\Protected.razor",
+              "ToolTip": "C:\\Users\\Dell\\source\\repos\\ForFIll\\ForFIll\\Components\\Pages\\Protected.razor",
               "RelativeToolTip": "ForFIll\\Components\\Pages\\Protected.razor",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -191,11 +202,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\amr-d\\Desktop\\TestNo\\asp2\\ForFIll\\Program.cs",
+              "DocumentMoniker": "C:\\Users\\Dell\\source\\repos\\ForFIll\\ForFIll\\Program.cs",
               "RelativeDocumentMoniker": "ForFIll\\Program.cs",
-              "ToolTip": "C:\\Users\\amr-d\\Desktop\\TestNo\\asp2\\ForFIll\\Program.cs",
+              "ToolTip": "C:\\Users\\Dell\\source\\repos\\ForFIll\\ForFIll\\Program.cs",
               "RelativeToolTip": "ForFIll\\Program.cs",
               "ViewState": "AQIAACsAAAAAAAAAAAAAADUAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -203,11 +214,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "Home.razor",
-              "DocumentMoniker": "C:\\Users\\amr-d\\Desktop\\TestNo\\asp2\\ForFIll\\Components\\Pages\\Home.razor",
+              "DocumentMoniker": "C:\\Users\\Dell\\source\\repos\\ForFIll\\ForFIll\\Components\\Pages\\Home.razor",
               "RelativeDocumentMoniker": "ForFIll\\Components\\Pages\\Home.razor",
-              "ToolTip": "C:\\Users\\amr-d\\Desktop\\TestNo\\asp2\\ForFIll\\Components\\Pages\\Home.razor",
+              "ToolTip": "C:\\Users\\Dell\\source\\repos\\ForFIll\\ForFIll\\Components\\Pages\\Home.razor",
               "RelativeToolTip": "ForFIll\\Components\\Pages\\Home.razor",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",

@@ -44,11 +44,11 @@
 <MudGrid>
     <MudItem xs="12" sm="7">
         <MudPaper Class="pa-4">
-            <MudForm @ref="form" @bind-IsValid="@successShow"  @bind-Errors="@errors">
+            <MudForm @ref="form" @bind-IsValid="@successShow" @bind-Errors="@errors">
                 <MudTextField T="string" Label="Name" @bind-Value="Name" Required="true" RequiredError="Name name is required!" />
                 <MudTextField T="decimal" Label="Price" @bind-Value="Price" Required="true" RequiredError="Price name is required!" />
                 <MudTextField T="string" Label="Category" @bind-Value="Category" Required="true" RequiredError="Category name is required!" />
-                
+
                 <div class="d-flex align-center justify-space-between">
                     <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="AddProduct" Disabled="@(!successShow)" Class="ml-auto">Add Product</MudButton>
                 </div>
@@ -79,9 +79,9 @@ else
               EditTrigger="@TableEditTrigger.EditButton"
               ReadOnly="false"
               Striped="true">
-            <ToolBarContent>
-    <MudTextField T="string" Label="Search" @bind-Value="searchString" TextChanged="FilterProducts" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0"></MudTextField>
-    </ToolBarContent>
+        <ToolBarContent>
+            <MudTextField T="string" Label="Search" @bind-Value="searchString" TextChanged="FilterProducts" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0"></MudTextField>
+        </ToolBarContent>
 
         <HeaderContent>
             <MudTh>Id</MudTh>
@@ -91,30 +91,31 @@ else
             <MudTh>Actions</MudTh>
         </HeaderContent>
         <RowTemplate>
-            <MudTd DataLabel="Id">@context.Id</MudTd>
-            <MudTd DataLabel="Name"><MudTextField T="string" ReadOnly=_readOnly @bind-Value="context.Name">@context.Name</MudTextField></MudTd>
-            <MudTd DataLabel="Price">@context.Price</MudTd>
-            <MudTd DataLabel="Category">@context.Category</MudTd>
-     
+
+                <MudTd DataLabel="Id">@context.Id</MudTd>
+            @if(_readOnly == true){
+
+                <MudTd DataLabel="Name">@context.Name</MudTd>
+                <MudTd DataLabel="Price">@context.Price</MudTd>
+                <MudTd DataLabel="Category">@context.Category</MudTd>
+          }else{
+                <MudTd><MudTextField T="string" Label="Name" @bind-Value="context.Name" Required="true" RequiredError="Name is required!" /></MudTd>
+                <MudTd><MudTextField T="decimal" Label="Price" @bind-Value="context.Price" Required="true" RequiredError="Price is required!" /></MudTd>
+                <MudTd><MudTextField T="string" Label="Category" @bind-Value="context.Category" Required="true" RequiredError="Category is required!" /></MudTd>
+          }
             <MudTd DataLabel="Actions">
-                @*        <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="@(() => show())">Edit</MudButton>*@
-                @* <MudButton Variant="Variant.Outlined" Color="Color.Error" OnClick="@(() => deleteData(context.Id))">Delete</MudButton> *@
+                @if (_readOnly == true)
+                {
                 <MudIconButton Icon="@Icons.Material.Filled.Delete" OnClick="@(() => deleteData(context.Id))" Variant="Variant.Filled" Color="Color.Primary" Size="Size.Medium" />
                 <MudIconButton Icon="@Icons.Material.Filled.Edit" OnClick="@(() => show())" Variant="Variant.Filled" Color="Color.Primary" Size="Size.Medium" />
-                @* <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="@(() => show())">Edit</MudButton> *@
+                }
+                @if(_readOnly == false){
+                    <MudIconButton Icon="@Icons.Material.Filled.Save" OnClick="@(() => EditProduct(context.Id,context.Name,context.Price,context.Category , context.IsDeleted))" Class="mx-2" Variant="Variant.Filled" Color="Color.Primary" Size="Size.Medium" />
+
+                    <MudIconButton Icon="@Icons.Material.Filled.Close" OnClick="@(() => Close())" Variant="Variant.Filled" Color="Color.Primary"  Size="Size.Medium" />
+                }
             </MudTd>
-            @if (_readOnly == false)
-            {
-                <MudTd>
-                    <MudForm @ref="form" @bind-IsValid="@success" @bind-Errors="@errors" >
-                        <MudTextField T="string" Label="Name" @bind-Value="context.Name" Required="true" RequiredError="Name name is required!" />
-                        <MudTextField T="decimal" Label="Price" @bind-Value="context.Price" Required="true" RequiredError="Price name is required!" />
-                        <MudTextField T="string" Label="Category" AdornmentIcon="@Icons.Material.Filled.Edit" @bind-Value="context.Category" Required="true" RequiredError="Category name is required!" />
-                        <MudButton Variant="Variant.Filled"  Color="Color.Primary"  OnClick="@(() => EditProduct(context.Id,context.Name,context.Price,context.Category , context.IsDeleted))" Class="ml-auto">Update</MudButton>
-                        <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="@(() => Close())" Class="ml-auto">Close</MudButton>
-                    </MudForm>
-                </MudTd>
-            }
+ 
         </RowTemplate>
     </MudTable>
 
@@ -138,7 +139,7 @@ else
 
     public bool resultAdd { get; set; } = false;
     private string searchString = "";
-    private bool _readOnly = true; 
+    private bool _readOnly = true;
     private bool _loading;
 
     private bool showInnerComponent = false;
@@ -193,11 +194,8 @@ else
                     filteredProducts = products;
                     StateHasChanged();
                     Console.WriteLine("Delete Done Scussflly");
-                    success = true;
-                    await Task.Delay(3000);
-                    success = false;
-                    
-                    
+
+
 
 
 
@@ -211,13 +209,14 @@ else
             }
 
 
-        }catch (Exception ex)
+        }
+        catch (Exception ex)
         {
             Console.WriteLine(ex.Message);
         }
     }
     /// <summary> add prodcut
-    private async Task EditProduct(int id, string Name, decimal price, string Category , bool IsDeleted)
+    private async Task EditProduct(int id, string Name, decimal price, string Category, bool IsDeleted)
     {
 
         createProduct.Name = Name;
@@ -233,15 +232,12 @@ else
 
         if (response.Success)
         {
-            products = await ProductService.GetProducts();
-            filteredProducts = products;
-            StateHasChanged();
-            FilterProducts();
-            Snackbar.Add("Add Done Successfully ", Severity.Success);
 
             products = requestRefresh.Data!;
             filteredProducts = products;
             StateHasChanged();
+            FilterProducts();
+            Close();
         }
         else
         {
@@ -297,7 +293,7 @@ else
     private async Task wait()
     {
         await Task.Delay(30000);
-        
+
 
     }
     //end form

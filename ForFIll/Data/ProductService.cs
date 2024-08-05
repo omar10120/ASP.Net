@@ -39,7 +39,7 @@ namespace ForFIll.Data
         {
             try
             {
-                var request = await _context.Products.ToListAsync();
+                var request = await _context.Products.Where(x=>x.IsDeleted == false).ToListAsync();
                 return new DataBaseRequest<IEnumerable<Product>>
                 {
                     Data = request,
@@ -62,7 +62,7 @@ namespace ForFIll.Data
             try
             {
                 //var request = await _context.Products.Where(p  => p.Id == id).ToListAsync();
-                var request = await _context.Products.Where(p=> p.Id ==id ).ToListAsync();
+                var request = await _context.Products.Where(p=> p.Id ==id && p.IsDeleted == false ).ToListAsync();
 
 
                 return new DataBaseRequest<IEnumerable<Product>>
@@ -265,6 +265,9 @@ namespace ForFIll.Data
             var request = await GetProductByIdAsync(id);
             var product = request.Success ? request.Data : null;
 
+            
+            Console.WriteLine(createProduct.IsDeleted);
+
             product.Name = createProduct.Name;
             product.Price = createProduct.Price;
             product.Category = createProduct.Category;
@@ -278,7 +281,7 @@ namespace ForFIll.Data
             }
             try
             {
-                product.IsDeleted = true;
+              
                 //product.DeletedAt = DateTime.UtcNow;
                 _context.Products.Update(product);
                 var result = await _context.SaveChangesAsync();
