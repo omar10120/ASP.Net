@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\amr-d\\Desktop\\TestNo\\asp2\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|c:\\users\\amr-d\\desktop\\testno\\asp2\\forfill\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|solutionrelative:forfill\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|c:\\users\\amr-d\\desktop\\testno\\asp2\\forfill\\components\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|solutionrelative:forfill\\components\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
@@ -13,10 +17,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|c:\\users\\amr-d\\desktop\\testno\\asp2\\forfill\\components\\pages\\fetchdata.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|solutionrelative:forfill\\components\\pages\\fetchdata.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|c:\\users\\amr-d\\desktop\\testno\\asp2\\forfill\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|solutionrelative:forfill\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|c:\\users\\amr-d\\desktop\\testno\\asp2\\forfill\\components\\pages\\productlist.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -70,7 +70,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 9,
           "Children": [
             {
               "$type": "Bookmark",
@@ -82,7 +82,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "NavMenu.razor",
               "DocumentMoniker": "C:\\Users\\amr-d\\Desktop\\TestNo\\asp2\\ForFIll\\Components\\Layout\\NavMenu.razor",
               "RelativeDocumentMoniker": "ForFIll\\Components\\Layout\\NavMenu.razor",
@@ -90,18 +90,17 @@
               "RelativeToolTip": "ForFIll\\Components\\Layout\\NavMenu.razor",
               "ViewState": "AQIAABUAAAAAAAAAAAAAACkAAABDAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-08-06T09:13:24.742Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-06T09:13:24.742Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "MainLayout.razor",
               "DocumentMoniker": "C:\\Users\\amr-d\\Desktop\\TestNo\\asp2\\ForFIll\\Components\\Layout\\MainLayout.razor",
               "RelativeDocumentMoniker": "ForFIll\\Components\\Layout\\MainLayout.razor",
               "ToolTip": "C:\\Users\\amr-d\\Desktop\\TestNo\\asp2\\ForFIll\\Components\\Layout\\MainLayout.razor",
               "RelativeToolTip": "ForFIll\\Components\\Layout\\MainLayout.razor",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAASAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-08-06T09:13:23.84Z",
               "EditorCaption": ""
@@ -156,7 +155,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Fetchdata.razor",
               "DocumentMoniker": "C:\\Users\\amr-d\\Desktop\\TestNo\\asp2\\ForFIll\\Components\\Pages\\Fetchdata.razor",
               "RelativeDocumentMoniker": "ForFIll\\Components\\Pages\\Fetchdata.razor",
@@ -164,7 +163,19 @@
               "RelativeToolTip": "ForFIll\\Components\\Pages\\Fetchdata.razor",
               "ViewState": "AQIAANEAAAAAAAAAAADwv+AAAAAsAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-07-31T17:57:41.333Z",
+              "WhenOpened": "2024-07-31T17:57:41.333Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\amr-d\\Desktop\\TestNo\\asp2\\ForFIll\\appsettings.json",
+              "RelativeDocumentMoniker": "ForFIll\\appsettings.json",
+              "ToolTip": "C:\\Users\\amr-d\\Desktop\\TestNo\\asp2\\ForFIll\\appsettings.json",
+              "RelativeToolTip": "ForFIll\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-08-04T14:53:58.092Z",
               "EditorCaption": ""
             },
             {
@@ -178,19 +189,6 @@
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-05T19:21:11.718Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\amr-d\\Desktop\\TestNo\\asp2\\ForFIll\\appsettings.json",
-              "RelativeDocumentMoniker": "ForFIll\\appsettings.json",
-              "ToolTip": "C:\\Users\\amr-d\\Desktop\\TestNo\\asp2\\ForFIll\\appsettings.json",
-              "RelativeToolTip": "ForFIll\\appsettings.json",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAA+AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-08-04T14:53:58.092Z",
-              "EditorCaption": ""
             },
             {
               "$type": "Document",
