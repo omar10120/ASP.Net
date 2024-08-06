@@ -24,6 +24,7 @@ namespace ForFIll.Controllers
         [HttpGet]
         public IEnumerable<Product> GetProducts()
         {
+            Console.WriteLine("GetProducts");
             try
             {
                 return Products;
@@ -38,7 +39,8 @@ namespace ForFIll.Controllers
         [HttpGet("{id}")]
         public ActionResult<Product> GetProduct(int id)
         {
-            Console.WriteLine("Product");
+   
+
             try
             {
 
@@ -59,6 +61,7 @@ namespace ForFIll.Controllers
         [HttpPost]
         public ActionResult<Product> PostProduct(Product product)
         {
+            Console.WriteLine("Create Product Done");
             product.Id = Products.Max(p => p.Id) + 1;
             Products.Add(product);
             return CreatedAtAction(nameof(GetProduct), new { id = product.Id }, product);
@@ -81,7 +84,8 @@ namespace ForFIll.Controllers
         [HttpDelete("{id}")]
         public IActionResult DeleteProduct(int id)
         {
-            Console.WriteLine("delete");
+            Console.WriteLine("delete Done");
+            Console.WriteLine(id);
             var product = Products.FirstOrDefault(p => p.Id == id);
             if (product == null)
             {

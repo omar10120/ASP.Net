@@ -317,6 +317,8 @@ namespace ForFIll.Data
         //end crud opreation from sql
         public async Task<List<Product>> GetProducts()
         {
+            
+
             try
             {
                 return await _httpClient.GetFromJsonAsync<List<Product>>("api/products");
@@ -336,7 +338,8 @@ namespace ForFIll.Data
 
         public async Task<HttpResponseMessage> CreateProduct(Product product)
         {
-
+            Console.WriteLine("create product");
+            
             return await _httpClient.PostAsJsonAsync("api/products", product);
         }
 
@@ -348,6 +351,7 @@ namespace ForFIll.Data
 
         public async Task<HttpResponseMessage> DeleteProduct(int id)
         {
+            Console.WriteLine("By try");
             return await _httpClient.DeleteAsync($"api/products/{id}");
         }
 
