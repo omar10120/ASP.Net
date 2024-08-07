@@ -10,29 +10,20 @@
 @using ForFIll.Data
 @using System.ComponentModel.DataAnnotations
 @inject IDialogService DialogService
-
 @using ForFIll.Controllers
 @inject Microsoft.AspNetCore.Antiforgery.IAntiforgery Antiforgery
 @using System.Text.RegularExpressions
-
 @inject ProductService ProductService
-
-@* @using ForFIll.Services.Interfaces
-@inject IProductService ProductServiceI *@
-
 @using MudBlazor
 @inject HttpClient httpClient
-
-
 @rendermode InteractiveServer
-
 @inject ISnackbar Snackbar
 @inject NavigationManager NavigationManager
-
 @using Microsoft.AspNetCore.Authorization
-
-
 @using ForFIll.Models
+
+<MudDialogProvider />
+
 
 <h3>Data</h3>
 
@@ -40,7 +31,7 @@
 {
     <MudAlert Severity="Severity.Success" Variant="Variant.Filled">Add Done Sucssuflly</MudAlert>
 }
-
+<Dialoginner />
 <MudGrid>
     <MudItem xs="12" sm="7">
         <MudPaper Class="pa-4">
@@ -62,6 +53,7 @@
     </MudItem>
 
 </MudGrid>
+
 
 
 
@@ -106,12 +98,11 @@ else
             <MudTd DataLabel="Actions">
                 @if (_readOnly == true)
                 {
-                <MudIconButton Icon="@Icons.Material.Filled.Delete" OnClick="@(() => deleteData(context.Id))" Variant="Variant.Filled" Color="Color.Primary" Size="Size.Medium" />
                 <MudIconButton Icon="@Icons.Material.Filled.Edit" OnClick="@(() => show())" Variant="Variant.Filled" Color="Color.Primary" Size="Size.Medium" />
+                <MudIconButton Icon="@Icons.Material.Filled.Delete" OnClick="@(() => OnButtonClicked(context.Id))" Variant="Variant.Filled" Color="Color.Primary" Size="Size.Medium" />
                 }
                 @if(_readOnly == false){
                     <MudIconButton Icon="@Icons.Material.Filled.Save" OnClick="@(() => EditProduct(context.Id,context.Name,context.Price,context.Category , context.IsDeleted))" Class="mx-2" Variant="Variant.Filled" Color="Color.Primary" Size="Size.Medium" />
-
                     <MudIconButton Icon="@Icons.Material.Filled.Close" OnClick="@(() => Close())" Variant="Variant.Filled" Color="Color.Primary"  Size="Size.Medium" />
                 }
             </MudTd>
@@ -178,8 +169,6 @@ else
     }
     private async Task deleteData(int id)
     {
-
-
         try
         {
 
@@ -194,12 +183,6 @@ else
                     filteredProducts = products;
                     StateHasChanged();
                     Console.WriteLine("Delete Done Scussflly");
-
-
-
-
-
-
                 }
             }
             else
@@ -296,4 +279,20 @@ else
     }
     //end form
     /// </summary>
+
+    //start Delete Dialog 
+
+    string state = "Message box hasn't been opened yet";
+
+    private async void OnButtonClicked(int id)
+    {
+        bool? result = await DialogService.ShowMessageBox(
+            "Warning",
+            "Are You Sure You Want To Delete This Prodcut !",
+            yesText: "Delete!", cancelText: "Cancel");
+        state = result == null ? "Canceled" : "Deleted!";
+        if (state == "Deleted!") deleteData(id);
+        StateHasChanged();
+    }
+    //End Delete Dialog 
 }

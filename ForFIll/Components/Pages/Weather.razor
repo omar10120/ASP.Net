@@ -3,9 +3,12 @@
 @inject ISnackbar Snackbar
 @using MudBlazor
 @using Microsoft.AspNetCore.Authorization
+@using ForFIll.Components.Pages
+@rendermode InteractiveServer
+
 @attribute [Authorize]
 <PageTitle>Weather</PageTitle>
-
+<MudDialogProvider/>
 <h1>Weather</h1>
 
 <p>This component demonstrates showing data.</p>
@@ -38,7 +41,7 @@ else
         </tbody>
     </table>
 
-
+    <Dialoginner/>
 }
 
 @code {
