@@ -58,7 +58,7 @@ namespace ForFIll.Data
         }
         public async Task<DataBaseRequest<IEnumerable<Product>>> GetProductsApiByid(int id)
         {
-            Console.WriteLine(id);
+          
             try
             {
                 //var request = await _context.Products.Where(p  => p.Id == id).ToListAsync();
@@ -88,8 +88,6 @@ namespace ForFIll.Data
 
             try
             {
-                //product.IsDeleted = true;
-                //product.DeletedAt = DateTime.UtcNow;
                 _context.Products.Remove(product);
 
                 var result = await _context.SaveChangesAsync();
@@ -97,7 +95,7 @@ namespace ForFIll.Data
                 {
                     return new DataBaseRequest
                     {
-                        Message = $"Product {product.Name} Deleted Successfully",
+                        Message = $"Product {product.Name} With Id {product.Id} Deleted  Successfully",
                         Success = true
                     };
                 }
@@ -112,10 +110,10 @@ namespace ForFIll.Data
             }
             catch (Exception)
             {
-                //TODO
+              
                 return new DataBaseRequest
                 {
-                    Message = "يوجد سلة لهذا المنتج"
+                    Message = "يوجد مشكلة"
                     ,
                     Success = false
                 };
@@ -152,52 +150,7 @@ namespace ForFIll.Data
             }
 
         }
-        public async Task<DataBaseRequest> DeleteProductAsync(int id)
-        {
-            var request = await GetProductByIdAsync(id);
-            var product = request.Success ? request.Data : null;
 
-            if (product == null || product.IsDeleted)
-            {
-
-                return new DataBaseRequest { Message = ($"Product with ID {id} not found or already deleted."), Success = false };
-
-            }
-            try
-            {
-                product.IsDeleted = true;
-                //product.DeletedAt = DateTime.UtcNow;
-                _context.Products.Remove(product);
-                var result = await _context.SaveChangesAsync();
-                if (result > 0)
-                {
-                    return new DataBaseRequest
-                    {
-                        Message = $"Product {product.Name} Deleted Successfully",
-                        Success = true
-                    };
-                }
-                else
-                {
-                    return new DataBaseRequest
-                    {
-                        Message = $"an error occurred while Deleting {product.Name} ",
-                        Success = false
-                    };
-                }
-            }
-            catch (Exception)
-            {
-                //TODO
-                return new DataBaseRequest
-                {
-                    Message = "يوجد سلة لهذا المنتج"
-                    ,
-                    Success = false
-                };
-            }
-
-        }
         public async Task<DataBaseRequest<Product>> GetProductByIdAsync(int id)
         {
 
@@ -222,52 +175,13 @@ namespace ForFIll.Data
 
             }
         }
-        //public async Task<DataBaseRequest<Product>> UpdateProductAsync(int id ,Product createProduct)
-        //{
-
-        //    //var request = await _context.Products.Where(p => p.Id == id).FirstOrDefaultAsync(p => p.Id == id);
-
-        //    var request = await GetProductByIdAsync(id);
-        //    var product = request.Success ? request.Data : null;
-
-        //    if (request == null)Console.WriteLine("request is null");
-        //    product.Name = createProduct.Name;
-        //    product.Price = createProduct.Price;
-        //    product.Category = createProduct.Category;
-        //    product.IsDeleted = createProduct.IsDeleted;
-            
-
-
-        //    _context.Products.Update(product);
-
-
-        //    if (request != null)
-        //    {
-        //        return new DataBaseRequest<Product>
-        //        {
-        //            Data = product,
-        //            Message = "Product Found!",
-        //            Success = true,
-        //        };
-        //    }
-        //    else
-        //    {
-        //        return new DataBaseRequest<Product>
-        //        {
-        //            Data = new Product(),
-        //            Message = $"The Product with {id} not Found"
-        //        };
-
-        //    }
-        //}
+     
         public async Task<DataBaseRequest> UpdateProductAsync(int id, Product createProduct)
         {
             var request = await GetProductByIdAsync(id);
             var product = request.Success ? request.Data : null;
 
-            
             Console.WriteLine(createProduct.IsDeleted);
-
             product.Name = createProduct.Name;
             product.Price = createProduct.Price;
             product.Category = createProduct.Category;
@@ -275,14 +189,10 @@ namespace ForFIll.Data
 
             if (product == null || product.IsDeleted)
             {
-
                 return new DataBaseRequest { Message = ($"Product with ID {id} not found or already deleted."), Success = false };
-
             }
             try
             {
-              
-                //product.DeletedAt = DateTime.UtcNow;
                 _context.Products.Update(product);
                 var result = await _context.SaveChangesAsync();
                 if (result > 0)
@@ -304,10 +214,10 @@ namespace ForFIll.Data
             }
             catch (Exception)
             {
-                //TODO
+             
                 return new DataBaseRequest
                 {
-                    Message = "يوجد سلة لهذا المنتج"
+                    Message = "يوجد مشكلة"
                     ,
                     Success = false
                 };
@@ -333,6 +243,7 @@ namespace ForFIll.Data
 
         public async Task<Product> GetProduct(int id)
         {
+     
             return await _httpClient.GetFromJsonAsync<Product>($"api/products/{id}");
         }
 
@@ -351,7 +262,6 @@ namespace ForFIll.Data
 
         public async Task<HttpResponseMessage> DeleteProduct(int id)
         {
-            Console.WriteLine("By try");
             return await _httpClient.DeleteAsync($"api/products/{id}");
         }
 
