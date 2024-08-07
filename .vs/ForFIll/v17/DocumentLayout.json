@@ -7,20 +7,24 @@
       "RelativeMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|solutionrelative:forfill\\components\\pages\\fetchdata.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|c:\\users\\amr-d\\desktop\\testno\\asp2\\forfill\\components\\pages\\weather.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|solutionrelative:forfill\\components\\pages\\weather.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|c:\\users\\amr-d\\desktop\\testno\\asp2\\forfill\\components\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|solutionrelative:forfill\\components\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|c:\\users\\amr-d\\desktop\\testno\\asp2\\forfill\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|solutionrelative:forfill\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|c:\\users\\amr-d\\desktop\\testno\\asp2\\forfill\\data\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|solutionrelative:forfill\\data\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|c:\\users\\amr-d\\desktop\\testno\\asp2\\forfill\\components\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|solutionrelative:forfill\\components\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|c:\\users\\amr-d\\desktop\\testno\\asp2\\forfill\\components\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|solutionrelative:forfill\\components\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|c:\\users\\amr-d\\desktop\\testno\\asp2\\forfill\\components\\pages\\weather.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|solutionrelative:forfill\\components\\pages\\weather.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|c:\\users\\amr-d\\desktop\\testno\\asp2\\forfill\\controllers\\customauthenticationstateprovider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -54,7 +58,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -66,7 +70,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
+              "Title": "NavMenu.razor",
+              "DocumentMoniker": "C:\\Users\\amr-d\\Desktop\\TestNo\\asp2\\ForFIll\\Components\\Layout\\NavMenu.razor",
+              "RelativeDocumentMoniker": "ForFIll\\Components\\Layout\\NavMenu.razor",
+              "ToolTip": "C:\\Users\\amr-d\\Desktop\\TestNo\\asp2\\ForFIll\\Components\\Layout\\NavMenu.razor",
+              "RelativeToolTip": "ForFIll\\Components\\Layout\\NavMenu.razor",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-07T13:56:29.261Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "MainLayout.razor",
               "DocumentMoniker": "C:\\Users\\amr-d\\Desktop\\TestNo\\asp2\\ForFIll\\Components\\Layout\\MainLayout.razor",
               "RelativeDocumentMoniker": "ForFIll\\Components\\Layout\\MainLayout.razor",
@@ -79,7 +96,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "ProductsController.cs",
               "DocumentMoniker": "C:\\Users\\amr-d\\Desktop\\TestNo\\asp2\\ForFIll\\Controllers\\ProductsController.cs",
               "RelativeDocumentMoniker": "ForFIll\\Controllers\\ProductsController.cs",
@@ -92,7 +109,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 2,
               "Title": "ProductService.cs",
               "DocumentMoniker": "C:\\Users\\amr-d\\Desktop\\TestNo\\asp2\\ForFIll\\Data\\ProductService.cs",
               "RelativeDocumentMoniker": "ForFIll\\Data\\ProductService.cs",
@@ -105,16 +122,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 5,
               "Title": "Weather.razor",
               "DocumentMoniker": "C:\\Users\\amr-d\\Desktop\\TestNo\\asp2\\ForFIll\\Components\\Pages\\Weather.razor",
               "RelativeDocumentMoniker": "ForFIll\\Components\\Pages\\Weather.razor",
               "ToolTip": "C:\\Users\\amr-d\\Desktop\\TestNo\\asp2\\ForFIll\\Components\\Pages\\Weather.razor",
               "RelativeToolTip": "ForFIll\\Components\\Pages\\Weather.razor",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAAAAAA",
+              "ViewState": "AQIAABUAAAAAAAAAAAAAADYAAAA8AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-08-07T11:54:18.588Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-07T11:54:18.588Z"
             },
             {
               "$type": "Document",
@@ -124,14 +140,14 @@
               "RelativeDocumentMoniker": "ForFIll\\Components\\Pages\\Fetchdata.razor",
               "ToolTip": "C:\\Users\\amr-d\\Desktop\\TestNo\\asp2\\ForFIll\\Components\\Pages\\Fetchdata.razor",
               "RelativeToolTip": "ForFIll\\Components\\Pages\\Fetchdata.razor",
-              "ViewState": "AQIAAFQAAAAAAAAAAAAgwGgAAAAAAAAA",
+              "ViewState": "AQIAACoAAAAAAAAAAAAmwD0AAAAUAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-07-31T17:57:41.333Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\amr-d\\Desktop\\TestNo\\asp2\\ForFIll\\appsettings.json",
               "RelativeDocumentMoniker": "ForFIll\\appsettings.json",
@@ -139,12 +155,11 @@
               "RelativeToolTip": "ForFIll\\appsettings.json",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAABKAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-08-04T14:53:58.092Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-04T14:53:58.092Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "CustomAuthenticationStateProvider.cs",
               "DocumentMoniker": "C:\\Users\\amr-d\\Desktop\\TestNo\\asp2\\ForFIll\\Controllers\\CustomAuthenticationStateProvider.cs",
               "RelativeDocumentMoniker": "ForFIll\\Controllers\\CustomAuthenticationStateProvider.cs",
@@ -152,12 +167,11 @@
               "RelativeToolTip": "ForFIll\\Controllers\\CustomAuthenticationStateProvider.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAA3AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-05T19:21:11.718Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-05T19:21:11.718Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "ApplicationDbContext.cs",
               "DocumentMoniker": "C:\\Users\\amr-d\\Desktop\\TestNo\\asp2\\ForFIll\\Data\\ApplicationDbContext.cs",
               "RelativeDocumentMoniker": "ForFIll\\Data\\ApplicationDbContext.cs",
@@ -169,7 +183,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "LoginModel .cs",
               "DocumentMoniker": "C:\\Users\\amr-d\\Desktop\\TestNo\\asp2\\ForFIll\\Models\\LoginModel .cs",
               "RelativeDocumentMoniker": "ForFIll\\Models\\LoginModel .cs",
@@ -181,7 +195,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "Protected.razor",
               "DocumentMoniker": "C:\\Users\\amr-d\\Desktop\\TestNo\\asp2\\ForFIll\\Components\\Pages\\Protected.razor",
               "RelativeDocumentMoniker": "ForFIll\\Components\\Pages\\Protected.razor",
@@ -193,7 +207,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\amr-d\\Desktop\\TestNo\\asp2\\ForFIll\\Program.cs",
               "RelativeDocumentMoniker": "ForFIll\\Program.cs",

@@ -14,47 +14,54 @@
 @inject Microsoft.AspNetCore.Antiforgery.IAntiforgery Antiforgery
 @using System.Text.RegularExpressions
 @inject ProductService ProductService
-@using MudBlazor
 @inject HttpClient httpClient
 @rendermode InteractiveServer
 @inject ISnackbar Snackbar
 @inject NavigationManager NavigationManager
 @using Microsoft.AspNetCore.Authorization
-@using ForFIll.Models
 
 <MudDialogProvider />
-
+<MudSnackbarProvider/>
 
 <h3>Data</h3>
 
-@if (success == true)
-{
-    <MudAlert Severity="Severity.Success" Variant="Variant.Filled">Add Done Sucssuflly</MudAlert>
-}
-<Dialoginner />
-<MudGrid>
-    <MudItem xs="12" sm="7">
-        <MudPaper Class="pa-4">
-            <MudForm @ref="form" @bind-IsValid="@successShow" @bind-Errors="@errors">
-                <MudTextField T="string" Label="Name" @bind-Value="Name" Required="true" RequiredError="Name name is required!" />
-                <MudTextField T="decimal" Label="Price" @bind-Value="Price" Required="true" RequiredError="Price name is required!" />
-                <MudTextField T="string" Label="Category" @bind-Value="Category" Required="true" RequiredError="Category name is required!" />
-
-                <div class="d-flex align-center justify-space-between">
-                    <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="AddProduct" Disabled="@(!successShow)" Class="ml-auto">Add Product</MudButton>
-                </div>
-            </MudForm>
-        </MudPaper>
-        <MudPaper Class="pa-4 mt-4">
-            <MudButton Variant="Variant.Filled" Color="Color.Primary" DropShadow="false" OnClick="@(()=>form.Validate())">Validate</MudButton>
-            <MudButton Variant="Variant.Filled" Color="Color.Secondary" DropShadow="false" OnClick="@(()=>form.ResetAsync())" Class="mx-2">Reset</MudButton>
-
-        </MudPaper>
-    </MudItem>
-
-</MudGrid>
 
 
+@* start add prodcut  *@
+<div class="d-flex">
+    <MudButton Variant="Variant.Filled" @onclick="OpenDialog" Color="Color.Primary" StartIcon="@Icons.Material.Filled.Add">Add Product</MudButton>
+</div>
+
+<MudDialog @bind-Visible="_visible" Options="_dialogOptions">
+    <TitleContent>
+        <MudText Typo="Typo.h6">
+            <MudIcon  Class="mr-3" /> Add Product
+        </MudText>
+    </TitleContent>
+    <DialogContent>
+        <MudGrid>
+            <MudItem xs="12" sm="7">
+                <MudPaper Class="pa-4">
+                    <MudForm @ref="form" @bind-IsValid="@successShow" @bind-Errors="@errors">
+                        <MudTextField T="string" Label="Name" @bind-Value="Name" Required="true" RequiredError="Name name is required!" />
+                        <MudTextField T="decimal" Label="Price" @bind-Value="Price" Required="true" RequiredError="Price name is required!" />
+                        <MudTextField T="string" Label="Category" @bind-Value="Category" Required="true" RequiredError="Category name is required!" />
+
+                        <div class="d-flex align-center justify-space-between">
+                            <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="AddProduct" Disabled="@(!successShow)" Class="ml-auto">Add Product</MudButton>
+                        </div>
+                    </MudForm>
+                </MudPaper>
+            </MudItem>
+
+        </MudGrid>
+    </DialogContent>
+    <DialogActions>
+        <MudButton Variant="Variant.Filled" Color="Color.Surface" DropShadow="false" OnClick="@(()=>form.ResetAsync())" Class="mx-2">Reset</MudButton>
+        <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="Submit" Class="px-10">Close</MudButton>   
+    </DialogActions>
+</MudDialog>
+@* end add prodcut  *@
 
 
 @if (products == null)
@@ -99,11 +106,12 @@ else
                 @if (_readOnly == true)
                 {
                 <MudIconButton Icon="@Icons.Material.Filled.Edit" OnClick="@(() => show())" Variant="Variant.Filled" Color="Color.Primary" Size="Size.Medium" />
-                <MudIconButton Icon="@Icons.Material.Filled.Delete" OnClick="@(() => OnButtonClicked(context.Id))" Variant="Variant.Filled" Color="Color.Primary" Size="Size.Medium" />
+                <MudIconButton Icon="@Icons.Material.Filled.Delete" OnClick="@(() => SureDialog(context.Id))" Variant="Variant.Filled" Color="Color.Error" Size="Size.Medium" />
+                
                 }
                 @if(_readOnly == false){
                     <MudIconButton Icon="@Icons.Material.Filled.Save" OnClick="@(() => EditProduct(context.Id,context.Name,context.Price,context.Category , context.IsDeleted))" Class="mx-2" Variant="Variant.Filled" Color="Color.Primary" Size="Size.Medium" />
-                    <MudIconButton Icon="@Icons.Material.Filled.Close" OnClick="@(() => Close())" Variant="Variant.Filled" Color="Color.Primary"  Size="Size.Medium" />
+                    <MudIconButton Icon="@Icons.Material.Filled.Close" OnClick="@(() => Close())" Variant="Variant.Filled" Color="Color.Error" Size="Size.Medium" />
                 }
             </MudTd>
  
@@ -182,13 +190,13 @@ else
                     products = requestrefresh.Data!;
                     filteredProducts = products;
                     StateHasChanged();
-                    Console.WriteLine("Delete Done Scussflly");
+                    Snackbar.Add("Delete Product with Id :"+id+" Done successfully ", Severity.Success);
+
                 }
             }
             else
             {
                 Snackbar.Add(request.Message, Severity.Error);
-                Console.WriteLine("Error Shows ");
             }
 
 
@@ -218,13 +226,15 @@ else
 
             products = requestRefresh.Data!;
             filteredProducts = products;
+                    Snackbar.Add("Modify Product with Id :"+id+" Done successfully ", Severity.Success);
+
             StateHasChanged();
             FilterProducts();
             Close();
         }
         else
         {
-            Snackbar.Add("Remove Not Done", Severity.Error);
+            Snackbar.Add("Update  Not Done", Severity.Error);
         }
 
     }
@@ -246,6 +256,9 @@ else
             products = requestRefresh.Data!;
             filteredProducts = products;
             StateHasChanged();
+            Snackbar.Add("Add Product Done successfully ", Severity.Success);
+            showLeaveAlert = true;
+            form.ResetAsync();
         }
         else
         {
@@ -271,12 +284,7 @@ else
     MudTextField<string> pwField1;
     MudForm form;
 
-    private async Task wait()
-    {
-        await Task.Delay(30000);
-
-
-    }
+   
     //end form
     /// </summary>
 
@@ -284,15 +292,41 @@ else
 
     string state = "Message box hasn't been opened yet";
 
-    private async void OnButtonClicked(int id)
+    private async void SureDialog(int id)
     {
         bool? result = await DialogService.ShowMessageBox(
             "Warning",
             "Are You Sure You Want To Delete This Prodcut !",
             yesText: "Delete!", cancelText: "Cancel");
+            
         state = result == null ? "Canceled" : "Deleted!";
         if (state == "Deleted!") deleteData(id);
         StateHasChanged();
     }
+
+
     //End Delete Dialog 
+    //start Add Product Dialog 
+    private bool _visible;
+    
+    private readonly DialogOptions _dialogOptions = new() { FullWidth = true };
+
+    private void OpenDialog() => _visible = true;
+
+    private void Submit() => _visible = false;
+    //End Add Product Dialog 
+
+    private bool showCallAlert = true;
+    private bool showLeaveAlert = false;
+    private void CloseMe(bool value)
+    {
+        if (value)
+        {
+            showLeaveAlert = false;
+        }
+        else
+        {
+            showCallAlert = false;
+        }
+    }
 }
