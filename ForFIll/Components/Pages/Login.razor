@@ -12,12 +12,24 @@
 @inject Microsoft.AspNetCore.Antiforgery.IAntiforgery Antiforgery
 @using ForFIll.Components
 @using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Mvc;
+@using ForFIll.Controllers
+@inject ProductService ProductService
+@using ForFIll.Data
+
+@using System.Net.Http.Json
+@inject HttpClient httpClient
 
 
 
 
 
 @* @rendermode InteractiveServer *@
+<MudThemeProvider />
+<MudDialogProvider />
+<MudSnackbarProvider />
+
+
 
 
 <EditForm Model="@loginModel" OnValidSubmit="@HandleLogin" FormName="loginForm">
@@ -30,20 +42,71 @@
                 
     <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary">Login</MudButton>
 </EditForm>
+<h1>@loginModel.Username</h1>
 <h1>@loginModel.Password</h1>
+
+
+
+<MudTable Items="@User.Take(4)" Hover="true" Breakpoint="Breakpoint.Sm" Loading="@_loading" LoadingProgressColor="Color.Info">
+    <HeaderContent>
+        <MudTh>user</MudTh>
+        <MudTh>Password</MudTh>
+        <MudTh>Token</MudTh>
+        
+    </HeaderContent>
+    <RowTemplate>
+        <MudTd DataLabel="user">@context.Username</MudTd>
+        <MudTd DataLabel="Password">@context.Password</MudTd>
+        <MudTd DataLabel="Token">@context.Token</MudTd>
+    </RowTemplate>
+</MudTable>
+
+
+
     
 @code {
+
+    private bool _hidePosition;
+    private bool _loading;
     public LoginModel loginModel = new LoginModel();
     // private string antiforgeryToken;
+    public IEnumerable<User> User = new List<User>();
+
+    protected override async Task OnInitializedAsync()
+    {
+
+        try
+        {
+            var request = await ProductService.GetProductsApiUser();
+            if (request.Success)
+            {
+                User = request.Data!;
+            }
+
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+    }
+
     private async Task HandleLogin()
     {
-        loginModel.Password = "admin";
-        loginModel.Username = "admin";
+
+
+        // loginModel.Password = "admin";
+        // loginModel.Username = "admin";
+
         // Simulate user authentication
-        if (loginModel.Username == "admin" && loginModel.Password== "admin")
+      
+        var request = User.Where(x => x.Username =="admin").FirstOrDefault();
+        
+        if (request.Username == "admin" && request.Password == "admin")
         {
+
             try
             {
+            
                 var claims = new List<Claim>
                 {
                     new Claim(ClaimTypes.Name, loginModel.Username)
@@ -54,7 +117,7 @@
                 {
                     IsPersistent = true
                 };
-
+             
 
                 await HttpContextAccessor.HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,new ClaimsPrincipal(claimsIdentity),authProperties);
 

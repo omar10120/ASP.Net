@@ -56,6 +56,27 @@ namespace ForFIll.Data
             }
 
         }
+        public async Task<DataBaseRequest<IEnumerable<User>>> GetProductsApiUser()
+        {
+            try
+            {
+                var request = await _context.User.ToListAsync();
+                return new DataBaseRequest<IEnumerable<User>>
+                {
+                    Data = request,
+                    Message = "Product retrieved successfully",
+                    Success = true
+
+                };
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return null;
+            }
+
+        }
         public async Task<DataBaseRequest<IEnumerable<Product>>> GetProductsApiByid(int id)
         {
           
