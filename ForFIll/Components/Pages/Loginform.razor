@@ -1,0 +1,88 @@
+﻿@page "/Loginform"
+@using Microsoft.AspNetCore.Authentication
+@using Microsoft.AspNetCore.Authentication.Cookies
+@using Microsoft.AspNetCore.Components.Authorization
+@using System.Security.Claims
+@inject NavigationManager Navigation
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@using ForFIll.Models
+@using MudBlazor
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+@inject ISnackbar Snackbar
+@inject Microsoft.AspNetCore.Antiforgery.IAntiforgery Antiforgery
+@using ForFIll.Components
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Mvc;
+@using ForFIll.Controllers
+@inject ProductService ProductService
+@using ForFIll.Data
+@using ForFIll.Components.Pages
+@using System.Net.Http.Json
+@inject HttpClient httpClient
+@rendermode InteractiveServer
+
+
+
+<MudThemeProvider />
+<MudDialogProvider />
+<MudSnackbarProvider />
+
+
+
+<h3>Loginform</h3>
+<EditForm Model="@loginModel" OnValidSubmit="@HandleLogin" FormName="loginForm">
+
+     <AntiforgeryRequestToken /> 
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <MudTextField T="string" @bind-Value="loginModel.Username" Label="Username" Required="true" />
+    <MudTextField T="string" @bind-Value="loginModel.Password" Label="Password" InputType="InputType.Password" Required="true" />
+                
+    <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary">Login</MudButton>
+</EditForm>
+
+
+
+
+@code {
+    public LoginModel loginModel = new LoginModel();
+    public IEnumerable<User> User = new List<User>();
+    protected override async Task OnInitializedAsync()
+    {
+
+        try
+        {
+            var request = await ProductService.GetUsers();
+
+            if (request.Success)
+            {
+                User = request.Data!;
+            }
+
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+    }
+    private async Task HandleLogin()
+    {
+        try
+        {
+             var request = User.Where(x => x.Username == loginModel.Username).FirstOrDefault();
+            if (request.Username == loginModel.Username && request.Password == loginModel.Password)
+            {
+                Navigation.NavigateTo("/login");
+            }
+            else
+            {
+                Snackbar.Add("Username or password not valid", Severity.Warning);
+
+            }
+        }
+        catch
+        {
+            Snackbar.Add("Username or password not valid", Severity.Warning);
+        }
+    }
+}

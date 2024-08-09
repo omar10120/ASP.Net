@@ -20,7 +20,8 @@
 
         </Authorized>
         <NotAuthorized>
-            <NavLink href="login" Match="NavLinkMatch.All">Login</NavLink>
+            <NavLink class="btn btn-primary"  href="loginform" Match="NavLinkMatch.All">Login</NavLink>
+
         </NotAuthorized>
     </AuthorizeView>
 </CascadingAuthenticationState>
@@ -55,7 +56,7 @@
     }
     private async Task LogoutUser1()
     {
-        Navigation.NavigateTo("/products");
+        Navigation.NavigateTo("/Loginform");
 
     }
 }

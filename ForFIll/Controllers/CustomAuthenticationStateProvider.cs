@@ -4,6 +4,7 @@ using System.Security.Claims;
 public class CustomAuthenticationStateProvider : AuthenticationStateProvider
 {
     private readonly IHttpContextAccessor _httpContextAccessor;
+    private ClaimsPrincipal _currentUser = new ClaimsPrincipal(new ClaimsIdentity());
 
     public CustomAuthenticationStateProvider(IHttpContextAccessor httpContextAccessor)
     {

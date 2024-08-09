@@ -1,4 +1,5 @@
 ﻿@page "/login"
+
 @using Microsoft.AspNetCore.Authentication
 @using Microsoft.AspNetCore.Authentication.Cookies
 @using Microsoft.AspNetCore.Components.Authorization
@@ -21,49 +22,24 @@
 @inject HttpClient httpClient
 
 
+@using static Microsoft.AspNetCore.Components.Web.RenderMode
+
+
 
 
 
 @* @rendermode InteractiveServer *@
+
+
 <MudThemeProvider />
 <MudDialogProvider />
 <MudSnackbarProvider />
 
 
 
-
-<EditForm Model="@loginModel" OnValidSubmit="@HandleLogin" FormName="loginForm">
-
-     <AntiforgeryRequestToken /> 
-    <DataAnnotationsValidator />
-    <ValidationSummary />
-    <MudTextField T="string" @bind-Value="loginModel.Username" Label="Username" Required="true" />
-    <MudTextField T="string" @bind-Value="loginModel.Password" Label="Password" InputType="InputType.Password" Required="true" />
-                
-    <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary">Login</MudButton>
-</EditForm>
-<h1>@loginModel.Username</h1>
-<h1>@loginModel.Password</h1>
+<NavLink href="Fetchdata"  class="btn btn-primary"  Match="NavLinkMatch.All">go to products list </NavLink>
 
 
-
-<MudTable Items="@User.Take(4)" Hover="true" Breakpoint="Breakpoint.Sm" Loading="@_loading" LoadingProgressColor="Color.Info">
-    <HeaderContent>
-        <MudTh>user</MudTh>
-        <MudTh>Password</MudTh>
-        <MudTh>Token</MudTh>
-        
-    </HeaderContent>
-    <RowTemplate>
-        <MudTd DataLabel="user">@context.Username</MudTd>
-        <MudTd DataLabel="Password">@context.Password</MudTd>
-        <MudTd DataLabel="Token">@context.Token</MudTd>
-    </RowTemplate>
-</MudTable>
-
-
-
-    
 @code {
 
     private bool _hidePosition;
@@ -74,76 +50,34 @@
 
     protected override async Task OnInitializedAsync()
     {
-
+        
         try
         {
-            var request = await ProductService.GetProductsApiUser();
-            if (request.Success)
-            {
-                User = request.Data!;
-            }
+
+            var claims = new List<Claim>
+                {
+                    new Claim(ClaimTypes.Name, loginModel.Username)
+                };
+            var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+            var authProperties = new AuthenticationProperties
+                {
+                    IsPersistent = true
+                };
+
+            await HttpContextAccessor.HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), authProperties);
+            ((CustomAuthenticationStateProvider)AuthenticationStateProvider).NotifyUserAuthentication(new ClaimsPrincipal(claimsIdentity));
+            Snackbar.Add("Login Done Successflly", Severity.Success);
 
         }
         catch (Exception ex)
         {
-            Console.WriteLine(ex.Message);
+
+            Snackbar.Add(ex.Message, Severity.Warning);
+
         }
     }
 
-    private async Task HandleLogin()
-    {
 
-
-        // loginModel.Password = "admin";
-        // loginModel.Username = "admin";
-
-        // Simulate user authentication
-      
-        var request = User.Where(x => x.Username =="admin").FirstOrDefault();
-        
-        if (request.Username == "admin" && request.Password == "admin")
-        {
-
-            try
-            {
-            
-                var claims = new List<Claim>
-                {
-                    new Claim(ClaimTypes.Name, loginModel.Username)
-                };
-
-                var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-                var authProperties = new AuthenticationProperties
-                {
-                    IsPersistent = true
-                };
-             
-
-                await HttpContextAccessor.HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,new ClaimsPrincipal(claimsIdentity),authProperties);
-
-                ((CustomAuthenticationStateProvider)AuthenticationStateProvider).NotifyUserAuthentication(new ClaimsPrincipal(claimsIdentity));
-
-                Snackbar.Add("Login Done Successflly", Severity.Success);
-
-               
-
-            }
-            catch (Exception ex)
-            {
-
-                Snackbar.Add(ex.Message, Severity.Warning);
-
-            }
-            
-            
-        }
-        else 
-        {
-            Snackbar.Add("Username or password not valid", Severity.Warning);
-            // Snackbar.Add(ex.Message, Severity.Warning);
-        }
-
-    }
-
+  
 
 }

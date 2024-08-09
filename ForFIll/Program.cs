@@ -1,6 +1,5 @@
 using ForFIll.Components;
 using MudBlazor.Services;
-
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using ForFIll.Data;
@@ -12,15 +11,8 @@ using System.Net.Http;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Mvc;
-
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-
-
-
-
-
-
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -33,27 +25,29 @@ builder.Services.AddControllersWithViews();
 
 
 
+
 /*************************************************************User Auther*/
+
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
     {
-        options.LoginPath = "/login";
+        //options.LoginPath = "/login";
         options.LogoutPath = "/logout";
     });
+builder.Services.AddAuthorizationCore();
 builder.Services.AddAuthorization();
 // Register IHttpContextAccessor
 builder.Services.AddScoped<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
 builder.Services.AddHttpContextAccessor();
+
 builder.Services.AddAntiforgery(options => options.HeaderName = "X-CSRF-TOKEN");
+
 
 
 
 /*************************************************************User Auther*/
 // Add DbContext with the connection string
-
-
-
-builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer($"Server={Environment.MachineName}\\{Environment.UserName};Database=TestUser;Trusted_Connection=True;TrustServerCertificate=True;"));
 
 
 builder.Services.AddMudServices(); // Add MudBlazor services
@@ -74,11 +68,11 @@ app.UseStaticFiles();
 app.UseRouting();
 app.UseAuthorization();
 app.MapControllers();
+
+
 app.MapBlazorHub("/App"); //problem here
 app.UseAntiforgery();
 app.MapRazorComponents<App>().AddInteractiveServerRenderMode();
-
-
 app.Run();
 
 

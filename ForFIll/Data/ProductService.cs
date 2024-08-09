@@ -16,6 +16,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Reflection.Metadata.Ecma335;
 
 
 
@@ -39,7 +40,7 @@ namespace ForFIll.Data
         {
             try
             {
-                var request = await _context.Products.Where(x=>x.IsDeleted == false).ToListAsync();
+                var request = await _context.Products.Where(x => x.IsDeleted == false).ToListAsync();
                 return new DataBaseRequest<IEnumerable<Product>>
                 {
                     Data = request,
@@ -56,7 +57,7 @@ namespace ForFIll.Data
             }
 
         }
-        public async Task<DataBaseRequest<IEnumerable<User>>> GetProductsApiUser()
+        public async Task<DataBaseRequest<IEnumerable<User>>> GetUsers()
         {
             try
             {
@@ -79,11 +80,11 @@ namespace ForFIll.Data
         }
         public async Task<DataBaseRequest<IEnumerable<Product>>> GetProductsApiByid(int id)
         {
-          
+
             try
             {
                 //var request = await _context.Products.Where(p  => p.Id == id).ToListAsync();
-                var request = await _context.Products.Where(p=> p.Id ==id && p.IsDeleted == false ).ToListAsync();
+                var request = await _context.Products.Where(p => p.Id == id && p.IsDeleted == false).ToListAsync();
 
 
                 return new DataBaseRequest<IEnumerable<Product>>
@@ -131,7 +132,7 @@ namespace ForFIll.Data
             }
             catch (Exception)
             {
-              
+
                 return new DataBaseRequest
                 {
                     Message = "يوجد مشكلة"
@@ -149,7 +150,7 @@ namespace ForFIll.Data
                 Price = createProduct.Price,
                 Category = createProduct.Category,
                 IsDeleted = createProduct.IsDeleted,
-         
+
             };
             _context.Products.Add(product);
             var result = await _context.SaveChangesAsync();
@@ -171,12 +172,54 @@ namespace ForFIll.Data
             }
 
         }
+        public async Task<DataBaseRequest> CreateUserAsync(User createuser)
+        {
+
+            var request = await _context.User.Where(p => p.Username == createuser.Username).FirstOrDefaultAsync();
+            if (request != null)
+            {
+
+                return new DataBaseRequest
+                {
+                    Message = "Username allready exist",
+                    Success = false
+                };
+            }
+
+            User user = new User
+            {
+                Username = createuser.Username,
+                Password = createuser.Password,
+                Password2 = createuser.Password,
+                Email = createuser.Email,
+                Token = createuser.Token,
+            };
+            _context.User.Add(user);
+            var result = await _context.SaveChangesAsync();
+            if (result > 0)
+            {
+                return new DataBaseRequest
+                {
+                    Message = "User Added Successfully",
+                    Success = true
+                };
+            }
+            else
+            {
+                return new DataBaseRequest
+                {
+                    Message = "Error occurred while adding new User",
+                    Success = false
+                };
+            }
+
+        }
 
         public async Task<DataBaseRequest<Product>> GetProductByIdAsync(int id)
         {
 
-            var request = await _context.Products.Where(p => p.Id == id).FirstOrDefaultAsync(p=>p.Id == id);
-            
+            var request = await _context.Products.Where(p => p.Id == id).FirstOrDefaultAsync(p => p.Id == id);
+
             if (request != null)
             {
                 return new DataBaseRequest<Product>
@@ -196,7 +239,7 @@ namespace ForFIll.Data
 
             }
         }
-     
+
         public async Task<DataBaseRequest> UpdateProductAsync(int id, Product createProduct)
         {
             var request = await GetProductByIdAsync(id);
@@ -235,7 +278,7 @@ namespace ForFIll.Data
             }
             catch (Exception)
             {
-             
+
                 return new DataBaseRequest
                 {
                     Message = "يوجد مشكلة"
@@ -248,7 +291,7 @@ namespace ForFIll.Data
         //end crud opreation from sql
         public async Task<List<Product>> GetProducts()
         {
-            
+
 
             try
             {
@@ -264,14 +307,14 @@ namespace ForFIll.Data
 
         public async Task<Product> GetProduct(int id)
         {
-     
+
             return await _httpClient.GetFromJsonAsync<Product>($"api/products/{id}");
         }
 
         public async Task<HttpResponseMessage> CreateProduct(Product product)
         {
             Console.WriteLine("create product");
-            
+
             return await _httpClient.PostAsJsonAsync("api/products", product);
         }
 

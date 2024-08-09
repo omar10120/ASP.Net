@@ -20,10 +20,15 @@
             @* <MudText Typo="Typo.h6">Welcome, @loginModel.Username</MudText> *@
             Welcome to your new app.
             <MudText Typo="Typo.h6">Welcome, @context.User.Identity.Name!</MudText>
-            <MudButton OnClick="NavigateToLogout" Variant="Variant.Filled" Color="Color.Primary">logout</MudButton>
+            <MudButton OnClick="NavigateToLogout" Variant="Variant.Filled" Color="Color.Primary">Logout</MudButton>
         </Authorized>
         <NotAuthorized>
-            <MudText Typo="Typo.h6">You are not authorized to view this page. Please <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="NavigateToLogin">login</MudButton>.</MudText>
+            <MudText Typo="Typo.h6">You are not authorized to view this page. Please.
+                <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="NavigateToLogin">Signin</MudButton>
+                <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="NavigateToLSignup">Signup</MudButton>
+                </MudText>
+            
+
         </NotAuthorized>
     </AuthorizeView>
 </CascadingAuthenticationState>
@@ -36,12 +41,17 @@ Welcome to your new app.
 
     private void NavigateToLogin()
     {
-        Navigation.NavigateTo("/login");
+        Navigation.NavigateTo("/loginform");
 
     }
     private void NavigateToLogout()
     {
         Navigation.NavigateTo("/logout");
+
+    }
+    private void NavigateToLSignup()
+    {
+        Navigation.NavigateTo("/Signup");
 
     }
 }

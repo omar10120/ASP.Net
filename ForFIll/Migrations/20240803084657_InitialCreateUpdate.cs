@@ -34,7 +34,9 @@ namespace ForFIll.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Username = table.Column<string>(type: "nvarchar(MAX)", nullable: false),
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Token = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Password2 = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Token = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
