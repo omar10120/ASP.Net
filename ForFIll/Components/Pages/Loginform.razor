@@ -36,10 +36,11 @@
     <AntiforgeryRequestToken />
     <DataAnnotationsValidator />
     <ValidationSummary />
-    <MudTextField T="string" @bind-Value="loginModel.Username" Label="Username" Required="true" />
+    <MudTextField T="string" @bind-Value="loginModel.Username" Label="Username or Email" Required="true" />
     <MudTextField T="string" @bind-Value="loginModel.Password" Label="Password" InputType="InputType.Password" Required="true" />
-
+    <br />
     <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary">Login</MudButton>
+    <MudButton OnClick="NavigateToLSignup" Variant="Variant.Filled" Color="Color.Primary">Signup</MudButton>
 </EditForm>
 
 
@@ -71,14 +72,12 @@
     {
         try
         {
+            var request = User.Where(x => x.Username == loginModel.Username || x.Email == loginModel.Username).FirstOrDefault();
 
-                 
-            var request = User.Where(x => x.Username == loginModel.Username).FirstOrDefault();
             if (request != null)
             {
-
                 var hashpassword = _productser.VerifyPassword(request, request.Password, loginModel.Password);
-                if (request.Username == loginModel.Username && hashpassword)
+                if ((request.Username == loginModel.Username || request.Email == loginModel.Username ) && hashpassword)
                 {
                     Navigation.NavigateTo("/login");
                 }
@@ -94,9 +93,16 @@
 
             }
         }
-        catch
+        catch (Exception ex)
         {
-            Snackbar.Add("Username or password not valid", Severity.Warning);
+            Console.WriteLine(ex.Message);
+            Snackbar.Add("Soem issue Just Happend ! , pLease Try again Later", Severity.Warning);
+
         }
+    }
+    private void NavigateToLSignup()
+    {
+        Navigation.NavigateTo("/signup");
+
     }
 }

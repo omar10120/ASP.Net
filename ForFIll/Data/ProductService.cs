@@ -18,6 +18,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Reflection.Metadata.Ecma335;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 
 
 namespace ForFIll.Data
@@ -80,6 +81,61 @@ namespace ForFIll.Data
             }
 
         }
+
+        public async Task<DataBaseRequest> UpdateUserAsync(int id, User createUser)
+        {
+
+            var hashedPassword = HashPassword(createUser, createUser.Password);
+            createUser.Password = hashedPassword;
+
+            var request = await GetUserByIdAsync(id);
+            var user = request.Success ? request.Data : null;
+
+              user.Username = createUser.Username;
+              user.Password= createUser.Password;
+              user.Password2= createUser.Password;
+              user.Token= createUser.Token;
+              user.Email= createUser.Email;
+
+
+            if (user == null )
+            {
+                return new DataBaseRequest { Message = ($"Product with ID {id} not found or already deleted."), Success = false };
+            }
+            try
+            {
+                _context.User.Update(user);
+                var result = await _context.SaveChangesAsync();
+                if (result > 0)
+                {
+                    return new DataBaseRequest
+                    {
+                        Message = $"user {user.Username} Updated Successfully",
+                        Success = true
+                    };
+                }
+                else
+                {
+                    return new DataBaseRequest
+                    {
+                        Message = $"an error occurred while Deleting {user.Username} ",
+                        Success = false
+                    };
+                }
+            }
+            catch (Exception)
+            {
+
+                return new DataBaseRequest
+                {
+                    Message = "يوجد مشكلة",
+                    Success = false
+                };
+            }
+
+        }
+
+
         public async Task<DataBaseRequest<IEnumerable<Product>>> GetProductsApiByid(int id)
         {
 
@@ -143,6 +199,44 @@ namespace ForFIll.Data
             }
 
         }
+        public async Task<DataBaseRequest> DeleteFromUserAsync(int id)
+        {
+
+            var request = _context.User.Where(x => x.Id== id).FirstOrDefault();
+            try
+            {
+                _context.User.Remove(request);
+
+                var result = await _context.SaveChangesAsync();
+                if (result > 0)
+                {
+                    return new DataBaseRequest
+                    {
+                        Message = $"Product {request.Username} With Id {request.Password} Deleted  Successfully",
+                        Success = true
+                    };
+                }
+                else
+                {
+                    return new DataBaseRequest
+                    {
+                        Message = $"an error occurred while Deleting {request.Username} ",
+                        Success = false
+                    };
+                }
+            }
+            catch (Exception)
+            {
+
+                return new DataBaseRequest
+                {
+                    Message = "يوجد مشكلة"
+                    ,
+                    Success = false
+                };
+            }
+
+        }
         public async Task<DataBaseRequest> CreateProductAsync(Product createProduct)
         {
             Product product = new Product
@@ -189,7 +283,6 @@ namespace ForFIll.Data
           
             var hashedPassword = HashPassword(createuser, createuser.Password);
             createuser.Password = hashedPassword;
-            Console.WriteLine(hashedPassword);
 
 
             var request = await _context.User.Where(p => p.Username == createuser.Username).FirstOrDefaultAsync();
@@ -202,6 +295,18 @@ namespace ForFIll.Data
                     Success = false
                 };
             }
+
+            var requestEmail = await _context.User.Where(p => p.Email== createuser.Email).FirstOrDefaultAsync();
+            if (requestEmail != null)
+            {
+
+                return new DataBaseRequest
+                {
+                    Message = "Email allready exist",
+                    Success = false
+                };
+            }
+
 
             User user = new User
             {
@@ -257,6 +362,32 @@ namespace ForFIll.Data
 
             }
         }
+        public async Task<DataBaseRequest<User>> GetUserByIdAsync(int id)
+        {
+
+            var request = await _context.User.Where(p => p.Id == id).FirstOrDefaultAsync(p => p.Id == id);
+
+            if (request != null)
+            {
+                return new DataBaseRequest<User>
+                {
+                    Data = request,
+                    Message = "Product Found!",
+                    Success = true,
+                };
+            }
+            else
+            {
+                return new DataBaseRequest<User>
+                {
+                    Data = new User(),
+                    Message = $"The Product with {id} not Found"
+                };
+
+            }
+        }
+
+
 
         public async Task<DataBaseRequest> UpdateProductAsync(int id, Product createProduct)
         {
