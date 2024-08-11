@@ -18,6 +18,7 @@
 @inject ISnackbar Snackbar
 @inject NavigationManager NavigationManager
 @using Microsoft.AspNetCore.Authorization
+@inject NavigationManager Navigation
 
 
 <MudDialogProvider />
@@ -25,7 +26,7 @@
 
 <h3>Signup</h3>
 
-<EditForm Model="@user"   OnValidSubmit="OnValidSubmit">
+<EditForm Model="@user" OnValidSubmit="OnValidSubmit">
 
     <DataAnnotationsValidator />
     <MudGrid>
@@ -42,7 +43,10 @@
                                   @bind-Value="user.Password2" For="@(() => user.Password2)" InputType="InputType.Password" />
                 </MudCardContent>
                 <MudCardActions>
+                    <MudLink Href="Loginform" Underline="Underline.Always" Class="mx-2">Allready Has Account ?</MudLink>
                     <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary" Class="ml-auto">Register</MudButton>
+
+
 
                 </MudCardActions>
             </MudCard>
@@ -56,7 +60,7 @@
     private bool _loading;
 
 
-       
+
     protected override async Task OnInitializedAsync()
     {
         try
@@ -78,31 +82,34 @@
     bool success;
     private async void OnValidSubmit(EditContext context)
     {
+        success = true;
         try
         {
             user.Token = "1";
-            success = true;
+
             var userList = user;
 
             var request = await ProductService.CreateUserAsync(userList);
-            if(request.Success == false)
+            if (request.Success == false)
             {
-                Snackbar.Add(request.Message, Severity.Error );
+                Snackbar.Add(request.Message, Severity.Error);
                 return;
             }
             Snackbar.Add("Add User done successfully", Severity.Success);
+
             user = new User();// Resets the form
-            
+
             StateHasChanged();
-     
+
 
 
         }
-        catch (Exception ex)    
+        catch (Exception ex)
         {
             Snackbar.Add(ex.Message, Severity.Error);
 
         }
     }
+
 
 }
