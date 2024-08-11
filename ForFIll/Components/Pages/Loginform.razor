@@ -20,6 +20,7 @@
 @using System.Net.Http.Json
 @inject HttpClient httpClient
 @rendermode InteractiveServer
+@inject ProductService _productser
 
 
 
@@ -32,12 +33,12 @@
 <h3>Loginform</h3>
 <EditForm Model="@loginModel" OnValidSubmit="@HandleLogin" FormName="loginForm">
 
-     <AntiforgeryRequestToken /> 
+    <AntiforgeryRequestToken />
     <DataAnnotationsValidator />
     <ValidationSummary />
     <MudTextField T="string" @bind-Value="loginModel.Username" Label="Username" Required="true" />
     <MudTextField T="string" @bind-Value="loginModel.Password" Label="Password" InputType="InputType.Password" Required="true" />
-                
+
     <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary">Login</MudButton>
 </EditForm>
 
@@ -49,7 +50,6 @@
     public IEnumerable<User> User = new List<User>();
     protected override async Task OnInitializedAsync()
     {
-
         try
         {
             var request = await ProductService.GetUsers();
@@ -65,14 +65,28 @@
             Console.WriteLine(ex.Message);
         }
     }
+
+
     private async Task HandleLogin()
     {
         try
         {
-             var request = User.Where(x => x.Username == loginModel.Username).FirstOrDefault();
-            if (request.Username == loginModel.Username && request.Password == loginModel.Password)
+
+
+            var request = User.Where(x => x.Username == loginModel.Username).FirstOrDefault();
+            if (request != null)
             {
-                Navigation.NavigateTo("/login");
+
+                var hashpassword = _productser.VerifyPassword(request, request.Password, loginModel.Password);
+                if (request.Username == loginModel.Username && hashpassword)
+                {
+                    Navigation.NavigateTo("/login");
+                }
+                else
+                {
+                    Snackbar.Add("Username or password not valid", Severity.Warning);
+
+                }
             }
             else
             {

@@ -17,7 +17,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Reflection.Metadata.Ecma335;
-
+using Microsoft.AspNetCore.Identity;
 
 
 namespace ForFIll.Data
@@ -26,11 +26,13 @@ namespace ForFIll.Data
     {
         private readonly HttpClient _httpClient;
         private readonly ApplicationDbContext _context;
+        private readonly PasswordHasher<User> _passwordHasher;
 
         public ProductService(HttpClient httpClient, ApplicationDbContext context)
         {
             _httpClient = httpClient;
             _context = context;
+            _passwordHasher = new PasswordHasher<User>();
 
         }
 
@@ -83,7 +85,6 @@ namespace ForFIll.Data
 
             try
             {
-                //var request = await _context.Products.Where(p  => p.Id == id).ToListAsync();
                 var request = await _context.Products.Where(p => p.Id == id && p.IsDeleted == false).ToListAsync();
 
 
@@ -172,8 +173,24 @@ namespace ForFIll.Data
             }
 
         }
+        
+    
+        public string HashPassword(User user, string password)
+        {
+            return _passwordHasher.HashPassword(user, password);
+        }
+        public bool VerifyPassword(User user, string hashedPassword, string providedPassword)
+        {
+            var result = _passwordHasher.VerifyHashedPassword(user, hashedPassword, providedPassword);
+            return result == PasswordVerificationResult.Success;
+        }
         public async Task<DataBaseRequest> CreateUserAsync(User createuser)
         {
+          
+            var hashedPassword = HashPassword(createuser, createuser.Password);
+            createuser.Password = hashedPassword;
+            Console.WriteLine(hashedPassword);
+
 
             var request = await _context.User.Where(p => p.Username == createuser.Username).FirstOrDefaultAsync();
             if (request != null)
@@ -214,6 +231,7 @@ namespace ForFIll.Data
             }
 
         }
+
 
         public async Task<DataBaseRequest<Product>> GetProductByIdAsync(int id)
         {
