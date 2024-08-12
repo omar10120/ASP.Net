@@ -1,4 +1,6 @@
-﻿@page "/login"
+﻿@* @page "/login" *@
+@page "/login/{Username}"
+
 
 @using Microsoft.AspNetCore.Authentication
 @using Microsoft.AspNetCore.Authentication.Cookies
@@ -17,67 +19,57 @@
 @using ForFIll.Controllers
 @inject ProductService ProductService
 @using ForFIll.Data
-
 @using System.Net.Http.Json
 @inject HttpClient httpClient
-
-
-@using static Microsoft.AspNetCore.Components.Web.RenderMode
-
-
-
-
-
-@* @rendermode InteractiveServer *@
-
-
+@* @using static Microsoft.AspNetCore.Components.Web.RenderMode *@
+@if (_Done)
+{
+    @rendermode InteractiveServer
+}
 <MudThemeProvider />
 <MudDialogProvider />
 <MudSnackbarProvider />
-
-
-
-<NavLink href="Fetchdata"  class="btn btn-primary"  Match="NavLinkMatch.All">go to products list </NavLink>
-
+<NavLink href="Fetchdata" class="btn btn-primary" Match="NavLinkMatch.All">go to products list </NavLink>
 
 @code {
-
     private bool _hidePosition;
     private bool _loading;
-    public LoginModel loginModel = new LoginModel();
+    private bool _Done = false;
+    private bool _successes = false;
+    [Parameter] public string Username { get; set; }
     // private string antiforgeryToken;
     public IEnumerable<User> User = new List<User>();
-
     protected override async Task OnInitializedAsync()
     {
-        
         try
         {
 
             var claims = new List<Claim>
                 {
-                    new Claim(ClaimTypes.Name, loginModel.Username)
+                    new Claim(ClaimTypes.Name, Username)
                 };
+
             var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
             var authProperties = new AuthenticationProperties
                 {
                     IsPersistent = true
                 };
 
-            await HttpContextAccessor.HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), authProperties);
+            await HttpContextAccessor.HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
+                new ClaimsPrincipal(claimsIdentity), authProperties);
             ((CustomAuthenticationStateProvider)AuthenticationStateProvider).NotifyUserAuthentication(new ClaimsPrincipal(claimsIdentity));
-            Snackbar.Add("Login Done Successflly", Severity.Success);
+            // Snackbar.Add("Login Done Successflly", Severity.Success);
 
+            _successes = true;
         }
         catch (Exception ex)
         {
-
             Snackbar.Add(ex.Message, Severity.Warning);
-
+        }
+        if (_successes == true)
+        {
+            _Done = true;   
+            Navigation.NavigateTo($"/fetchdata");
         }
     }
-
-
-  
-
 }

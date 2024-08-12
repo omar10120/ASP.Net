@@ -32,7 +32,6 @@
 
 <h3>Loginform</h3>
 <EditForm Model="@loginModel" OnValidSubmit="@HandleLogin" FormName="loginForm">
-
     <AntiforgeryRequestToken />
     <DataAnnotationsValidator />
     <ValidationSummary />
@@ -73,13 +72,17 @@
         try
         {
             var request = User.Where(x => x.Username == loginModel.Username || x.Email == loginModel.Username).FirstOrDefault();
-
             if (request != null)
             {
                 var hashpassword = _productser.VerifyPassword(request, request.Password, loginModel.Password);
                 if ((request.Username == loginModel.Username || request.Email == loginModel.Username ) && hashpassword)
                 {
-                    Navigation.NavigateTo("/login");
+                    if (request.Username == "admin") loginModel.Username= "admin";
+
+                    Snackbar.Add("Login Done Successflly", Severity.Success);
+
+                    Navigation.NavigateTo($"/login/{loginModel.Username}");
+
                 }
                 else
                 {

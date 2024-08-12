@@ -5,26 +5,9 @@
 @using MudBlazor
 @rendermode InteractiveServer
 @inject ISnackbar Snackbar
-
-
-
 @inject AuthenticationStateProvider AuthenticationStateProvider
 @inject NavigationManager Navigation
 @inject IHttpContextAccessor HttpContextAccessor
-
-<CascadingAuthenticationState>
-    <AuthorizeView>
-        <Authorized>
-            
-            <button class="btn btn-primary" @onclick="LogoutUser1">Display Products</button>
-
-        </Authorized>
-        <NotAuthorized>
-            <NavLink class="btn btn-primary"  href="loginform" Match="NavLinkMatch.All">Login</NavLink>
-
-        </NotAuthorized>
-    </AuthorizeView>
-</CascadingAuthenticationState>
 
 
 
@@ -40,7 +23,6 @@
     {
         try
         {
-
             await HttpContextAccessor.HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             ((CustomAuthenticationStateProvider)AuthenticationStateProvider).NotifyUserLogout();
         }
@@ -51,12 +33,8 @@
 
         Snackbar.Add("logout Done Successflly", Severity.Success);
         StateHasChanged();
-
-
-    }
-    private async Task LogoutUser1()
-    {
-        Navigation.NavigateTo("/Loginform");
+        Navigation.NavigateTo("Loginform");
 
     }
+ 
 }

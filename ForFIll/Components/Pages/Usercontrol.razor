@@ -1,0 +1,174 @@
+﻿@page "/usercontrol"
+@using MudBlazor
+@using ForFIll.Models;
+@using System.Collections.Generic;
+@using System.Net.Http;
+@using System.Net.Http.Json;
+@using System.Threading.Tasks;
+@using ForFIll.Data
+@using System.ComponentModel.DataAnnotations
+@inject IDialogService DialogService
+@using ForFIll.Controllers
+@inject Microsoft.AspNetCore.Antiforgery.IAntiforgery Antiforgery
+@using System.Text.RegularExpressions
+@inject ProductService ProductService
+@inject HttpClient httpClient
+@rendermode InteractiveServer
+@inject ISnackbar Snackbar
+@inject NavigationManager NavigationManager
+@inject NavigationManager Navigation
+@* @attribute [Authorize] *@
+@attribute [Authorize(Policy = "admin")]
+
+@using Microsoft.AspNetCore.Components.Authorization
+@using Microsoft.AspNetCore.Authorization
+
+
+
+<MudDialogProvider />
+<MudSnackbarProvider />
+
+
+
+<p>This is a protected area accessible only by admin.</p>
+
+    <MudTable Items="@UsersList" Hover="true" Breakpoint="Breakpoint.Sm" Height="400px" Loading="@_loading" LoadingProgressColor="Color.Info">
+        <HeaderContent>
+            <MudTh>Username</MudTh>
+            <MudTh>password</MudTh>
+            <MudTh>Token</MudTh>
+            <MudTh>Action</MudTh>
+
+        </HeaderContent>
+        <RowTemplate>
+            @if (_readOnly == true)
+            {
+
+                <MudTd DataLabel="Username">@context.Username</MudTd>
+                <div style="width:250px; overflow:scroll"><MudTd DataLabel="password">@context.Password</MudTd></div>
+                <MudTd DataLabel="Email">@context.Email</MudTd>
+                <MudTd DataLabel="token">@context.Token</MudTd>
+            }
+            else
+            {
+                <MudTd><MudTextField T="string" Label="Username" @bind-Value="context.Username" Required="true" RequiredError="Username is required!" /></MudTd>
+                @* <MudTd><MudTextField T="string" Label="Password" @bind-Value="Password" Required="true" RequiredError="Password is required!" /></MudTd> *@
+            <MudTextField Label="Password" HelperText="Choose a strong password" Class="mt-3"
+                          @bind-Value="Password" For="@(() =>  Password)" InputType="InputType.Password" />
+                <MudTd><MudTextField T="string"   Label="Email" @bind-Value="context.Email" Required="true" RequiredError="Email is required!" /></MudTd>
+                <div style="width:100px; overflow:scroll">
+                    <MudTd><MudTextField T="string" Label="Token" @bind-Value="context.Token" Required="true" RequiredError="Token is required!" /></MudTd>
+                </div>
+            }
+            <MudTd DataLabel="Actions">
+                @if (_readOnly == true)
+                {
+                    <MudIconButton Icon="@Icons.Material.Filled.Edit" OnClick="@(() => show())" Variant="Variant.Filled" Color="Color.Primary" Size="Size.Medium" />
+                    <MudIconButton Icon="@Icons.Material.Filled.Delete" OnClick="@(() => SureDialog(context.Id))" Variant="Variant.Filled" Color="Color.Error" Size="Size.Medium" />
+                }
+                @if (_readOnly == false)
+                {
+                    <MudIconButton Icon="@Icons.Material.Filled.Save" OnClick="@(() => EditProduct(context.Id,context.Username,context.Email))" Class="mx-2" Variant="Variant.Filled" Color="Color.Primary" Size="Size.Medium" />
+                    <MudIconButton Icon="@Icons.Material.Filled.Close" OnClick="@(() => Close())" Variant="Variant.Filled" Color="Color.Error" Size="Size.Medium" />
+                }
+            </MudTd>
+        </RowTemplate>
+    </MudTable>
+
+@code {
+    User edituser = new User();
+    public LoginModel loginModel = new LoginModel();
+
+    [Required]
+    [StringLength(30, ErrorMessage = "Password must be at least 8 characters long.", MinimumLength = 8)]
+
+    public string Password { get; set; }
+
+    public IEnumerable<User> UsersList = new List<User>();
+    private bool _loading;
+    bool _readOnly = true;
+    public void show() => _readOnly = false;
+    public void Close() => _readOnly = true;
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            var request = await ProductService.GetUsers();
+            if (request.Success)
+            {
+                UsersList = request.Data!;
+
+            }
+        }
+        catch (Exception ex)
+        {
+            Snackbar.Add(ex.Message, Severity.Error);
+        }
+    }
+    bool success;
+    private async Task deleteData(int id)
+    {
+        try
+        {
+            var request = await ProductService.DeleteFromUserAsync(id);
+            if (request.Success)
+            {
+
+                var requestrefresh = await ProductService.GetUsers();
+                if (request.Success)
+                {
+                    UsersList = requestrefresh.Data!;
+                    StateHasChanged();
+                    Snackbar.Add("Delete User with Id :" + id + " Done successfully ", Severity.Success);
+
+                }
+            }
+            else
+            {
+                Snackbar.Add(request.Message, Severity.Error);
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+    }
+    string state = "Message box hasn't been opened yet";
+    private async void SureDialog(int id)
+    {
+        bool? result = await DialogService.ShowMessageBox(
+            "Warning",
+            "Are You Sure You Want To Delete This Prodcut !",
+            yesText: "Delete!", cancelText: "Cancel");
+
+        state = result == null ? "Canceled" : "Deleted!";
+        if (state == "Deleted!") deleteData(id);
+        StateHasChanged();
+    }
+    private async Task EditProduct(int id, string username, string email)
+    {
+        edituser.Username = username;
+        edituser.Password = Password;
+        edituser.Password2 = Password;
+        edituser.Email = email;
+        edituser.Token = "1";
+        var user = edituser;
+        _readOnly = false;
+
+        var response = await ProductService.UpdateUserAsync(id, user);
+        var requestrefresh = await ProductService.GetUsers();
+
+        if (response.Success)
+        {
+            UsersList = requestrefresh.Data!;
+            Snackbar.Add("Modify Product with Id :" + id + " Done successfully ", Severity.Success);
+
+            StateHasChanged();
+            Close();
+        }
+        else
+        {
+            Snackbar.Add("Update  Not Done", Severity.Error);
+        }
+    }
+}

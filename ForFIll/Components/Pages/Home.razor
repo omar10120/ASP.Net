@@ -18,8 +18,9 @@
     <AuthorizeView>
         <Authorized>
             @* <MudText Typo="Typo.h6">Welcome, @loginModel.Username</MudText> *@
-            Welcome to your new app.
             <MudText Typo="Typo.h6">Welcome, @context.User.Identity.Name!</MudText>
+            
+            
             <MudButton OnClick="NavigateToLogout" Variant="Variant.Filled" Color="Color.Primary">Logout</MudButton>
         </Authorized>
         <NotAuthorized>
@@ -27,16 +28,12 @@
                 <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="NavigateToLogin">Signin</MudButton>
                 <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="NavigateToLSignup">Signup</MudButton>
                 </MudText>
-            
-
         </NotAuthorized>
     </AuthorizeView>
 </CascadingAuthenticationState>
 
 
 
-
-Welcome to your new app.
 @code {
 
     private void NavigateToLogin()

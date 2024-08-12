@@ -55,44 +55,7 @@
 
 
 
-<MudTable Items="@UsersList" Hover="true" Breakpoint="Breakpoint.Sm" Loading="@_loading" LoadingProgressColor="Color.Info">
-    <HeaderContent>
-        <MudTh>Username</MudTh>
-        <MudTh>password</MudTh>
-        <MudTh>Token</MudTh>
-        <MudTh>Action</MudTh>
 
-    </HeaderContent>
-    <RowTemplate>
-        @if (_readOnly == true)
-        {
-
-            <MudTd DataLabel="Username">@context.Username</MudTd>
-            <MudTd DataLabel="password">@context.Password</MudTd>
-            <MudTd DataLabel="Email">@context.Email</MudTd>
-            <MudTd DataLabel="token">@context.Token</MudTd>
-        }
-        else
-        {
-            <MudTd><MudTextField T="string" Label="Username" @bind-Value="context.Username" Required="true" RequiredError="Username is required!" /></MudTd>
-            <MudTd><MudTextField T="string" Label="Password" @bind-Value="context.Password" Required="true" RequiredError="Password is required!" /></MudTd>
-            <MudTd><MudTextField T="string" Label="Email" @bind-Value="context.Email" Required="true" RequiredError="Email is required!" /></MudTd>
-            <MudTd><MudTextField T="string" Label="Token" @bind-Value="context.Token" Required="true" RequiredError="Token is required!" /></MudTd>
-        }
-        <MudTd DataLabel="Actions">
-            @if (_readOnly == true)
-            {
-                <MudIconButton Icon="@Icons.Material.Filled.Edit" OnClick="@(() => show())" Variant="Variant.Filled" Color="Color.Primary" Size="Size.Medium" />
-                <MudIconButton Icon="@Icons.Material.Filled.Delete" OnClick="@(() => SureDialog(context.Id))" Variant="Variant.Filled" Color="Color.Error" Size="Size.Medium" />
-            }
-            @if (_readOnly == false)
-            {
-                <MudIconButton Icon="@Icons.Material.Filled.Save" OnClick="@(() => EditProduct(context.Id,context.Username,context.Password,context.Email))" Class="mx-2" Variant="Variant.Filled" Color="Color.Primary" Size="Size.Medium" />
-                <MudIconButton Icon="@Icons.Material.Filled.Close" OnClick="@(() => Close())" Variant="Variant.Filled" Color="Color.Error" Size="Size.Medium" />
-            }
-        </MudTd>
-    </RowTemplate>
-</MudTable>
 
 
 @code {
@@ -157,81 +120,6 @@
 
         }
     }
-    private async Task deleteData(int id)
-    {
-        try
-        {
-
-            var request = await ProductService.DeleteFromUserAsync(id);
-            if (request.Success)
-            {
-
-                var requestrefresh = await ProductService.GetUsers();
-                if (request.Success)
-                {
-                    UsersList = requestrefresh.Data!;
-                    StateHasChanged();
-                    Snackbar.Add("Delete User with Id :" + id + " Done successfully ", Severity.Success);
-
-                }
-            }
-            else
-            {
-                Snackbar.Add(request.Message, Severity.Error);
-            }
-
-
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine(ex.Message);
-        }
-    }
-
-
-    string state = "Message box hasn't been opened yet";
-
-    private async void SureDialog(int id)
-    {
-        bool? result = await DialogService.ShowMessageBox(
-            "Warning",
-            "Are You Sure You Want To Delete This Prodcut !",
-            yesText: "Delete!", cancelText: "Cancel");
-
-        state = result == null ? "Canceled" : "Deleted!";
-        if (state == "Deleted!") deleteData(id);
-        StateHasChanged();
-    }
-
-
-    private async Task EditProduct(int id, string username, string password, string email)
-    {
-
-        edituser.Username = username;
-        edituser.Password = password;
-        edituser.Password2 = password;
-        edituser.Email = email;
-        edituser.Token = "1";
-
-        var user = edituser;
-        _readOnly = false;
-
-        var response = await ProductService.UpdateUserAsync(id, user);
-        var requestrefresh = await ProductService.GetUsers();
-
-        if (response.Success)
-        {
-            UsersList = requestrefresh.Data!;
-            Snackbar.Add("Modify Product with Id :" + id + " Done successfully ", Severity.Success);
-
-            StateHasChanged();
-            Close();
-        }
-        else
-        {
-            Snackbar.Add("Update  Not Done", Severity.Error);
-        }
-
-    }
+ 
 
 }

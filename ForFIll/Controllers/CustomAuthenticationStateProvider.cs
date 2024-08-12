@@ -19,6 +19,7 @@ public class CustomAuthenticationStateProvider : AuthenticationStateProvider
 
     public void NotifyUserAuthentication(ClaimsPrincipal user)
     {
+
         var authState = Task.FromResult(new AuthenticationState(user));
         NotifyAuthenticationStateChanged(authState);
     }
