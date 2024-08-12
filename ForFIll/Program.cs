@@ -55,10 +55,10 @@ builder.Services.AddAntiforgery(options => options.HeaderName = "X-CSRF-TOKEN");
 /*************************************************************User Auther*/
 // Add DbContext with the connection string
 
-//CreateDatabase DataBaseName = new CreateDatabase();
+CreateDatabase DataBaseName = new CreateDatabase();
 //string s  = DataBaseName.DatabaseName;
 
-builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer($"Server={Environment.MachineName}\\{Environment.UserName};Database=TS_TestUser;Trusted_Connection=True;TrustServerCertificate=True;"));
+builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer($"Server={Environment.MachineName}\\{Environment.UserName};Database=TS_{DataBaseName.DatabaseName};Trusted_Connection=True;TrustServerCertificate=True;"));
 //builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer($"Server={Environment.MachineName}\\{Environment.UserName};Database={s};Trusted_Connection=True;TrustServerCertificate=True;"));
 //builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer($"Server={Environment.MachineName};Database=TestUser;Trusted_Connection=True;TrustServerCertificate=True;"));
 

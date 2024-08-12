@@ -491,43 +491,7 @@ namespace ForFIll.Data
                 return null;
             }
         }
-        public async Task<List<string>> DeleteFromDatabase(string database)
-        {
-            try
-            {
-                var databases = new List<string>();
-                using (var context = new ApplicationDbContext(_options))
-                {
-                    var connection = context.Database.GetDbConnection();
-                    await connection.OpenAsync();
-
-                    using (var command = connection.CreateCommand())
-                    {
-                        command.CommandText = $"drop database {database}";
-                        using (var reader = await command.ExecuteReaderAsync())
-                        {
-                            while (await reader.ReadAsync())
-                            {
-                                databases.Add(reader.GetString(0));
-                            }
-                        }
-                    }
-                    connection.Close();
-
-
-                    await connection.CloseAsync();
-
-                }
-
-                return databases;
-
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                return null;
-            }
-        }
+      
         //End get DataBases
 
         public async Task<Product> GetProduct(int id)

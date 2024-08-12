@@ -6,16 +6,36 @@
 @inject ApplicationDbContext DbContext
 @rendermode InteractiveServer
 @inject ProductService ProductService
+@inject ISnackbar Snackbar
 
 
 <h3>Database Management</h3>
 
-<div>
+@* <div>
     <MudTextField Label="First name" HelperText="Max. 8 characters" @bind-Value="DataBaseName.DatabaseName" For="@(() => DataBaseName.DatabaseName)" />
-    @* <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="CreateDatabase">Create Database</MudButton> *@
+     <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="CreateDatabase">Create Database</MudButton> 
     <MudButton Variant="Variant.Filled" Color="Color.Secondary" OnClick="ApplyMigrations">Apply Migrations</MudButton>
-    <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="DeleteDatabase"> Delete Database</MudButton>
-</div>
+</div> *@
+
+<EditForm Model="@DataBaseName" OnValidSubmit="OnValidSubmit">
+
+    <DataAnnotationsValidator />
+    <MudGrid>
+        <MudItem xs="12" sm="7">
+            <MudCard>
+                <MudCardContent>
+                    <MudTextField Label="First name" HelperText="Max. 8 characters"
+                                  @bind-Value="DataBaseName.DatabaseName" For="@(() => DataBaseName.DatabaseName)" />
+                </MudCardContent>
+                <MudCardActions>
+
+                    <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary" Class="ml-auto">Apply Migrations</MudButton>
+                </MudCardActions>
+            </MudCard>
+        </MudItem>
+    </MudGrid>
+</EditForm>
+@DataBaseName.DatabaseName
 
 @if (message != null)
 {
@@ -42,12 +62,9 @@ else
         }
     </ul>
 }
-
-
 @code {
     private string message;
     CreateDatabase DataBaseName = new CreateDatabase();
-    public string databaseToDelete { get; set; }
 
     private async Task CreateDatabase()
     {
@@ -76,18 +93,7 @@ else
             message = $"Error applying migrations: {ex.Message}";
         }
     }
-    private async Task DeleteDatabase()
-    {
-        try
-        {
-            await ProductService.DeleteFromDatabase("TS_TestUser");
 
-        }
-        catch (Exception ex)
-        {
-            message = $"Error applying migrations: {ex.Message}";
-        }
-    }
     //start get all DataBases
     private List<string> databases;
 
@@ -96,4 +102,32 @@ else
         databases = await ProductService.GetAllDatabasesAsync();
     }
     //End get all DataBases
+
+    private async void OnValidSubmit(EditContext context)
+    {
+
+        try
+        {
+
+
+            // var userList = DataBaseName;
+
+            // var request = await ProductService.CreateUserAsync(userList);
+            // if (request.Success == false)
+            // {
+            //     Snackbar.Add(request.Message, Severity.Error);
+            //     return;
+            // }
+            ApplyMigrations();
+            Snackbar.Add("Add Database done successfully", Severity.Success);
+            DataBaseName = new CreateDatabase();// Resets the form
+            StateHasChanged();
+        }
+        catch (Exception ex)
+        {
+            Snackbar.Add(ex.Message, Severity.Error);
+
+        }
+    }
+
 }
