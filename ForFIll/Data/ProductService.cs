@@ -5,9 +5,6 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
-
-
-
 using ForFIll.Data;
 
 using ForFIll.Services.Interfaces;
@@ -19,8 +16,11 @@ using System.Threading.Tasks;
 using System.Reflection.Metadata.Ecma335;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
+using Microsoft.Data.SqlClient;
 
-
+using System.Data.Common;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 namespace ForFIll.Data
 {
     public class ProductService
@@ -28,12 +28,14 @@ namespace ForFIll.Data
         private readonly HttpClient _httpClient;
         private readonly ApplicationDbContext _context;
         private readonly PasswordHasher<User> _passwordHasher;
+        private readonly DbContextOptions<ApplicationDbContext> _options;
 
-        public ProductService(HttpClient httpClient, ApplicationDbContext context)
+        public ProductService(HttpClient httpClient, ApplicationDbContext context , DbContextOptions<ApplicationDbContext> options)
         {
             _httpClient = httpClient;
             _context = context;
             _passwordHasher = new PasswordHasher<User>();
+            _options = options;
 
         }
 
@@ -280,7 +282,7 @@ namespace ForFIll.Data
         }
         public async Task<DataBaseRequest> CreateUserAsync(User createuser)
         {
-          
+            
             var hashedPassword = HashPassword(createuser, createuser.Password);
             createuser.Password = hashedPassword;
 
@@ -453,6 +455,80 @@ namespace ForFIll.Data
                 return null;
             }
         }
+
+        //start get DataBases
+        public async Task<List<string>> GetAllDatabasesAsync()
+        {
+            try
+            {
+                 var databases = new List<string>();
+                using (var context = new ApplicationDbContext(_options))
+                {
+                    var connection = context.Database.GetDbConnection();
+                    await connection.OpenAsync();
+
+                    using (var command = connection.CreateCommand())
+                    {
+                        command.CommandText = "SELECT name FROM sys.databases WHERE NAME LIKE 'TS_%'";
+                        using (var reader = await command.ExecuteReaderAsync())
+                        {
+                            while (await reader.ReadAsync())
+                            {
+                                databases.Add(reader.GetString(0));
+                            }
+                        }
+                    }
+
+                    await connection.CloseAsync();
+                }
+
+                return databases;
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+        }
+        public async Task<List<string>> DeleteFromDatabase(string database)
+        {
+            try
+            {
+                var databases = new List<string>();
+                using (var context = new ApplicationDbContext(_options))
+                {
+                    var connection = context.Database.GetDbConnection();
+                    await connection.OpenAsync();
+
+                    using (var command = connection.CreateCommand())
+                    {
+                        command.CommandText = $"drop database {database}";
+                        using (var reader = await command.ExecuteReaderAsync())
+                        {
+                            while (await reader.ReadAsync())
+                            {
+                                databases.Add(reader.GetString(0));
+                            }
+                        }
+                    }
+                    connection.Close();
+
+
+                    await connection.CloseAsync();
+
+                }
+
+                return databases;
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+        }
+        //End get DataBases
 
         public async Task<Product> GetProduct(int id)
         {

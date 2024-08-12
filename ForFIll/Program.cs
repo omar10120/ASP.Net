@@ -49,19 +49,25 @@ builder.Services.AddAuthorization();
 builder.Services.AddScoped<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
 builder.Services.AddHttpContextAccessor();
 
+
 builder.Services.AddAntiforgery(options => options.HeaderName = "X-CSRF-TOKEN");
 
 /*************************************************************User Auther*/
 // Add DbContext with the connection string
 
-    //builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer($"Server={Environment.MachineName}\\{Environment.UserName};Database=TestUser;Trusted_Connection=True;TrustServerCertificate=True;"));
-    builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer($"Server={Environment.MachineName};Database=TestUser;Trusted_Connection=True;TrustServerCertificate=True;"));
+//CreateDatabase DataBaseName = new CreateDatabase();
+//string s  = DataBaseName.DatabaseName;
+
+builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer($"Server={Environment.MachineName}\\{Environment.UserName};Database=TS_TestUser;Trusted_Connection=True;TrustServerCertificate=True;"));
+//builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer($"Server={Environment.MachineName}\\{Environment.UserName};Database={s};Trusted_Connection=True;TrustServerCertificate=True;"));
+//builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer($"Server={Environment.MachineName};Database=TestUser;Trusted_Connection=True;TrustServerCertificate=True;"));
 
 
 builder.Services.AddMudServices(); // Add MudBlazor services
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://localhost:5001") });
 builder.Services.AddScoped<ProductService>();
 //builder.Services.AddScoped<UserService>();
+
 
 var app = builder.Build();
 

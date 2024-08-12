@@ -1,0 +1,99 @@
+﻿@page "/database-management"
+@using Microsoft.EntityFrameworkCore
+@using ForFIll.Models
+@using ForFIll.Data
+@using MudBlazor
+@inject ApplicationDbContext DbContext
+@rendermode InteractiveServer
+@inject ProductService ProductService
+
+
+<h3>Database Management</h3>
+
+<div>
+    <MudTextField Label="First name" HelperText="Max. 8 characters" @bind-Value="DataBaseName.DatabaseName" For="@(() => DataBaseName.DatabaseName)" />
+    @* <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="CreateDatabase">Create Database</MudButton> *@
+    <MudButton Variant="Variant.Filled" Color="Color.Secondary" OnClick="ApplyMigrations">Apply Migrations</MudButton>
+    <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="DeleteDatabase"> Delete Database</MudButton>
+</div>
+
+@if (message != null)
+{
+    <MudText Typo="Typo.body1">@message</MudText>
+}
+@if (databases == null)
+{
+    <p><em>Loading...</em></p>
+}
+else if (!databases.Any())
+{
+    <p>No databases found.</p>
+}
+else
+{
+    <ul>
+        @foreach (var db in databases)
+        {
+            @* <li>Database Name : @db </li> *@
+
+            <select name="db" id="cars">
+                <option value="volvo">@db</option>
+            </select>
+        }
+    </ul>
+}
+
+
+@code {
+    private string message;
+    CreateDatabase DataBaseName = new CreateDatabase();
+    public string databaseToDelete { get; set; }
+
+    private async Task CreateDatabase()
+    {
+        try
+        {
+            // Ensure the database is created
+            await DbContext.Database.EnsureCreatedAsync();
+            message = "Database created successfully.";
+        }
+        catch (Exception ex)
+        {
+            message = $"Error creating database: {ex.Message}";
+        }
+    }
+
+    private async Task ApplyMigrations()
+    {
+        try
+        {
+            // Apply pending migrations
+            await DbContext.Database.MigrateAsync();
+            message = "Migrations applied successfully.";
+        }
+        catch (Exception ex)
+        {
+            message = $"Error applying migrations: {ex.Message}";
+        }
+    }
+    private async Task DeleteDatabase()
+    {
+        try
+        {
+            await ProductService.DeleteFromDatabase("TS_TestUser");
+
+        }
+        catch (Exception ex)
+        {
+            message = $"Error applying migrations: {ex.Message}";
+        }
+    }
+    //start get all DataBases
+    private List<string> databases;
+
+    protected override async Task OnInitializedAsync()
+    {
+        databases = await ProductService.GetAllDatabasesAsync();
+    }
+    //End get all DataBases
+}
