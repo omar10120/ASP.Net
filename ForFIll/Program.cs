@@ -14,6 +14,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using ForFIll.Models;
+using System.Net.NetworkInformation;
+using Microsoft.EntityFrameworkCore.Query.Internal;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,9 +25,6 @@ builder.Services.AddRazorComponents().AddInteractiveServerComponents();
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddControllersWithViews();
-
-
-
 
 /*************************************************************User Auther*/
 
@@ -49,27 +48,40 @@ builder.Services.AddAuthorization();
 builder.Services.AddScoped<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddSingleton<CreateDatabase>();
+builder.Services.AddSingleton<AppState>();
 
 
 
 builder.Services.AddAntiforgery(options => options.HeaderName = "X-CSRF-TOKEN");
 
 /*************************************************************User Auther*/
-// Add DbContext with the connection string
-CreateDatabase create = new CreateDatabase();
-//string s  = DataBaseName.DatabaseName;
-builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer($"Server={Environment.MachineName}\\{Environment.UserName};Database=TS_{create.DatabaseName};Trusted_Connection=True;TrustServerCertificate=True;"));
-//builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer($"Server={Environment.MachineName}\\{Environment.UserName};Database={s};Trusted_Connection=True;TrustServerCertificate=True;"));
-//builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer($"Server={Environment.MachineName};Database=TestUser;Trusted_Connection=True;TrustServerCertificate=True;"));
+
+
+
+//builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer($"Server={Environment.MachineName}\\{Environment.UserName};Database=TS_TestUser;Trusted_Connection=True;TrustServerCertificate=True;"));
+builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer($"Server={Environment.MachineName};Database=TS_TestUser;Trusted_Connection=True;TrustServerCertificate=True;"));
 
 
 builder.Services.AddMudServices(); // Add MudBlazor services
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://localhost:5001") });
 builder.Services.AddScoped<ProductService>();
-//builder.Services.AddScoped<UserService>();
-
 
 var app = builder.Build();
+//var appState = app.Services.GetRequiredService<AppState>();
+//try
+//{
+//    appState.OnParameterChanged = parameterValue =>
+//    {
+//        // Perform some logic with the parameterValue
+//        Console.WriteLine($"Parameter received: {parameterValue}");
+//        builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer($"Server={Environment.MachineName};Database={parameterValue};Trusted_Connection=True;TrustServerCertificate=True;"));
+
+//    };
+//}
+//catch
+//{
+//    Console.WriteLine("no vlaue");
+//}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

@@ -3,17 +3,27 @@
 @inject NavigationManager Navigation
 @using ForFIll.Models;
 @inject ISnackbar Snackbar
+@inject ProductService ProductService
+@using Microsoft.EntityFrameworkCore
 
-
-@using Microsoft.AspNetCore.Components.Authorization
+@using ForFIll.Data
 @using MudBlazor
+@using Microsoft.AspNetCore.Components.Authorization
 @rendermode InteractiveServer
 
-
-
+@if (databases == null)
+{
+    @* <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="NavigateDatabasemanagment">Create Database </MudButton> *@
+    <MudLink OnClick="NavigateDatabasemanagment" Href="database-management" Typo="Typo.body2">Create Database</MudLink>
+}
 <PageTitle>Home</PageTitle>
 
-<h1>Hello, world!</h1>
+<h1>
+    Hello, My Best User  @if (visible == true)
+    {
+        <Loadding />
+    }
+</h1>
 
 <CascadingAuthenticationState>
     <AuthorizeView>
@@ -22,33 +32,80 @@
             <MudButton OnClick="NavigateToLogout" Variant="Variant.Filled" Color="Color.Primary">Logout</MudButton>
         </Authorized>
         <NotAuthorized>
-            <MudText Typo="Typo.h6">You are not authorized to view this page. Please.
-                <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="NavigateToLogin">Signin</MudButton>
-                <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="NavigateToLSignup">Register</MudButton>
-                </MudText>
+
+            <MudText Typo="Typo.h6">
+                @if (databases != null)
+                {
+                    <h4>
+                        You are not authorized to view this page. Please.  
+                    </h4>
+                    <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="NavigateToLogin">Signin </MudButton>
+                    <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="NavigateToLSignup">Register</MudButton>
+                  
+               @*      <MudCard Class="my-2" Style="position:relative;">
+                        @if (!dataLoaded)
+                        {
+                            <MudOverlay Visible="visible" DarkBackground="true" Absolute="true">
+                                <MudProgressCircular Color="Color.Secondary" Indeterminate="true" />
+                            </MudOverlay>
+                        }
+
+                    </MudCard> *@
+         
+                }
+                else
+                {
+                    <MudAlert Severity="Severity.Warning">You Should CreateDatabase First</MudAlert>
+                }
+            </MudText>
         </NotAuthorized>
+
     </AuthorizeView>
 </CascadingAuthenticationState>
 
 
 
 @code {
-   
 
-    private void NavigateToLogin()
+    private List<string> databases;
+    private bool visible;
+    private bool dataLoaded;
+
+    protected override async Task OnInitializedAsync()
     {
+        databases = await ProductService.GetAllDatabasesAsync();
+    }
+    private async void NavigateToLogin()
+    {
+        visible = true;
         Navigation.NavigateTo("/loginform");
-
+    }
+    private async void NavigateDatabasemanagment()
+    {
+        visible = true;
+     
     }
     private void NavigateToLogout()
     {
         Snackbar.Add("logout Done Successflly", Severity.Success);
+        visible = true;
+
         Navigation.NavigateTo("/logout");
 
     }
     private void NavigateToLSignup()
     {
+        visible = true;
+
         Navigation.NavigateTo("/signup");
 
+    }
+
+
+    public async void OpenOverlay()
+    {
+        visible = true;
+        dataLoaded = false;
+        StateHasChanged();
     }
 }

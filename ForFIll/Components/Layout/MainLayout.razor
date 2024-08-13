@@ -1,6 +1,6 @@
 ﻿@using MudBlazor
 @inherits LayoutComponentBase
-
+@using ForFIll.Components.Pages
 <MudThemeProvider/>
 <MudPopoverProvider/>
 <MudDialogProvider/>
@@ -14,14 +14,12 @@
 
     <main>
         <div class="top-row px-4">
-            <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
-        </div>
+            <a href="https://learn.microsoft.com/en-us/aspnet/core/release-notes/aspnetcore-8.0?view=aspnetcore-8.0">About</a>
 
+
+        </div>
         <article class="content px-4">
             @Body
-
-            
-
         </article>
     </main>
 </div>
@@ -31,3 +29,6 @@
     <a href="" class="reload">Reload</a>
     <a class="dismiss">🗙</a>
 </div>
+@code{
+ 
+}

@@ -7,43 +7,41 @@
 @rendermode InteractiveServer
 @inject ProductService ProductService
 @inject ISnackbar Snackbar
+@inject AppState AppState
+@inject NavigationManager Navigation
 
 
-<h3>Database Management</h3>
+@using Microsoft.AspNetCore.Components.Authorization
+@using Microsoft.AspNetCore.Authorization
+@* @attribute [Authorize(Policy = "admin")] *@
 
-@* <div>
-    <MudTextField Label="First name" HelperText="Max. 8 characters" @bind-Value="DataBaseName.DatabaseName" For="@(() => DataBaseName.DatabaseName)" />
-     <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="CreateDatabase">Create Database</MudButton> 
-    <MudButton Variant="Variant.Filled" Color="Color.Secondary" OnClick="ApplyMigrations">Apply Migrations</MudButton>
-</div> *@
 
-<EditForm Model="@DataBaseName" OnValidSubmit="OnValidSubmit">
+<h3>
+    Database Management System
+    @if (Visiable == true)
+    {
+        <Loadding />
+    }
+</h3>
 
-    <DataAnnotationsValidator />
-    <MudGrid>
-        <MudItem xs="12" sm="7">
-            <MudCard>
-                <MudCardContent>
-                    <MudTextField Label="First name" HelperText="Max. 8 characters"
-                                  @bind-Value="DataBaseName.DatabaseName" For="@(() => DataBaseName.DatabaseName)" />
-                </MudCardContent>
-                <MudCardActions>
 
-                    <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary" Class="ml-auto">Apply Migrations</MudButton>
-                </MudCardActions>
-            </MudCard>
-        </MudItem>
-    </MudGrid>
-</EditForm>
-@DataBaseName.DatabaseName
+<MudButton Variant="Variant.Filled" Color="Color.Secondary" Class="mx-2" OnClick="ApplyMigrations">Apply Creation </MudButton>
+@if (message != null || databases != null)
+{
+    <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="NavigateToLSignup">Register </MudButton>
+}
+
+
+<MudSpacer />
 
 @if (message != null)
 {
     <MudText Typo="Typo.body1">@message</MudText>
+
 }
 @if (databases == null)
 {
-    <p><em>Loading...</em></p>
+    <p><em>No databases found.</em></p>
 }
 else if (!databases.Any())
 {
@@ -54,18 +52,16 @@ else
     <ul>
         @foreach (var db in databases)
         {
-            @* <li>Database Name : @db </li> *@
-
-            <select name="db" id="cars">
-                <option value="volvo">@db</option>
-            </select>
+            <h2>Your Database : @db </h2>
         }
     </ul>
 }
+
+
 @code {
     private string message;
     CreateDatabase DataBaseName = new CreateDatabase();
-
+    bool Visiable;
     private async Task CreateDatabase()
     {
         try
@@ -84,9 +80,11 @@ else
     {
         try
         {
+            Visiable = true;
             // Apply pending migrations
             await DbContext.Database.MigrateAsync();
             message = "Migrations applied successfully.";
+            Visiable = false;
         }
         catch (Exception ex)
         {
@@ -105,19 +103,8 @@ else
 
     private async void OnValidSubmit(EditContext context)
     {
-
         try
         {
-
-
-            // var userList = DataBaseName;
-
-            // var request = await ProductService.CreateUserAsync(userList);
-            // if (request.Success == false)
-            // {
-            //     Snackbar.Add(request.Message, Severity.Error);
-            //     return;
-            // }
             ApplyMigrations();
             Snackbar.Add("Add Database done successfully", Severity.Success);
             DataBaseName = new CreateDatabase();// Resets the form
@@ -129,5 +116,10 @@ else
 
         }
     }
+    private void NavigateToLSignup()
+    {
+        Visiable = true;
+        Navigation.NavigateTo("/signup");
 
+    }
 }

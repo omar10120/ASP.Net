@@ -28,19 +28,26 @@
 <MudDialogProvider />
 <MudSnackbarProvider />
 
+<MudPaper Height="400px" Width="100%">
+    <MudContainer MaxWidth="MaxWidth.Small">
+        
+            <h3>Loginform</h3>
+            <EditForm Model="@loginModel" OnValidSubmit="@HandleLogin" FormName="loginForm">
+                <AntiforgeryRequestToken />
+                <DataAnnotationsValidator />
+                <ValidationSummary />
+                <MudTextField T="string" @bind-Value="loginModel.Username" Label="Username or Email" Required="true" />
+                <MudTextField T="string" @bind-Value="loginModel.Password" Label="Password" InputType="@(ShowPassword ? InputType.Text : InputType.Password)" Required="true" />
+                <MudCheckBox @bind-Value="ShowPassword">Show Password</MudCheckBox>
 
+               <MudSpacer/>
+                <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary">Login</MudButton>
+                <MudButton OnClick="NavigateToLSignup" Variant="Variant.Filled" Color="Color.Primary">Signup</MudButton>
+            </EditForm>
 
-<h3>Loginform</h3>
-<EditForm Model="@loginModel" OnValidSubmit="@HandleLogin" FormName="loginForm">
-    <AntiforgeryRequestToken />
-    <DataAnnotationsValidator />
-    <ValidationSummary />
-    <MudTextField T="string" @bind-Value="loginModel.Username" Label="Username or Email" Required="true" />
-    <MudTextField T="string" @bind-Value="loginModel.Password" Label="Password" InputType="InputType.Password" Required="true" />
-    <br />
-    <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary">Login</MudButton>
-    <MudButton OnClick="NavigateToLSignup" Variant="Variant.Filled" Color="Color.Primary">Signup</MudButton>
-</EditForm>
+    </MudContainer>
+</MudPaper>
+
 
 
 
@@ -48,6 +55,8 @@
 @code {
     public LoginModel loginModel = new LoginModel();
     public IEnumerable<User> User = new List<User>();
+    public bool ShowPassword { get; set; } = false;
+
     protected override async Task OnInitializedAsync()
     {
         try
@@ -64,6 +73,7 @@
         {
             Console.WriteLine(ex.Message);
         }
+
     }
 
 
