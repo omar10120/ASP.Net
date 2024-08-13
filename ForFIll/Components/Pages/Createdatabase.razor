@@ -25,14 +25,7 @@
 </h3>
 
 
-<MudButton Variant="Variant.Filled" Color="Color.Secondary" Class="mx-2" OnClick="ApplyMigrations">Apply Creation </MudButton>
-@if (message != null || databases != null)
-{
-    <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="NavigateToLSignup">Register </MudButton>
-}
 
-
-<MudSpacer />
 
 @if (message != null)
 {
@@ -57,6 +50,14 @@ else
     </ul>
 }
 
+<MudButton Variant="Variant.Filled" Color="Color.Secondary" Class="mx-2" OnClick="ApplyMigrations">Apply Creation </MudButton>
+@if (message != null || databases != null)
+{
+    <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="NavigateToLSignup">Register </MudButton>
+}
+
+
+<MudSpacer />
 
 @code {
     private string message;
