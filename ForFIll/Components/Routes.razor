@@ -1,4 +1,6 @@
 ﻿@using Microsoft.AspNetCore.Components.Authorization
+@using ForFIll.Components.Pages
+
 <CascadingAuthenticationState>
 
 <Router AppAssembly="typeof(Program).Assembly">
@@ -9,7 +11,8 @@
 
     <NotFound>
         <LayoutView Layout="typeof(Layout.MainLayout)">
-            <p role="alert">Sorry, there's nothing at this address.</p>
+            @* <p role="alert">Sorry, there's nothing at this address.</p> *@
+            <Pagenotfound /> <!-- Display the custom 404 page -->
         </LayoutView>
     </NotFound>
 

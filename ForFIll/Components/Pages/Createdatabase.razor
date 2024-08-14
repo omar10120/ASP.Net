@@ -18,10 +18,7 @@
 
 <h3>
     Database Management System
-    @if (Visiable == true)
-    {
-        <Loadding />
-    }
+
 </h3>
 
 
@@ -50,10 +47,21 @@ else
     </ul>
 }
 
-<MudButton Variant="Variant.Filled" Color="Color.Secondary" Class="mx-2" OnClick="ApplyMigrations">Apply Creation </MudButton>
+<MudButton Variant="Variant.Filled" Color="Color.Secondary" Class="mx-2" OnClick="ApplyMigrations">
+    Apply Creation
+    @if (loadding == true)
+    {
+        <MudProgressCircular Class="mx-2" Color="Color.Primary" Size="Size.Small" Indeterminate="true" />
+    }
+</MudButton>
 @if (message != null || databases != null)
 {
-    <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="NavigateToLSignup">Register </MudButton>
+    <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="NavigateToLSignup">Register
+        @if (loaddingR == true)
+        {
+            <MudProgressCircular Class="mx-2" Color="Color.Dark" Size="Size.Small" Indeterminate="true" />
+        }
+    </MudButton>
 }
 
 
@@ -63,6 +71,8 @@ else
     private string message;
     CreateDatabase DataBaseName = new CreateDatabase();
     bool Visiable;
+    private bool loadding;
+    private bool loaddingR;
     private async Task CreateDatabase()
     {
         try
@@ -79,13 +89,17 @@ else
 
     private async Task ApplyMigrations()
     {
+
         try
         {
-            Visiable = true;
+            loadding = true;
+
             // Apply pending migrations
             await DbContext.Database.MigrateAsync();
             message = "Migrations applied successfully.";
-            Visiable = false;
+            databases = await ProductService.GetAllDatabasesAsync();
+
+            loadding = false;
         }
         catch (Exception ex)
         {
@@ -109,6 +123,8 @@ else
             ApplyMigrations();
             Snackbar.Add("Add Database done successfully", Severity.Success);
             DataBaseName = new CreateDatabase();// Resets the form
+            databases = await ProductService.GetAllDatabasesAsync();
+
             StateHasChanged();
         }
         catch (Exception ex)
@@ -119,7 +135,7 @@ else
     }
     private void NavigateToLSignup()
     {
-        Visiable = true;
+        loaddingR = true;
         Navigation.NavigateTo("/signup");
 
     }

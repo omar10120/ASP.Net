@@ -498,3 +498,5 @@ C:\Users\amr-d\Desktop\TestNo\asp2\ForFIll\obj\Debug\net8.0\refint\ForFIll.dll
 C:\Users\amr-d\Desktop\TestNo\asp2\ForFIll\obj\Debug\net8.0\ForFIll.pdb
 C:\Users\amr-d\Desktop\TestNo\asp2\ForFIll\obj\Debug\net8.0\ForFIll.genruntimeconfig.cache
 C:\Users\amr-d\Desktop\TestNo\asp2\ForFIll\obj\Debug\net8.0\ref\ForFIll.dll
+C:\Users\amr-d\Desktop\TestNo\asp2\ForFIll\bin\Debug\net8.0\Blazor.Extensions.Canvas.JS.dll
+C:\Users\amr-d\Desktop\TestNo\asp2\ForFIll\bin\Debug\net8.0\Blazor.Extensions.Canvas.dll

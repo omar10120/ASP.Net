@@ -29,48 +29,44 @@
 
 <p>This is a protected area accessible only by admin.</p>
 
-    <MudTable Items="@UsersList" Hover="true" Breakpoint="Breakpoint.Sm" Height="400px" Loading="@_loading" LoadingProgressColor="Color.Info">
-        <HeaderContent>
-            <MudTh>Username</MudTh>
-            <MudTh>password</MudTh>
-            <MudTh>Token</MudTh>
-            <MudTh>Action</MudTh>
+<MudTable Items="@UsersList" Hover="true" Breakpoint="Breakpoint.Sm" Height="400px" Loading="@_loading" LoadingProgressColor="Color.Info">
+    <HeaderContent>
+        <MudTh>Username</MudTh>
+        <MudTh>password</MudTh>
+        <MudTh>Token</MudTh>
+        <MudTh>Action</MudTh>
 
-        </HeaderContent>
-        <RowTemplate>
-            @if (_readOnly == true)
-            {
+    </HeaderContent>
+    <RowTemplate>
+        @if (_readOnly == true)
+        {
 
-                <MudTd DataLabel="Username">@context.Username</MudTd>
-                <div style="width:250px; overflow:scroll"><MudTd DataLabel="password">@context.Password</MudTd></div>
-                <MudTd DataLabel="Email">@context.Email</MudTd>
-                <MudTd DataLabel="token">@context.Token</MudTd>
-            }
-            else
-            {
-                <MudTd><MudTextField T="string" Label="Username" @bind-Value="context.Username" Required="true" RequiredError="Username is required!" /></MudTd>
-                @* <MudTd><MudTextField T="string" Label="Password" @bind-Value="Password" Required="true" RequiredError="Password is required!" /></MudTd> *@
-            <MudTextField Label="Password" HelperText="Choose a strong password" Class="mt-3"
-                          @bind-Value="Password" For="@(() =>  Password)" InputType="InputType.Password" />
-                <MudTd><MudTextField T="string"   Label="Email" @bind-Value="context.Email" Required="true" RequiredError="Email is required!" /></MudTd>
-                <div style="width:100px; overflow:scroll">
-                    <MudTd><MudTextField T="string" Label="Token" @bind-Value="context.Token" Required="true" RequiredError="Token is required!" /></MudTd>
-                </div>
-            }
-            <MudTd DataLabel="Actions">
-                @if (_readOnly == true)
-                {
-                    <MudIconButton Icon="@Icons.Material.Filled.Edit" OnClick="@(() => show())" Variant="Variant.Filled" Color="Color.Primary" Size="Size.Medium" />
-                    <MudIconButton Icon="@Icons.Material.Filled.Delete" OnClick="@(() => SureDialog(context.Id))" Variant="Variant.Filled" Color="Color.Error" Size="Size.Medium" />
-                }
-                @if (_readOnly == false)
-                {
-                    <MudIconButton Icon="@Icons.Material.Filled.Save" OnClick="@(() => EditProduct(context.Id,context.Username,context.Email))" Class="mx-2" Variant="Variant.Filled" Color="Color.Primary" Size="Size.Medium" />
-                    <MudIconButton Icon="@Icons.Material.Filled.Close" OnClick="@(() => Close())" Variant="Variant.Filled" Color="Color.Error" Size="Size.Medium" />
-                }
+            <MudTd DataLabel="Username">@context.Username</MudTd>
+            <div style="width:250px; overflow:scroll"><MudTd DataLabel="password">@context.Password</MudTd></div>
+            <MudTd DataLabel="Email">@context.Email</MudTd>
+            <MudTd DataLabel="token">@context.Token</MudTd>
+            <MudTd DataLabel="Action">
+                <MudIconButton Icon="@Icons.Material.Filled.Edit" OnClick="@(() => show())" Variant="Variant.Filled" Color="Color.Primary" Size="Size.Medium" />
+                <MudIconButton Icon="@Icons.Material.Filled.Delete" OnClick="@(() => SureDialog(context.Id))" Variant="Variant.Filled" Color="Color.Error" Size="Size.Medium" />
             </MudTd>
-        </RowTemplate>
-    </MudTable>
+        }
+        else
+        {
+
+            <MudTd><MudTextField T="string" Label="Username" @bind-Value="context.Username" Required="true" RequiredError="Username is required!" /></MudTd>
+            <MudTd> <MudTextField Label="Password" HelperText="Choose a strong password" Class="mt-3" @bind-Value="Password" For="@(() =>  Password)" InputType="InputType.Password" /></MudTd>
+            <MudTd><MudTextField T="string" Label="Email" @bind-Value="context.Email" Required="true" RequiredError="Email is required!" /></MudTd>
+            <div style="width:100px; overflow:scroll"><MudTd><MudTextField T="string" Label="Token" @bind-Value="context.Token" Required="true" RequiredError="Token is required!" /></MudTd></div>
+            <MudTd DataLabel="Action">
+                <MudIconButton Icon="@Icons.Material.Filled.Save" OnClick="@(() => EditProduct(context.Id,context.Username,context.Email))" Class="mx-2" Variant="Variant.Filled" Color="Color.Primary" Size="Size.Medium" />
+                <MudIconButton Icon="@Icons.Material.Filled.Close" OnClick="@(() => Close())" Variant="Variant.Filled" Color="Color.Error" Size="Size.Medium" />
+            </MudTd>
+
+        }
+    </RowTemplate>
+</MudTable>
+
+
 
 @code {
     User edituser = new User();
@@ -144,6 +140,10 @@
     }
     private async Task EditProduct(int id, string username, string email)
     {
+        if(edituser.Password == null){
+            Snackbar.Add("Password Failed is Required", Severity.Error);
+            return;
+        }
         edituser.Username = username;
         edituser.Password = Password;
         edituser.Password2 = Password;
@@ -168,5 +168,34 @@
             Snackbar.Add("Update  Not Done", Severity.Error);
         }
     }
-  
+    private async void OnValidSubmit(EditContext context)
+    {
+        success = true;
+        try
+        {
+            edituser.Token = "1";
+
+            var userList = edituser;
+
+            var request = await ProductService.CreateUserAsync(userList);
+            if (request.Success == false)
+            {
+                Snackbar.Add(request.Message, Severity.Error);
+                return;
+            }
+            Snackbar.Add("Add User done successfully", Severity.Success);
+
+            edituser = new User();// Resets the form
+
+            StateHasChanged();
+
+
+
+        }
+        catch (Exception ex)
+        {
+            Snackbar.Add(ex.Message, Severity.Error);
+
+        }
+    }
 }

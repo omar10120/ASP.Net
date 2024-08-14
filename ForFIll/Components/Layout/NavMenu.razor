@@ -1,5 +1,5 @@
 ﻿@using Microsoft.AspNetCore.Components.Authorization
-
+@using MudBlazor
 <div class="top-row ps-3 navbar navbar-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="">ForFIll</a>
@@ -15,7 +15,7 @@
                 <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Home
             </NavLink>
         </div>
-    
+
         <CascadingAuthenticationState>
             <AuthorizeView>
                 <Authorized>
@@ -38,13 +38,13 @@
                             <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> UsersControl
                         </NavLink>
                     </div>
-                    <div class="nav-item px-3">
-                        <NavLink class="nav-link" href="database-management">
-                            <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span>  database-management
 
-                        </NavLink>
+                      <div class="nav-item px-3">
+                    <NavLink class="nav-link" href="database-management" >
+                    <span class="bi bi-plus-square-fill-nav-menu"  aria-hidden="true"></span>  database-management
+                    </NavLink>
                     </div>
-                 
+
                 </Authorized>
             </AuthorizeView>
 

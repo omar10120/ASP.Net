@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Dell\\source\\repos\\ForFIll\\ForFIll\\ForFIll.csproj": {}
+    "C:\\Users\\amr-d\\Desktop\\TestNo\\asp2\\ForFIll\\ForFIll.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Dell\\source\\repos\\ForFIll\\ForFIll\\ForFIll.csproj": {
+    "C:\\Users\\amr-d\\Desktop\\TestNo\\asp2\\ForFIll\\ForFIll.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Dell\\source\\repos\\ForFIll\\ForFIll\\ForFIll.csproj",
+        "projectUniqueName": "C:\\Users\\amr-d\\Desktop\\TestNo\\asp2\\ForFIll\\ForFIll.csproj",
         "projectName": "ForFIll",
-        "projectPath": "C:\\Users\\Dell\\source\\repos\\ForFIll\\ForFIll\\ForFIll.csproj",
-        "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Dell\\source\\repos\\ForFIll\\ForFIll\\obj\\",
+        "projectPath": "C:\\Users\\amr-d\\Desktop\\TestNo\\asp2\\ForFIll\\ForFIll.csproj",
+        "packagesPath": "C:\\Users\\amr-d\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\amr-d\\Desktop\\TestNo\\asp2\\ForFIll\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Dell\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\amr-d\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -50,6 +50,10 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "Blazor.Extensions.Canvas": {
+              "target": "Package",
+              "version": "[1.1.1, )"
+            },
             "Microsoft.AspNetCore": {
               "target": "Package",
               "version": "[2.2.0, )"
@@ -96,7 +100,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

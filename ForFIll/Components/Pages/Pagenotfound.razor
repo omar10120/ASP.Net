@@ -1,0 +1,24 @@
+﻿@page "/pagenotfound"
+@using MudBlazor
+
+<MudPaper Class="pa-4 text-center">
+    <MudImage Src="404.jpg" Alt="404" Width="700" Height="700" Elevation="25" Class="rounded-lg" />
+    <MudText Typo="Typo.h4" Color="Color.Error">404 - Page Not exist </MudText>
+    <MudText Typo="Typo.body1">The page you are looking for does not exist.
+
+        <MudNavLink Href="/" IconColor="Color.Primary" Icon="@Icons.Material.Filled.Navigation">Go to Homepage</MudNavLink>
+    </MudText>
+    @* <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="GoHome">Go to Homepage</MudButton> *@
+    
+    
+
+</MudPaper>
+
+@code {
+    [Inject] private NavigationManager Navigation { get; set; }
+
+    // private void GoHome()
+    // {
+    //     Navigation.NavigateTo("/");
+    // }
+}

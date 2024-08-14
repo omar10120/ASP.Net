@@ -52,14 +52,15 @@ builder.Services.AddSingleton<AppState>();
 
 
 
+
 builder.Services.AddAntiforgery(options => options.HeaderName = "X-CSRF-TOKEN");
 
 /*************************************************************User Auther*/
 
 
 
-builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer($"Server={Environment.MachineName}\\{Environment.UserName};Database=TS_TestUser;Trusted_Connection=True;TrustServerCertificate=True;"));
-//builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer($"Server={Environment.MachineName};Database=TS_TestUser;Trusted_Connection=True;TrustServerCertificate=True;"));
+//builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer($"Server={Environment.MachineName}\\{Environment.UserName};Database=TS_TestUser;Trusted_Connection=True;TrustServerCertificate=True;"));
+builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer($"Server={Environment.MachineName};Database=TS_TestUser;Trusted_Connection=True;TrustServerCertificate=True;"));
 
 
 builder.Services.AddMudServices(); // Add MudBlazor services
@@ -67,21 +68,6 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https:/
 builder.Services.AddScoped<ProductService>();
 
 var app = builder.Build();
-//var appState = app.Services.GetRequiredService<AppState>();
-//try
-//{
-//    appState.OnParameterChanged = parameterValue =>
-//    {
-//        // Perform some logic with the parameterValue
-//        Console.WriteLine($"Parameter received: {parameterValue}");
-//        builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer($"Server={Environment.MachineName};Database={parameterValue};Trusted_Connection=True;TrustServerCertificate=True;"));
-
-//    };
-//}
-//catch
-//{
-//    Console.WriteLine("no vlaue");
-//}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

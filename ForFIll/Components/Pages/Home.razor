@@ -13,8 +13,13 @@
 
 @if (databases == null)
 {
-    @* <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="NavigateDatabasemanagment">Create Database </MudButton> *@
-    <MudLink OnClick="NavigateDatabasemanagment" Href="database-management" Typo="Typo.body2">Create Database</MudLink>
+    <MudLink OnClick="NavigateDatabasemanagment" Href="database-management" Typo="Typo.body2">
+        Create Database
+        @if (loadding1 == true)
+        {
+            <MudProgressCircular Class="mx-2" Color="Color.Primary" Size="Size.Small" Indeterminate="true" />
+        }
+    </MudLink>
 }
 <PageTitle>Home</PageTitle>
 
@@ -29,7 +34,13 @@
     <AuthorizeView>
         <Authorized>
             <MudText Typo="Typo.h6">Welcome, @context.User.Identity.Name!</MudText>
-            <MudButton OnClick="NavigateToLogout" Variant="Variant.Filled" Color="Color.Primary">Logout</MudButton>
+            <MudButton OnClick="NavigateToLogout" Variant="Variant.Filled" Color="Color.Primary">
+                Logout
+                @if (loaddingL == true)
+                {
+                    <MudProgressCircular Class="mx-2" Color="Color.Dark" Size="Size.Small" Indeterminate="true" />
+                }
+            </MudButton>
         </Authorized>
         <NotAuthorized>
 
@@ -37,21 +48,25 @@
                 @if (databases != null)
                 {
                     <h4>
-                        You are not authorized to view this page. Please.  
+                        You are not authorized to view this page. Please.
                     </h4>
-                    <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="NavigateToLogin">Signin </MudButton>
-                    <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="NavigateToLSignup">Register</MudButton>
-                  
-               @*      <MudCard Class="my-2" Style="position:relative;">
-                        @if (!dataLoaded)
+                    <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="NavigateToLogin">
+                        Signin
+                        @if (loadding == true)
                         {
-                            <MudOverlay Visible="visible" DarkBackground="true" Absolute="true">
-                                <MudProgressCircular Color="Color.Secondary" Indeterminate="true" />
-                            </MudOverlay>
+                            <MudProgressCircular Class="mx-2" Color="Color.Dark" Size="Size.Small" Indeterminate="true" />
                         }
+                    </MudButton>
+                    <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="NavigateToLSignup">
+                        Register
+                        @if (loaddingR == true)
+                        {
+                            <MudProgressCircular Class="mx-2" Color="Color.Dark" Size="Size.Small" Indeterminate="true" />
+                        }
+                    </MudButton>
 
-                    </MudCard> *@
-         
+
+
                 }
                 else
                 {
@@ -71,6 +86,10 @@
     private List<string> databases;
     private bool visible;
     private bool dataLoaded;
+    private bool loadding;
+    private bool loadding1;
+    private bool loaddingR;
+    private bool loaddingL;
 
     protected override async Task OnInitializedAsync()
     {
@@ -78,35 +97,30 @@
     }
     private async void NavigateToLogin()
     {
-        visible = true;
+        loadding = true;
         Navigation.NavigateTo("/loginform");
     }
     private async void NavigateDatabasemanagment()
     {
-        visible = true;
-     
+        loadding1 = true;
+
     }
     private void NavigateToLogout()
     {
         Snackbar.Add("logout Done Successflly", Severity.Success);
-        visible = true;
+        loaddingL = true;
 
         Navigation.NavigateTo("/logout");
 
     }
     private void NavigateToLSignup()
     {
-        visible = true;
+        loaddingR = true;
 
         Navigation.NavigateTo("/signup");
 
     }
 
 
-    public async void OpenOverlay()
-    {
-        visible = true;
-        dataLoaded = false;
-        StateHasChanged();
-    }
+
 }
