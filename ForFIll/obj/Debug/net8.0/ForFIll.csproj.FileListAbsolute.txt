@@ -500,3 +500,5 @@ C:\Users\amr-d\Desktop\TestNo\asp2\ForFIll\obj\Debug\net8.0\ForFIll.genruntimeco
 C:\Users\amr-d\Desktop\TestNo\asp2\ForFIll\obj\Debug\net8.0\ref\ForFIll.dll
 C:\Users\amr-d\Desktop\TestNo\asp2\ForFIll\bin\Debug\net8.0\Blazor.Extensions.Canvas.JS.dll
 C:\Users\amr-d\Desktop\TestNo\asp2\ForFIll\bin\Debug\net8.0\Blazor.Extensions.Canvas.dll
+C:\Users\Dell\source\repos\ForFIll\ForFIll\bin\Debug\net8.0\Blazor.Extensions.Canvas.JS.dll
+C:\Users\Dell\source\repos\ForFIll\ForFIll\bin\Debug\net8.0\Blazor.Extensions.Canvas.dll

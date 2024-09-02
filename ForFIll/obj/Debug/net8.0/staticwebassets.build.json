@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "DjWgZ4ARHEu63LicZYSA6gas/mqrEZdWZNcmKxLI3Xs=",
+  "Hash": "INPROgz5p2lx1duOBVt/Y9dQtnhYtJc8MeI2EuI4BQU=",
   "Source": "ForFIll",
   "BasePath": "_content/ForFIll",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "ForFIll\\wwwroot",
       "Source": "ForFIll",
-      "ContentRoot": "C:\\Users\\amr-d\\Desktop\\TestNo\\asp2\\ForFIll\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Dell\\source\\repos\\ForFIll\\ForFIll\\wwwroot\\",
       "BasePath": "_content/ForFIll",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\amr-d\\.nuget\\packages\\blazor.extensions.canvas\\1.1.1\\staticwebassets\\blazor.extensions.canvas.js",
+      "Identity": "C:\\Users\\Dell\\.nuget\\packages\\blazor.extensions.canvas\\1.1.1\\staticwebassets\\blazor.extensions.canvas.js",
       "SourceId": "Blazor.Extensions.Canvas",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\amr-d\\.nuget\\packages\\blazor.extensions.canvas\\1.1.1\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\Dell\\.nuget\\packages\\blazor.extensions.canvas\\1.1.1\\staticwebassets\\",
       "BasePath": "_content/Blazor.Extensions.Canvas",
       "RelativePath": "blazor.extensions.canvas.js",
       "AssetKind": "All",
@@ -33,13 +33,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\amr-d\\.nuget\\packages\\blazor.extensions.canvas\\1.1.1\\staticwebassets\\blazor.extensions.canvas.js"
+      "OriginalItemSpec": "C:\\Users\\Dell\\.nuget\\packages\\blazor.extensions.canvas\\1.1.1\\staticwebassets\\blazor.extensions.canvas.js"
     },
     {
-      "Identity": "C:\\Users\\amr-d\\.nuget\\packages\\mudblazor\\7.4.0\\staticwebassets\\MudBlazor.min.css",
+      "Identity": "C:\\Users\\Dell\\.nuget\\packages\\mudblazor\\7.4.0\\staticwebassets\\MudBlazor.min.css",
       "SourceId": "MudBlazor",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\amr-d\\.nuget\\packages\\mudblazor\\7.4.0\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\Dell\\.nuget\\packages\\mudblazor\\7.4.0\\staticwebassets\\",
       "BasePath": "_content/MudBlazor",
       "RelativePath": "MudBlazor.min.css",
       "AssetKind": "All",
@@ -52,13 +52,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\amr-d\\.nuget\\packages\\mudblazor\\7.4.0\\staticwebassets\\MudBlazor.min.css"
+      "OriginalItemSpec": "C:\\Users\\Dell\\.nuget\\packages\\mudblazor\\7.4.0\\staticwebassets\\MudBlazor.min.css"
     },
     {
-      "Identity": "C:\\Users\\amr-d\\.nuget\\packages\\mudblazor\\7.4.0\\staticwebassets\\MudBlazor.min.js",
+      "Identity": "C:\\Users\\Dell\\.nuget\\packages\\mudblazor\\7.4.0\\staticwebassets\\MudBlazor.min.js",
       "SourceId": "MudBlazor",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\amr-d\\.nuget\\packages\\mudblazor\\7.4.0\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\Dell\\.nuget\\packages\\mudblazor\\7.4.0\\staticwebassets\\",
       "BasePath": "_content/MudBlazor",
       "RelativePath": "MudBlazor.min.js",
       "AssetKind": "All",
@@ -71,13 +71,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\amr-d\\.nuget\\packages\\mudblazor\\7.4.0\\staticwebassets\\MudBlazor.min.js"
+      "OriginalItemSpec": "C:\\Users\\Dell\\.nuget\\packages\\mudblazor\\7.4.0\\staticwebassets\\MudBlazor.min.js"
     },
     {
-      "Identity": "C:\\Users\\amr-d\\Desktop\\TestNo\\asp2\\ForFIll\\obj\\Debug\\net8.0\\scopedcss\\bundle\\ForFIll.styles.css",
+      "Identity": "C:\\Users\\Dell\\source\\repos\\ForFIll\\ForFIll\\obj\\Debug\\net8.0\\scopedcss\\bundle\\ForFIll.styles.css",
       "SourceId": "ForFIll",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\amr-d\\Desktop\\TestNo\\asp2\\ForFIll\\obj\\Debug\\net8.0\\scopedcss\\bundle\\",
+      "ContentRoot": "C:\\Users\\Dell\\source\\repos\\ForFIll\\ForFIll\\obj\\Debug\\net8.0\\scopedcss\\bundle\\",
       "BasePath": "_content/ForFIll",
       "RelativePath": "ForFIll.styles.css",
       "AssetKind": "All",
@@ -90,13 +90,13 @@
       "AssetTraitValue": "ApplicationBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\amr-d\\Desktop\\TestNo\\asp2\\ForFIll\\obj\\Debug\\net8.0\\scopedcss\\bundle\\ForFIll.styles.css"
+      "OriginalItemSpec": "C:\\Users\\Dell\\source\\repos\\ForFIll\\ForFIll\\obj\\Debug\\net8.0\\scopedcss\\bundle\\ForFIll.styles.css"
     },
     {
-      "Identity": "C:\\Users\\amr-d\\Desktop\\TestNo\\asp2\\ForFIll\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\ForFIll.bundle.scp.css",
+      "Identity": "C:\\Users\\Dell\\source\\repos\\ForFIll\\ForFIll\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\ForFIll.bundle.scp.css",
       "SourceId": "ForFIll",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\amr-d\\Desktop\\TestNo\\asp2\\ForFIll\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\",
+      "ContentRoot": "C:\\Users\\Dell\\source\\repos\\ForFIll\\ForFIll\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\",
       "BasePath": "_content/ForFIll",
       "RelativePath": "ForFIll.bundle.scp.css",
       "AssetKind": "All",
@@ -109,13 +109,13 @@
       "AssetTraitValue": "ProjectBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\amr-d\\Desktop\\TestNo\\asp2\\ForFIll\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\ForFIll.bundle.scp.css"
+      "OriginalItemSpec": "C:\\Users\\Dell\\source\\repos\\ForFIll\\ForFIll\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\ForFIll.bundle.scp.css"
     },
     {
-      "Identity": "C:\\Users\\amr-d\\Desktop\\TestNo\\asp2\\ForFIll\\wwwroot\\404.jpg",
+      "Identity": "C:\\Users\\Dell\\source\\repos\\ForFIll\\ForFIll\\wwwroot\\404.jpg",
       "SourceId": "ForFIll",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\amr-d\\Desktop\\TestNo\\asp2\\ForFIll\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Dell\\source\\repos\\ForFIll\\ForFIll\\wwwroot\\",
       "BasePath": "_content/ForFIll",
       "RelativePath": "404.jpg",
       "AssetKind": "All",
@@ -131,10 +131,10 @@
       "OriginalItemSpec": "wwwroot\\404.jpg"
     },
     {
-      "Identity": "C:\\Users\\amr-d\\Desktop\\TestNo\\asp2\\ForFIll\\wwwroot\\app.css",
+      "Identity": "C:\\Users\\Dell\\source\\repos\\ForFIll\\ForFIll\\wwwroot\\app.css",
       "SourceId": "ForFIll",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\amr-d\\Desktop\\TestNo\\asp2\\ForFIll\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Dell\\source\\repos\\ForFIll\\ForFIll\\wwwroot\\",
       "BasePath": "_content/ForFIll",
       "RelativePath": "app.css",
       "AssetKind": "All",
@@ -150,10 +150,10 @@
       "OriginalItemSpec": "wwwroot\\app.css"
     },
     {
-      "Identity": "C:\\Users\\amr-d\\Desktop\\TestNo\\asp2\\ForFIll\\wwwroot\\bootstrap\\bootstrap.min.css",
+      "Identity": "C:\\Users\\Dell\\source\\repos\\ForFIll\\ForFIll\\wwwroot\\bootstrap\\bootstrap.min.css",
       "SourceId": "ForFIll",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\amr-d\\Desktop\\TestNo\\asp2\\ForFIll\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Dell\\source\\repos\\ForFIll\\ForFIll\\wwwroot\\",
       "BasePath": "_content/ForFIll",
       "RelativePath": "bootstrap/bootstrap.min.css",
       "AssetKind": "All",
@@ -169,10 +169,10 @@
       "OriginalItemSpec": "wwwroot\\bootstrap\\bootstrap.min.css"
     },
     {
-      "Identity": "C:\\Users\\amr-d\\Desktop\\TestNo\\asp2\\ForFIll\\wwwroot\\bootstrap\\bootstrap.min.css.map",
+      "Identity": "C:\\Users\\Dell\\source\\repos\\ForFIll\\ForFIll\\wwwroot\\bootstrap\\bootstrap.min.css.map",
       "SourceId": "ForFIll",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\amr-d\\Desktop\\TestNo\\asp2\\ForFIll\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Dell\\source\\repos\\ForFIll\\ForFIll\\wwwroot\\",
       "BasePath": "_content/ForFIll",
       "RelativePath": "bootstrap/bootstrap.min.css.map",
       "AssetKind": "All",
@@ -188,10 +188,10 @@
       "OriginalItemSpec": "wwwroot\\bootstrap\\bootstrap.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\amr-d\\Desktop\\TestNo\\asp2\\ForFIll\\wwwroot\\favicon.png",
+      "Identity": "C:\\Users\\Dell\\source\\repos\\ForFIll\\ForFIll\\wwwroot\\favicon.png",
       "SourceId": "ForFIll",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\amr-d\\Desktop\\TestNo\\asp2\\ForFIll\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Dell\\source\\repos\\ForFIll\\ForFIll\\wwwroot\\",
       "BasePath": "_content/ForFIll",
       "RelativePath": "favicon.png",
       "AssetKind": "All",

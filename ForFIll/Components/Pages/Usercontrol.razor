@@ -52,16 +52,15 @@
         }
         else
         {
-
-            <MudTd><MudTextField T="string" Label="Username" @bind-Value="context.Username" Required="true" RequiredError="Username is required!" /></MudTd>
-            <MudTd> <MudTextField Label="Password" HelperText="Choose a strong password" Class="mt-3" @bind-Value="Password" For="@(() =>  Password)" InputType="InputType.Password" /></MudTd>
+         
+                <MudTd><MudTextField T="string" Label="Username" @bind-Value="context.Username" Required="true" RequiredError="Username is required!" /></MudTd>
+                <MudTd> <MudTextField Label="Password" HelperText="Choose a strong password" Class="mt-3" @bind-Value="Password" For="@(() =>  Password)" InputType="InputType.Password" /></MudTd>
             <MudTd><MudTextField T="string" Label="Email" @bind-Value="context.Email" Required="true" RequiredError="Email is required!" /></MudTd>
-            <div style="width:100px; overflow:scroll"><MudTd><MudTextField T="string" Label="Token" @bind-Value="context.Token" Required="true" RequiredError="Token is required!" /></MudTd></div>
-            <MudTd DataLabel="Action">
-                <MudIconButton Icon="@Icons.Material.Filled.Save" OnClick="@(() => EditProduct(context.Id,context.Username,context.Email))" Class="mx-2" Variant="Variant.Filled" Color="Color.Primary" Size="Size.Medium" />
-                <MudIconButton Icon="@Icons.Material.Filled.Close" OnClick="@(() => Close())" Variant="Variant.Filled" Color="Color.Error" Size="Size.Medium" />
-            </MudTd>
-
+                <div style="width:100px; overflow:scroll"><MudTd><MudTextField T="string" Label="Token" @bind-Value="edituser.Token" Required="true" RequiredError="Token is required!" /></MudTd></div>
+                <MudTd DataLabel="Action">
+                    <MudIconButton Icon="@Icons.Material.Filled.Save" OnClick="@(() => EditProduct(context.Id,context.Username,context.Email))" Class="mx-2" Variant="Variant.Filled" Color="Color.Primary" Size="Size.Medium" />
+                </MudTd>
+       
         }
     </RowTemplate>
 </MudTable>
@@ -138,17 +137,20 @@
         if (state == "Deleted!") deleteData(id);
         StateHasChanged();
     }
+    // private async Task EditProduct(int id, string username, string email)
     private async Task EditProduct(int id, string username, string email)
     {
-        if(edituser.Password == null){
-            Snackbar.Add("Password Failed is Required", Severity.Error);
-            return;
-        }
+
         edituser.Username = username;
         edituser.Password = Password;
         edituser.Password2 = Password;
         edituser.Email = email;
         edituser.Token = "1";
+        if (string.IsNullOrEmpty(edituser.Password))
+        {
+            Snackbar.Add("Password Failed is Required", Severity.Error);
+            return;
+        }
         var user = edituser;
         _readOnly = false;
 
