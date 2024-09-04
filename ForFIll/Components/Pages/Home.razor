@@ -11,6 +11,12 @@
 @using Microsoft.AspNetCore.Components.Authorization
 @rendermode InteractiveServer
 
+
+@inject ApplicationDbContext DbContext
+@inject AppState AppState
+
+
+
 @if (databases == null)
 {
     <MudLink OnClick="NavigateDatabasemanagment" Href="database-management" Typo="Typo.body2">
@@ -90,10 +96,32 @@
     private bool loadding1;
     private bool loaddingR;
     private bool loaddingL;
+    private string message;
 
     protected override async Task OnInitializedAsync()
     {
         databases = await ProductService.GetAllDatabasesAsync();
+        StateHasChanged();
+        if (databases == null)
+        {
+
+            try
+            {
+                loadding = true;
+                // Apply pending migrations
+                await DbContext.Database.MigrateAsync();
+                message = "Migrations applied successfully.";
+                loadding = false;
+                StateHasChanged();
+
+            }
+            catch (Exception ex)
+            {
+                message = $"Error applying migrations: {ex.Message} and check Connection String";
+            }
+        }
+        
+
     }
     private async void NavigateToLogin()
     {

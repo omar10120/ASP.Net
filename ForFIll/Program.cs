@@ -16,6 +16,7 @@ using Microsoft.Extensions.Configuration;
 using ForFIll.Models;
 using System.Net.NetworkInformation;
 using Microsoft.EntityFrameworkCore.Query.Internal;
+using ForFIll.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -87,6 +88,8 @@ app.MapControllers();
 app.MapBlazorHub("/App"); //problem here
 app.UseAntiforgery();
 app.MapRazorComponents<App>().AddInteractiveServerRenderMode();
+
+
 app.Run();
 
 

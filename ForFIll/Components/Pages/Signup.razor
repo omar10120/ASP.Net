@@ -18,7 +18,7 @@
 @inject ISnackbar Snackbar
 @inject NavigationManager NavigationManager
 @using Microsoft.AspNetCore.Authorization
-@inject NavigationManager Navigation
+
 
 
 <MudDialogProvider />
@@ -77,6 +77,8 @@
             {
                 UsersList = request.Data!;
             }
+            StateHasChanged();
+
 
         }
         catch (Exception ex)

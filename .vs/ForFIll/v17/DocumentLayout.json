@@ -3,36 +3,32 @@
   "WorkspaceRootPath": "C:\\Users\\Dell\\source\\repos\\ForFIll\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|c:\\users\\dell\\source\\repos\\forfill\\forfill\\components\\pages\\usercontrol.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|solutionrelative:forfill\\components\\pages\\usercontrol.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|c:\\users\\dell\\source\\repos\\forfill\\forfill\\components\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|solutionrelative:forfill\\components\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|c:\\users\\dell\\source\\repos\\forfill\\forfill\\components\\pages\\signup.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|solutionrelative:forfill\\components\\pages\\signup.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|c:\\users\\dell\\source\\repos\\forfill\\forfill\\components\\pages\\loginform.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|solutionrelative:forfill\\components\\pages\\loginform.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|c:\\users\\dell\\source\\repos\\forfill\\forfill\\components\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|solutionrelative:forfill\\components\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|c:\\users\\dell\\source\\repos\\forfill\\forfill\\components\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|solutionrelative:forfill\\components\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|c:\\users\\dell\\source\\repos\\forfill\\forfill\\components\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|solutionrelative:forfill\\components\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|c:\\users\\dell\\source\\repos\\forfill\\forfill\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|solutionrelative:forfill\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|c:\\users\\dell\\source\\repos\\forfill\\forfill\\components\\pages\\createdatabase.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|solutionrelative:forfill\\components\\pages\\createdatabase.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|c:\\users\\dell\\source\\repos\\forfill\\forfill\\components\\pages\\usercontrol.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|solutionrelative:forfill\\components\\pages\\usercontrol.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|c:\\users\\dell\\source\\repos\\forfill\\forfill\\components\\pages\\fetchdata.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|solutionrelative:forfill\\components\\pages\\fetchdata.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|c:\\users\\dell\\source\\repos\\forfill\\forfill\\components\\pages\\login.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|solutionrelative:forfill\\components\\pages\\login.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|c:\\users\\dell\\source\\repos\\forfill\\forfill\\components\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|solutionrelative:forfill\\components\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,7 +38,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -50,32 +46,68 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
+              "Title": "MainLayout.razor",
+              "DocumentMoniker": "C:\\Users\\Dell\\source\\repos\\ForFIll\\ForFIll\\Components\\Layout\\MainLayout.razor",
+              "RelativeDocumentMoniker": "ForFIll\\Components\\Layout\\MainLayout.razor",
+              "ToolTip": "C:\\Users\\Dell\\source\\repos\\ForFIll\\ForFIll\\Components\\Layout\\MainLayout.razor",
+              "RelativeToolTip": "ForFIll\\Components\\Layout\\MainLayout.razor",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-04T17:10:17.38Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Createdatabase.razor",
+              "DocumentMoniker": "C:\\Users\\Dell\\source\\repos\\ForFIll\\ForFIll\\Components\\Pages\\Createdatabase.razor",
+              "RelativeDocumentMoniker": "ForFIll\\Components\\Pages\\Createdatabase.razor",
+              "ToolTip": "C:\\Users\\Dell\\source\\repos\\ForFIll\\ForFIll\\Components\\Pages\\Createdatabase.razor",
+              "RelativeToolTip": "ForFIll\\Components\\Pages\\Createdatabase.razor",
+              "ViewState": "AQIAAHcAAAAAAAAAAADwv4MAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-04T15:24:22.049Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "NavMenu.razor",
+              "DocumentMoniker": "C:\\Users\\Dell\\source\\repos\\ForFIll\\ForFIll\\Components\\Layout\\NavMenu.razor",
+              "RelativeDocumentMoniker": "ForFIll\\Components\\Layout\\NavMenu.razor",
+              "ToolTip": "C:\\Users\\Dell\\source\\repos\\ForFIll\\ForFIll\\Components\\Layout\\NavMenu.razor",
+              "RelativeToolTip": "ForFIll\\Components\\Layout\\NavMenu.razor",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAeAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-04T15:21:26.139Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "Usercontrol.razor",
               "DocumentMoniker": "C:\\Users\\Dell\\source\\repos\\ForFIll\\ForFIll\\Components\\Pages\\Usercontrol.razor",
               "RelativeDocumentMoniker": "ForFIll\\Components\\Pages\\Usercontrol.razor",
               "ToolTip": "C:\\Users\\Dell\\source\\repos\\ForFIll\\ForFIll\\Components\\Pages\\Usercontrol.razor",
               "RelativeToolTip": "ForFIll\\Components\\Pages\\Usercontrol.razor",
-              "ViewState": "AQIAACcAAAAAAAAAAAAAADIAAAAUAAAA",
+              "ViewState": "AQIAACoAAAAAAAAAAAAAAEMAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-09-02T16:01:38.647Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-02T16:01:38.647Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "Home.razor",
               "DocumentMoniker": "C:\\Users\\Dell\\source\\repos\\ForFIll\\ForFIll\\Components\\Pages\\Home.razor",
               "RelativeDocumentMoniker": "ForFIll\\Components\\Pages\\Home.razor",
               "ToolTip": "C:\\Users\\Dell\\source\\repos\\ForFIll\\ForFIll\\Components\\Pages\\Home.razor",
               "RelativeToolTip": "ForFIll\\Components\\Pages\\Home.razor",
-              "ViewState": "AQIAAE8AAAAAAAAAAAAAAFsAAAAbAAAA",
+              "ViewState": "AQIAAF8AAAAAAAAAAADwv2wAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-08-22T18:36:39.44Z"
+              "WhenOpened": "2024-08-22T18:36:39.44Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "Fetchdata.razor",
               "DocumentMoniker": "C:\\Users\\Dell\\source\\repos\\ForFIll\\ForFIll\\Components\\Pages\\Fetchdata.razor",
               "RelativeDocumentMoniker": "ForFIll\\Components\\Pages\\Fetchdata.razor",
@@ -87,65 +119,16 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\Dell\\source\\repos\\ForFIll\\ForFIll\\Program.cs",
-              "RelativeDocumentMoniker": "ForFIll\\Program.cs",
-              "ToolTip": "C:\\Users\\Dell\\source\\repos\\ForFIll\\ForFIll\\Program.cs",
-              "RelativeToolTip": "ForFIll\\Program.cs",
-              "ViewState": "AQIAADMAAAAAAAAAAAAAADsAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-20T16:28:02.783Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Loginform.razor",
-              "DocumentMoniker": "C:\\Users\\Dell\\source\\repos\\ForFIll\\ForFIll\\Components\\Pages\\Loginform.razor",
-              "RelativeDocumentMoniker": "ForFIll\\Components\\Pages\\Loginform.razor",
-              "ToolTip": "C:\\Users\\Dell\\source\\repos\\ForFIll\\ForFIll\\Components\\Pages\\Loginform.razor",
-              "RelativeToolTip": "ForFIll\\Components\\Pages\\Loginform.razor",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAAA4AAAAgAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-08-19T17:40:44.965Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
               "Title": "Signup.razor",
               "DocumentMoniker": "C:\\Users\\Dell\\source\\repos\\ForFIll\\ForFIll\\Components\\Pages\\Signup.razor",
               "RelativeDocumentMoniker": "ForFIll\\Components\\Pages\\Signup.razor",
               "ToolTip": "C:\\Users\\Dell\\source\\repos\\ForFIll\\ForFIll\\Components\\Pages\\Signup.razor",
               "RelativeToolTip": "ForFIll\\Components\\Pages\\Signup.razor",
-              "ViewState": "AQIAACMAAAAAAAAAAAAIwDwAAAAAAAAA",
+              "ViewState": "AQIAAEIAAAAAAAAAAADwv1AAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-08-19T17:40:24.63Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Login.razor",
-              "DocumentMoniker": "C:\\Users\\Dell\\source\\repos\\ForFIll\\ForFIll\\Components\\Pages\\Login.razor",
-              "RelativeDocumentMoniker": "ForFIll\\Components\\Pages\\Login.razor",
-              "ToolTip": "C:\\Users\\Dell\\source\\repos\\ForFIll\\ForFIll\\Components\\Pages\\Login.razor",
-              "RelativeToolTip": "ForFIll\\Components\\Pages\\Login.razor",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAYAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-08-19T17:37:09.456Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "App.razor",
-              "DocumentMoniker": "C:\\Users\\Dell\\source\\repos\\ForFIll\\ForFIll\\Components\\App.razor",
-              "RelativeDocumentMoniker": "ForFIll\\Components\\App.razor",
-              "ToolTip": "C:\\Users\\Dell\\source\\repos\\ForFIll\\ForFIll\\Components\\App.razor",
-              "RelativeToolTip": "ForFIll\\Components\\App.razor",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAA8AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-08-13T15:59:04.482Z"
             }
           ]
         }
