@@ -59,6 +59,7 @@
                 <div style="width:100px; overflow:scroll"><MudTd><MudTextField T="string" Label="Token" @bind-Value="edituser.Token" Required="true" RequiredError="Token is required!" /></MudTd></div>
                 <MudTd DataLabel="Action">
                     <MudIconButton Icon="@Icons.Material.Filled.Save" OnClick="@(() => EditProduct(context.Id,context.Username,context.Email))" Class="mx-2" Variant="Variant.Filled" Color="Color.Primary" Size="Size.Medium" />
+<MudIconButton Icon="@Icons.Material.Filled.Close" OnClick="@(() => Close())" Variant="Variant.Filled" Color="Color.Error" Size="Size.Medium" />
                 </MudTd>       
         }
     </RowTemplate>

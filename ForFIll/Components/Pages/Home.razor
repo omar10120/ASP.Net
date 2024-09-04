@@ -100,11 +100,11 @@
 
     protected override async Task OnInitializedAsync()
     {
+   
         databases = await ProductService.GetAllDatabasesAsync();
         StateHasChanged();
         if (databases == null)
         {
-
             try
             {
                 loadding = true;
@@ -120,7 +120,6 @@
                 message = $"Error applying migrations: {ex.Message} and check Connection String";
             }
         }
-        
 
     }
     private async void NavigateToLogin()
