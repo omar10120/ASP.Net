@@ -76,19 +76,12 @@
         try
         {
             var request = await ProductService.GetUsers();
-            if (request.Success)
-            {
-                UsersList = request.Data!;
-            }
+            if (request.Success)UsersList = request.Data!;
             StateHasChanged();
-
-
         }
         catch (Exception ex)
         {
-
             Snackbar.Add(ex.Message, Severity.Error);
-
         }
     }
     bool success;
@@ -100,7 +93,6 @@
             user.Token = "1";
 
             var userList = user;
-
             var request = await ProductService.CreateUserAsync(userList);
             if (request.Success == false)
             {
@@ -111,15 +103,10 @@
 
             user = new User();// Resets the form
 
+
             var requestRefresh = await ProductService.GetUsers();
-            if (request.Success)
-            {
-                UsersList = requestRefresh.Data!;
-            }
+            if (request.Success)UsersList = requestRefresh.Data!;            
             StateHasChanged();
-
-
-
         }
         catch (Exception ex)
         {

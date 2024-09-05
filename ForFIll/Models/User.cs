@@ -26,5 +26,7 @@ namespace ForFIll.Models
         [Compare(nameof(Password))]
         public string Password2 { get; set; }
 
+
+
     }
 }

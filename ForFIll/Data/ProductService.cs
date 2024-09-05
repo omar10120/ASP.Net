@@ -21,10 +21,15 @@ using Microsoft.Data.SqlClient;
 
 using System.Data.Common;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
+<<<<<<< HEAD
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
 using System.Security.Claims;
 
+=======
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authentication.Cookies;
+>>>>>>> 9301299cc20f044d711cf10bdc26dd55225e6fb9
 namespace ForFIll.Data
 {
     public class ProductService
@@ -286,7 +291,11 @@ namespace ForFIll.Data
         }
         public async Task<DataBaseRequest> CreateUserAsync(User createuser)
         {
+<<<<<<< HEAD
 
+=======
+           
+>>>>>>> 9301299cc20f044d711cf10bdc26dd55225e6fb9
             var hashedPassword = HashPassword(createuser, createuser.Password);
             createuser.Password = hashedPassword;
 
