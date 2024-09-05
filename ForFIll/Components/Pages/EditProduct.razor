@@ -1,0 +1,20 @@
+﻿@using ForFIll.Models
+@using Microsoft.AspNetCore.Components.Authorization
+@page "/edit-product"
+@* @attribute [Authorize(Policy = "CanEditProduct")] *@
+<AuthorizeView Policy="CanEditProduct">
+    <Authorized>
+        <!-- Content that only users with "EditProduct" claim can see -->
+        <h3>Edit Product Page</h3>
+        <EditForm Model="@product">
+            <!-- Form for editing product goes here -->
+        </EditForm>
+    </Authorized>
+    <NotAuthorized>
+        <p>You are not authorized to edit products.</p>
+    </NotAuthorized>
+</AuthorizeView>
+
+@code {
+    private Product product = new Product();
+}

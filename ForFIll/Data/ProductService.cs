@@ -21,6 +21,8 @@ using Microsoft.Data.SqlClient;
 
 using System.Data.Common;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authentication.Cookies;
 namespace ForFIll.Data
 {
     public class ProductService
@@ -30,7 +32,7 @@ namespace ForFIll.Data
         private readonly PasswordHasher<User> _passwordHasher;
         private readonly DbContextOptions<ApplicationDbContext> _options;
 
-        public ProductService(HttpClient httpClient, ApplicationDbContext context , DbContextOptions<ApplicationDbContext> options)
+        public ProductService(HttpClient httpClient, ApplicationDbContext context, DbContextOptions<ApplicationDbContext> options)
         {
             _httpClient = httpClient;
             _context = context;
@@ -93,14 +95,14 @@ namespace ForFIll.Data
             var request = await GetUserByIdAsync(id);
             var user = request.Success ? request.Data : null;
 
-              user.Username = createUser.Username;
-              user.Password= createUser.Password;
-              user.Password2= createUser.Password;
-              user.Token= createUser.Token;
-              user.Email= createUser.Email;
+            user.Username = createUser.Username;
+            user.Password = createUser.Password;
+            user.Password2 = createUser.Password;
+            user.Token = createUser.Token;
+            user.Email = createUser.Email;
 
 
-            if (user == null )
+            if (user == null)
             {
                 return new DataBaseRequest { Message = ($"Product with ID {id} not found or already deleted."), Success = false };
             }
@@ -204,7 +206,7 @@ namespace ForFIll.Data
         public async Task<DataBaseRequest> DeleteFromUserAsync(int id)
         {
 
-            var request = _context.User.Where(x => x.Id== id).FirstOrDefault();
+            var request = _context.User.Where(x => x.Id == id).FirstOrDefault();
             try
             {
                 _context.User.Remove(request);
@@ -269,8 +271,8 @@ namespace ForFIll.Data
             }
 
         }
-        
-    
+
+
         public string HashPassword(User user, string password)
         {
             return _passwordHasher.HashPassword(user, password);
@@ -282,7 +284,7 @@ namespace ForFIll.Data
         }
         public async Task<DataBaseRequest> CreateUserAsync(User createuser)
         {
-            
+           
             var hashedPassword = HashPassword(createuser, createuser.Password);
             createuser.Password = hashedPassword;
 
@@ -298,7 +300,7 @@ namespace ForFIll.Data
                 };
             }
 
-            var requestEmail = await _context.User.Where(p => p.Email== createuser.Email).FirstOrDefaultAsync();
+            var requestEmail = await _context.User.Where(p => p.Email == createuser.Email).FirstOrDefaultAsync();
             if (requestEmail != null)
             {
 
@@ -461,7 +463,7 @@ namespace ForFIll.Data
         {
             try
             {
-                 var databases = new List<string>();
+                var databases = new List<string>();
                 using (var context = new ApplicationDbContext(_options))
                 {
                     var connection = context.Database.GetDbConnection();
@@ -491,7 +493,7 @@ namespace ForFIll.Data
                 return null;
             }
         }
-      
+
         //End get DataBases
 
         public async Task<Product> GetProduct(int id)

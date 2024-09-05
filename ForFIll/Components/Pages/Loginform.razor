@@ -57,6 +57,27 @@
 
     protected override async Task OnInitializedAsync()
     {
+
+        //start accsess
+//         var claims = new List<Claim>
+// {
+//     new Claim(ClaimTypes.Name, "John Doe"),
+//     new Claim(ClaimTypes.Email, "john.doe@example.com"),
+//     new Claim(ClaimTypes.Role, "Admin"),
+//     new Claim("CanEditProduct", "true"),
+//     new Claim("CanDeleteProduct", "false"),
+//     new Claim("Department", "Sales"),
+//     new Claim("SubscriptionLevel", "Premium")
+// };
+
+//         var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+//         var principal = new ClaimsPrincipal(identity);
+//         await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
+
+        //Conclusion
+    //    The specific list of claims you need depends on the functionality of your application and the way you want to enforce permissions. At the core, claims like Name, Email, Role, and custom permissions(e.g., CanEditProduct, CanManageUsers) are commonly used to define user access rights and behaviors within an application.
+        // end accesse 
+
         try
         {
             var request = await ProductService.GetUsers();
@@ -79,6 +100,7 @@
     {
         try
         {
+
             var request = User.Where(x => x.Username == loginModel.Username || x.Email == loginModel.Username).FirstOrDefault();
             if (request != null)
             {
