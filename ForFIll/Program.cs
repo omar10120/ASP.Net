@@ -17,6 +17,7 @@ using ForFIll.Models;
 using System.Net.NetworkInformation;
 using Microsoft.EntityFrameworkCore.Query.Internal;
 using ForFIll.Services.Interfaces;
+using System.Security.Claims;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -30,11 +31,7 @@ builder.Services.AddControllersWithViews();
 /*************************************************************User Auther*/
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-    .AddCookie(options =>
-    {
-        options.LoginPath = "/login";
-        options.LogoutPath = "/logout";
-    });
+    .AddCookie();
 //builder.Services.AddAuthorizationCore();
 builder.Services.AddAuthorizationCore(options =>
 {
@@ -42,7 +39,17 @@ builder.Services.AddAuthorizationCore(options =>
         policy.RequireAssertion(context =>
             context.User.Identity != null &&
             context.User.Identity.IsAuthenticated &&
-            context.User.Identity.Name == "admin")  );
+            context.User.Identity.Name == "admin") );
+
+
+    // Admin policy requiring "Role" claim with value "Admin" and "Permission" claim with value "ManageUsers"
+    //options.AddPolicy("AdminPolicy", policy =>
+    //    policy.RequireClaim(ClaimTypes.Role, "Admin")
+    //          .RequireClaim("Permission", "ManageUsers"));
+
+    // Editor policy requiring "Role" claim with value "Editor"
+    //options.AddPolicy("EditorPolicy", policy =>
+    //    policy.RequireClaim(ClaimTypes.Role, "Editor"));
 });
 builder.Services.AddAuthorization();
 // Register IHttpContextAccessor

@@ -47,6 +47,8 @@
                                   @bind-Value="user.Password" For="@(() =>  user.Password)" InputType="InputType.Password" />
                     <MudTextField Label="Password confirm " HelperText="Repeat the password" Class="mt-3"
                                   @bind-Value="user.Password2" For="@(() => user.Password2)" InputType="InputType.Password" />
+                    <MudCheckBox @bind-Value="Basic_CheckBox2" Color="Color.Primary">allow add product</MudCheckBox>
+
                 </MudCardContent>
                 <MudCardActions>
                     <MudLink Href="Loginform" Underline="Underline.Always" Class="mx-2">Allready Has Account ?</MudLink>
@@ -61,6 +63,7 @@
     User user = new User();
     public IEnumerable<User> UsersList = new List<User>();
     User edituser = new User();
+    public bool Basic_CheckBox2 { get; set; } = false;
 
     private bool _loading;
     bool _readOnly = true;
