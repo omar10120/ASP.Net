@@ -32,30 +32,28 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie();
-//builder.Services.AddAuthorizationCore();
+
+
+
 builder.Services.AddAuthorizationCore(options =>
 {
     options.AddPolicy("admin", policy =>
         policy.RequireAssertion(context =>
             context.User.Identity != null &&
             context.User.Identity.IsAuthenticated &&
-            context.User.Identity.Name == "admin") );
-
-
-    // Admin policy requiring "Role" claim with value "Admin" and "Permission" claim with value "ManageUsers"
-    //options.AddPolicy("AdminPolicy", policy =>
-    //    policy.RequireClaim(ClaimTypes.Role, "Admin")
-    //          .RequireClaim("Permission", "ManageUsers"));
-
-    // Editor policy requiring "Role" claim with value "Editor"
-    //options.AddPolicy("EditorPolicy", policy =>
-    //    policy.RequireClaim(ClaimTypes.Role, "Editor"));
+            context.User.Identity.Name == "admin"));
 });
-builder.Services.AddAuthorization(options =>
-{
-    options.AddPolicy("CanEditProduct", policy =>
-        policy.RequireClaim("EditProduct", "true"));
-});
+
+
+//builder.Services.AddAuthorization(options =>
+//{
+//    options.AddPolicy("CanEditProduct", policy =>
+//        policy.RequireClaim("EditProduct", "true"));
+
+//    options.AddPolicy("admin", policy => policy.RequireAssertion(context => context.User.Identity.Name == "admin"));
+//});
+builder.Services.AddHttpContextAccessor(); // Required to access HttpContext
+
 
 builder.Services.AddAuthorization();
 // Register IHttpContextAccessor
@@ -73,8 +71,8 @@ builder.Services.AddAntiforgery(options => options.HeaderName = "X-CSRF-TOKEN");
 
 
 
-//builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer($"Server={Environment.MachineName}\\{Environment.UserName};Database=TS_TestUser;Trusted_Connection=True;TrustServerCertificate=True;"));
-builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer($"Server={Environment.MachineName};Database=TS_TestUser;Trusted_Connection=True;TrustServerCertificate=True;"));
+    builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer($"Server={Environment.MachineName}\\{Environment.UserName};Database=TS_TestUser;Trusted_Connection=True;TrustServerCertificate=True;"));
+    //builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer($"Server={Environment.MachineName};Database=TS_TestUser;Trusted_Connection=True;TrustServerCertificate=True;"));
 
 
 builder.Services.AddMudServices(); // Add MudBlazor services
