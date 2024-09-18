@@ -131,7 +131,7 @@
     {
         bool? result = await DialogService.ShowMessageBox(
             "Warning",
-            "Are You Sure You Want To Delete This Prodcut !",
+            "Are You Sure You Want To Delete This User !",
             yesText: "Delete!", cancelText: "Cancel");
 
         state = result == null ? "Canceled" : "Deleted!";

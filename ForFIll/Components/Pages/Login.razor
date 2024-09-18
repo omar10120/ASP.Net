@@ -1,5 +1,5 @@
 ﻿@* @page "/login" *@
-@page "/login/{Username}"
+@page "/login/{UsernameClaim}"
 
 
 @using Microsoft.AspNetCore.Authentication
@@ -22,6 +22,7 @@
 @using System.Net.Http.Json
 @inject HttpClient httpClient
 @* @using static Microsoft.AspNetCore.Components.Web.RenderMode *@
+
 @if (_Done)
 {
     @rendermode InteractiveServer
@@ -36,9 +37,12 @@
     private bool _loading;
     private bool _Done = false;
     private bool _successes = false;
-    [Parameter] public string Username { get; set; }
+    private string claimType = "CanEdit";
+    [Parameter] public string UsernameClaim { get; set; }
     // private string antiforgeryToken;
     public IEnumerable<User> User = new List<User>();
+
+    private IEnumerable<System.Security.Claims.Claim> claims1;
     protected override async Task OnInitializedAsync()
     {
         try
@@ -46,7 +50,8 @@
 
             var claims = new List<Claim>
                 {
-                    new Claim(ClaimTypes.Name, Username)
+                    new Claim("Permission", "CanViewPage"),
+                    new Claim(ClaimTypes.Name, UsernameClaim),
                 };
 
             var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
@@ -54,6 +59,7 @@
                 {
                     IsPersistent = true
                 };
+
 
             await HttpContextAccessor.HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
                 new ClaimsPrincipal(claimsIdentity), authProperties);

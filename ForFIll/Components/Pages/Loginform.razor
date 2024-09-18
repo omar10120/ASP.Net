@@ -94,8 +94,6 @@
         }
 
     }
-
-
     private async Task HandleLogin()
     {
         try
@@ -114,23 +112,16 @@
                     Navigation.NavigateTo($"/login/{loginModel.Username}");
 
                 }
-                else
-                {
-                    Snackbar.Add("Username or password not valid", Severity.Warning);
-
-                }
+                else Snackbar.Add("Username or password not valid", Severity.Warning);
             }
-            else
-            {
-                Snackbar.Add("Username or password not valid", Severity.Warning);
+            else Snackbar.Add("Username or password not valid", Severity.Warning);
 
-            }
+            
         }
         catch (Exception ex)
         {
             Console.WriteLine(ex.Message);
             Snackbar.Add("Soem issue Just Happend ! , pLease Try again Later", Severity.Warning);
-
         }
     }
     private void NavigateToLSignup()

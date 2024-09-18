@@ -49,6 +49,12 @@ builder.Services.AddAuthorization(options =>
     options.AddPolicy("CanEditProduct", policy =>
         policy.RequireClaim("EditProduct", "true"));
 });
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("CanViewPagePolicy", policy =>
+        policy.RequireClaim("Permission", "CanViewPage"));
+});
+
 
 builder.Services.AddAuthorization();
 // Register IHttpContextAccessor
