@@ -9,3 +9,21 @@
 @using Microsoft.JSInterop
 @using ForFIll
 @using ForFIll.Components
+
+@using Microsoft.AspNetCore.Authentication.Cookies
+@using ForFIll.Models;
+@using System.Collections.Generic;
+@using System.Threading.Tasks;
+@using ForFIll.Data
+@using System.ComponentModel.DataAnnotations
+@inject IDialogService DialogService
+@using ForFIll.Controllers
+@inject Microsoft.AspNetCore.Antiforgery.IAntiforgery Antiforgery
+@using System.Text.RegularExpressions
+@inject ProductService ProductService
+@inject HttpClient httpClient
+@inject ISnackbar Snackbar
+@inject NavigationManager NavigationManager
+@using Microsoft.AspNetCore.Authorization
+@using System.Security.Claims
+@using Microsoft.AspNetCore.Components.Authorization

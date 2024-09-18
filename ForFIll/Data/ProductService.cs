@@ -21,8 +21,13 @@ using Microsoft.Data.SqlClient;
 
 using System.Data.Common;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
-using System.Security.Claims;
+
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication;
+using System.Security.Claims;
+
+
+
 namespace ForFIll.Data
 {
     public class ProductService
@@ -284,7 +289,7 @@ namespace ForFIll.Data
         }
         public async Task<DataBaseRequest> CreateUserAsync(User createuser)
         {
-           
+
             var hashedPassword = HashPassword(createuser, createuser.Password);
             createuser.Password = hashedPassword;
 
@@ -312,15 +317,9 @@ namespace ForFIll.Data
             }
 
 
-            User user = new User
-            {
-                Username = createuser.Username,
-                Password = createuser.Password,
-                Password2 = createuser.Password,
-                Email = createuser.Email,
-                Token = createuser.Token,
-            };
-            _context.User.Add(user);
+
+
+            _context.User.Add(createuser);
             var result = await _context.SaveChangesAsync();
             if (result > 0)
             {
@@ -340,7 +339,7 @@ namespace ForFIll.Data
             }
 
         }
-
+     
 
         public async Task<DataBaseRequest<Product>> GetProductByIdAsync(int id)
         {

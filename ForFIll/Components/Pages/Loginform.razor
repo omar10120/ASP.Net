@@ -30,20 +30,20 @@
 
 <MudPaper Height="400px" Width="100%">
     <MudContainer MaxWidth="MaxWidth.Small">
-        
-            <h3>Loginform</h3>
-            <EditForm Model="@loginModel" OnValidSubmit="@HandleLogin" FormName="loginForm">
-                <AntiforgeryRequestToken />
-                <DataAnnotationsValidator />
-                <ValidationSummary />
-                <MudTextField T="string" @bind-Value="loginModel.Username" Label="Username or Email" Required="true" />
-                <MudTextField T="string" @bind-Value="loginModel.Password" Label="Password" InputType="@(ShowPassword ? InputType.Text : InputType.Password)" Required="true" />
-                <MudCheckBox @bind-Value="ShowPassword">Show Password</MudCheckBox>
 
-               <MudSpacer/>
-                <MudButton ButtonType="MudBlazor.ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary">Login</MudButton>
+        <h3>Loginform</h3>
+        <EditForm Model="@loginModel" OnValidSubmit="@HandleLogin" FormName="loginForm">
+            <AntiforgeryRequestToken />
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+            <MudTextField T="string" @bind-Value="loginModel.Username" Label="Username or Email" Required="true" />
+            <MudTextField T="string" @bind-Value="loginModel.Password" Label="Password" InputType="@(ShowPassword ? InputType.Text : InputType.Password)" Required="true" />
+            <MudCheckBox @bind-Value="ShowPassword">Show Password</MudCheckBox>
+
+            <MudSpacer />
+            <MudButton ButtonType="MudBlazor.ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary">Login</MudButton>
             <MudButton OnClick="NavigateToLSignup" Variant="Variant.Filled" Color="Color.Primary">Register</MudButton>
-            </EditForm>
+        </EditForm>
 
     </MudContainer>
 </MudPaper>
@@ -59,24 +59,24 @@
     {
 
         //start accsess
-//         var claims = new List<Claim>
-// {
-//     new Claim(ClaimTypes.Name, "John Doe"),
-//     new Claim(ClaimTypes.Email, "john.doe@example.com"),
-//     new Claim(ClaimTypes.Role, "Admin"),
-//     new Claim("CanEditProduct", "true"),
-//     new Claim("CanDeleteProduct", "false"),
-//     new Claim("Department", "Sales"),
-//     new Claim("SubscriptionLevel", "Premium")
-// };
+        // var claims = new List<Claim>
+        // {
+        //     new Claim(ClaimTypes.Name, "John Doe"),
+        //     new Claim(ClaimTypes.Email, "john.doe@example.com"),
+        //     new Claim(ClaimTypes.Role, "Admin"),
+        //     new Claim("CanEditProduct", "true"),
+        //     new Claim("CanDeleteProduct", "false"),
+        //     new Claim("Department", "Sales"),
+        //     new Claim("SubscriptionLevel", "Premium")
+        // };
 
-//         var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-//         var principal = new ClaimsPrincipal(identity);
-//         await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
+        // var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+        // var principal = new ClaimsPrincipal(identity);   
+        // await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
 
         //Conclusion
-    //    The specific list of claims you need depends on the functionality of your application and the way you want to enforce permissions. At the core, claims like Name, Email, Role, and custom permissions(e.g., CanEditProduct, CanManageUsers) are commonly used to define user access rights and behaviors within an application.
-        // end accesse 
+        //    The specific list of claims you need depends on the functionality of your application and the way you want to enforce permissions. At the core, claims like Name, Email, Role, and custom permissions(e.g., CanEditProduct, CanManageUsers) are commonly used to define user access rights and behaviors within an application.
+        // end accesse
 
         try
         {
@@ -98,14 +98,17 @@
     {
         try
         {
+       
+
+
 
             var request = User.Where(x => x.Username == loginModel.Username || x.Email == loginModel.Username).FirstOrDefault();
             if (request != null)
             {
                 var hashpassword = _productser.VerifyPassword(request, request.Password, loginModel.Password);
-                if ((request.Username == loginModel.Username || request.Email == loginModel.Username ) && hashpassword)
+                if ((request.Username == loginModel.Username || request.Email == loginModel.Username) && hashpassword)
                 {
-                    if (request.Username == "admin") loginModel.Username= "admin";
+                    if (request.Username == "admin") loginModel.Username = "admin";
 
                     Snackbar.Add("Login Done Successflly", Severity.Success);
 
