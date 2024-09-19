@@ -5,7 +5,7 @@
 namespace ForFIll.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class InititalCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -36,8 +36,7 @@ namespace ForFIll.Migrations
                     Token = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Password = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
-                    Password2 = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    UserClaim = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Password2 = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {

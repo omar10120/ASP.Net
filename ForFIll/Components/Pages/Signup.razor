@@ -43,10 +43,10 @@
                                   @bind-Value="user.Password" For="@(() =>  user.Password)" InputType="InputType.Password" />
                     <MudTextField Label="Password confirm " HelperText="Repeat the password" Class="mt-3"
                                   @bind-Value="user.Password2" For="@(() => user.Password2)" InputType="InputType.Password" />
-                    <MudCheckBox @bind-Value="Basic_CheckBox2" Color="Color.Primary">allow add product</MudCheckBox>
+                    @* <MudCheckBox @bind-Value="Basic_CheckBox2" Color="Color.Primary">allow add product</MudCheckBox> *@
 
 
-                    <MudSelect @bind-Value="user.UserClaim">
+                    <MudSelect @bind-Value="user.Token" >
                             <MudSelectItem Value="@("admin")">admin</MudSelectItem>
                             <MudSelectItem Value="@("user")">user</MudSelectItem>
                     </MudSelect>
@@ -111,10 +111,7 @@
         success = true;
         try
         {
-            user.Token = "1";
-            if(string.IsNullOrEmpty(user.UserClaim)){
-                user.UserClaim = "admin";
-            }
+            
             var userList = user;
             var request = await ProductService.CreateUserAsync(userList);
             if (request.Success == false)

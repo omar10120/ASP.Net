@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ForFIll.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240919123405_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20240919151211_InititalCreate")]
+    partial class InititalCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -73,10 +73,6 @@ namespace ForFIll.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Token")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserClaim")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

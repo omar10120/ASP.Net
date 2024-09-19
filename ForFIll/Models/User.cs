@@ -12,6 +12,7 @@ namespace ForFIll.Models
         [StringLength(8, ErrorMessage = "Name length can't be more than 8.")]
 
         public string Username { get; set; }
+        [Required]
         public string Token { get; set; }
 
         [Required]
@@ -26,9 +27,6 @@ namespace ForFIll.Models
         [Compare(nameof(Password))]
         public string Password2 { get; set; }
 
-
-        [Required]
-        public string UserClaim { get; set; }
 
 
     }
