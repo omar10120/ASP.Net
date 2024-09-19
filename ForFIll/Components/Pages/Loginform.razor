@@ -54,6 +54,7 @@
     public LoginModel loginModel = new LoginModel();
     public IEnumerable<User> User = new List<User>();
     public bool ShowPassword { get; set; } = false;
+    public string UserClaim { get; set; } 
 
     protected override async Task OnInitializedAsync()
     {
@@ -98,9 +99,8 @@
     {
         try
         {
-       
 
-
+          
 
             var request = User.Where(x => x.Username == loginModel.Username || x.Email == loginModel.Username).FirstOrDefault();
             if (request != null)
@@ -109,10 +109,13 @@
                 if ((request.Username == loginModel.Username || request.Email == loginModel.Username) && hashpassword)
                 {
                     if (request.Username == "admin") loginModel.Username = "admin";
+                     UserClaim = request.Token;
 
                     Snackbar.Add("Login Done Successflly", Severity.Success);
 
-                    Navigation.NavigateTo($"/login/{loginModel.Username}");
+                    // Navigation.NavigateTo($"/login/{loginModel.Username}");
+                    Navigation.NavigateTo($"/login/{Uri.EscapeDataString(loginModel.Username)}/{Uri.EscapeDataString(UserClaim)}");
+
 
                 }
                 else Snackbar.Add("Username or password not valid", Severity.Warning);

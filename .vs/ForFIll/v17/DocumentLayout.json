@@ -1,34 +1,42 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Dell\\source\\repos\\ForFIll\\",
+  "WorkspaceRootPath": "C:\\Users\\AMRO\\Desktop\\Forfill\\asp2\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|c:\\users\\dell\\source\\repos\\forfill\\forfill\\components\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|c:\\users\\amro\\desktop\\forfill\\asp2\\forfill\\components\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|solutionrelative:forfill\\components\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|c:\\users\\dell\\source\\repos\\forfill\\forfill\\components\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|solutionrelative:forfill\\components\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|c:\\users\\amro\\desktop\\forfill\\asp2\\forfill\\components\\pages\\usercontrol.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|solutionrelative:forfill\\components\\pages\\usercontrol.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|c:\\users\\dell\\source\\repos\\forfill\\forfill\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|c:\\users\\amro\\desktop\\forfill\\asp2\\forfill\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|solutionrelative:forfill\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|c:\\users\\dell\\source\\repos\\forfill\\forfill\\components\\pages\\signup.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|solutionrelative:forfill\\components\\pages\\signup.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|c:\\users\\amro\\desktop\\forfill\\asp2\\forfill\\components\\pages\\login.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|solutionrelative:forfill\\components\\pages\\login.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|c:\\users\\dell\\source\\repos\\forfill\\forfill\\components\\pages\\editproduct.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|solutionrelative:forfill\\components\\pages\\editproduct.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|c:\\users\\dell\\source\\repos\\forfill\\forfill\\components\\pages\\loginform.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|c:\\users\\amro\\desktop\\forfill\\asp2\\forfill\\components\\pages\\loginform.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|solutionrelative:forfill\\components\\pages\\loginform.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|c:\\users\\dell\\source\\repos\\forfill\\forfill\\data\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|solutionrelative:forfill\\data\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|c:\\users\\amro\\desktop\\forfill\\asp2\\forfill\\components\\pages\\signup.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|solutionrelative:forfill\\components\\pages\\signup.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|c:\\users\\amro\\desktop\\forfill\\asp2\\forfill\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|solutionrelative:forfill\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|c:\\users\\amro\\desktop\\forfill\\asp2\\forfill\\components\\pages\\fetchdata.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|solutionrelative:forfill\\components\\pages\\fetchdata.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|c:\\users\\amro\\desktop\\forfill\\asp2\\forfill\\components\\pages\\editproduct.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{02E1FFE8-ACF6-448F-9B3F-BC99DBD000D3}|ForFIll\\ForFIll.csproj|solutionrelative:forfill\\components\\pages\\editproduct.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,102 +46,129 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "ProductService.cs",
-              "DocumentMoniker": "C:\\Users\\Dell\\source\\repos\\ForFIll\\ForFIll\\Data\\ProductService.cs",
-              "RelativeDocumentMoniker": "ForFIll\\Data\\ProductService.cs",
-              "ToolTip": "C:\\Users\\Dell\\source\\repos\\ForFIll\\ForFIll\\Data\\ProductService.cs",
-              "RelativeToolTip": "ForFIll\\Data\\ProductService.cs",
-              "ViewState": "AQIAAOgAAAAAAAAAAAAiwCEBAAA2AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-04T22:02:45.451Z",
-              "IsPinned": true
+              "DocumentIndex": 4,
+              "Title": "Loginform.razor",
+              "DocumentMoniker": "C:\\Users\\AMRO\\Desktop\\Forfill\\asp2\\ForFIll\\Components\\Pages\\Loginform.razor",
+              "RelativeDocumentMoniker": "ForFIll\\Components\\Pages\\Loginform.razor",
+              "ToolTip": "C:\\Users\\AMRO\\Desktop\\Forfill\\asp2\\ForFIll\\Components\\Pages\\Loginform.razor",
+              "RelativeToolTip": "ForFIll\\Components\\Pages\\Loginform.razor",
+              "ViewState": "AgIAAGMAAAAAAAAAAAAswGUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-05T15:20:05.805Z",
+              "IsPinned": true,
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Loginform.razor",
-              "DocumentMoniker": "C:\\Users\\Dell\\source\\repos\\ForFIll\\ForFIll\\Components\\Pages\\Loginform.razor",
-              "RelativeDocumentMoniker": "ForFIll\\Components\\Pages\\Loginform.razor",
-              "ToolTip": "C:\\Users\\Dell\\source\\repos\\ForFIll\\ForFIll\\Components\\Pages\\Loginform.razor",
-              "RelativeToolTip": "ForFIll\\Components\\Pages\\Loginform.razor",
-              "ViewState": "AQIAADMAAAAAAAAAAAAUwEsAAAAAAAAA",
+              "DocumentIndex": 0,
+              "Title": "NavMenu.razor",
+              "DocumentMoniker": "C:\\Users\\AMRO\\Desktop\\Forfill\\asp2\\ForFIll\\Components\\Layout\\NavMenu.razor",
+              "RelativeDocumentMoniker": "ForFIll\\Components\\Layout\\NavMenu.razor",
+              "ToolTip": "C:\\Users\\AMRO\\Desktop\\Forfill\\asp2\\ForFIll\\Components\\Layout\\NavMenu.razor*",
+              "RelativeToolTip": "ForFIll\\Components\\Layout\\NavMenu.razor*",
+              "ViewState": "AgIAACoAAAAAAAAAAAAswDsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-09-05T15:20:05.805Z",
-              "IsPinned": true
+              "WhenOpened": "2024-09-19T22:06:55.839Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Usercontrol.razor",
+              "DocumentMoniker": "C:\\Users\\AMRO\\Desktop\\Forfill\\asp2\\ForFIll\\Components\\Pages\\Usercontrol.razor",
+              "RelativeDocumentMoniker": "ForFIll\\Components\\Pages\\Usercontrol.razor",
+              "ToolTip": "C:\\Users\\AMRO\\Desktop\\Forfill\\asp2\\ForFIll\\Components\\Pages\\Usercontrol.razor",
+              "RelativeToolTip": "ForFIll\\Components\\Pages\\Usercontrol.razor",
+              "ViewState": "AgIAABAAAAAAAAAAAAAYwBMAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-19T22:06:21.658Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\AMRO\\Desktop\\Forfill\\asp2\\ForFIll\\Models\\User.cs",
+              "RelativeDocumentMoniker": "ForFIll\\Models\\User.cs",
+              "ToolTip": "C:\\Users\\AMRO\\Desktop\\Forfill\\asp2\\ForFIll\\Models\\User.cs",
+              "RelativeToolTip": "ForFIll\\Models\\User.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAAwBUAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-19T21:59:36.915Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Fetchdata.razor",
+              "DocumentMoniker": "C:\\Users\\AMRO\\Desktop\\Forfill\\asp2\\ForFIll\\Components\\Pages\\Fetchdata.razor",
+              "RelativeDocumentMoniker": "ForFIll\\Components\\Pages\\Fetchdata.razor",
+              "ToolTip": "C:\\Users\\AMRO\\Desktop\\Forfill\\asp2\\ForFIll\\Components\\Pages\\Fetchdata.razor",
+              "RelativeToolTip": "ForFIll\\Components\\Pages\\Fetchdata.razor",
+              "ViewState": "AgIAACcAAAAAAAAAAAAAADkAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-19T21:25:10.177Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
-            {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "MainLayout.razor",
-              "DocumentMoniker": "C:\\Users\\Dell\\source\\repos\\ForFIll\\ForFIll\\Components\\Layout\\MainLayout.razor",
-              "RelativeDocumentMoniker": "ForFIll\\Components\\Layout\\MainLayout.razor",
-              "ToolTip": "C:\\Users\\Dell\\source\\repos\\ForFIll\\ForFIll\\Components\\Layout\\MainLayout.razor",
-              "RelativeToolTip": "ForFIll\\Components\\Layout\\MainLayout.razor",
-              "ViewState": "AQIAABIAAAAAAAAAAAAAAA4AAAAKAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-09-07T07:01:01.248Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "NavMenu.razor",
-              "DocumentMoniker": "C:\\Users\\Dell\\source\\repos\\ForFIll\\ForFIll\\Components\\Layout\\NavMenu.razor",
-              "RelativeDocumentMoniker": "ForFIll\\Components\\Layout\\NavMenu.razor",
-              "ToolTip": "C:\\Users\\Dell\\source\\repos\\ForFIll\\ForFIll\\Components\\Layout\\NavMenu.razor",
-              "RelativeToolTip": "ForFIll\\Components\\Layout\\NavMenu.razor",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAABYAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-09-07T07:00:58.101Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "Signup.razor",
-              "DocumentMoniker": "C:\\Users\\Dell\\source\\repos\\ForFIll\\ForFIll\\Components\\Pages\\Signup.razor",
+              "DocumentMoniker": "C:\\Users\\AMRO\\Desktop\\Forfill\\asp2\\ForFIll\\Components\\Pages\\Signup.razor",
               "RelativeDocumentMoniker": "ForFIll\\Components\\Pages\\Signup.razor",
-              "ToolTip": "C:\\Users\\Dell\\source\\repos\\ForFIll\\ForFIll\\Components\\Pages\\Signup.razor",
+              "ToolTip": "C:\\Users\\AMRO\\Desktop\\Forfill\\asp2\\ForFIll\\Components\\Pages\\Signup.razor",
               "RelativeToolTip": "ForFIll\\Components\\Pages\\Signup.razor",
-              "ViewState": "AQIAAFIAAAAAAAAAAADwv14AAAAlAAAA",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAAAC8AAAA3AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-09-06T12:11:46.52Z"
+              "WhenOpened": "2024-09-06T12:11:46.52Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\Dell\\source\\repos\\ForFIll\\ForFIll\\Program.cs",
+              "DocumentMoniker": "C:\\Users\\AMRO\\Desktop\\Forfill\\asp2\\ForFIll\\Program.cs",
               "RelativeDocumentMoniker": "ForFIll\\Program.cs",
-              "ToolTip": "C:\\Users\\Dell\\source\\repos\\ForFIll\\ForFIll\\Program.cs",
+              "ToolTip": "C:\\Users\\AMRO\\Desktop\\Forfill\\asp2\\ForFIll\\Program.cs",
               "RelativeToolTip": "ForFIll\\Program.cs",
-              "ViewState": "AQIAACsAAAAAAAAAAAAAADMAAAAAAAAA",
+              "ViewState": "AgIAACEAAAAAAAAAAAAAAC8AAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-05T23:04:19.138Z"
+              "WhenOpened": "2024-09-05T23:04:19.138Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "EditProduct.razor",
-              "DocumentMoniker": "C:\\Users\\Dell\\source\\repos\\ForFIll\\ForFIll\\Components\\Pages\\EditProduct.razor",
-              "RelativeDocumentMoniker": "ForFIll\\Components\\Pages\\EditProduct.razor",
-              "ToolTip": "C:\\Users\\Dell\\source\\repos\\ForFIll\\ForFIll\\Components\\Pages\\EditProduct.razor",
-              "RelativeToolTip": "ForFIll\\Components\\Pages\\EditProduct.razor",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAjAAAA",
+              "DocumentIndex": 3,
+              "Title": "Login.razor",
+              "DocumentMoniker": "C:\\Users\\AMRO\\Desktop\\Forfill\\asp2\\ForFIll\\Components\\Pages\\Login.razor",
+              "RelativeDocumentMoniker": "ForFIll\\Components\\Pages\\Login.razor",
+              "ToolTip": "C:\\Users\\AMRO\\Desktop\\Forfill\\asp2\\ForFIll\\Components\\Pages\\Login.razor",
+              "RelativeToolTip": "ForFIll\\Components\\Pages\\Login.razor",
+              "ViewState": "AgIAADAAAAAAAAAAAAAAAEIAAAA8AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-09-05T15:22:23.304Z"
+              "WhenOpened": "2024-09-19T20:42:27.384Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "EditProduct.razor",
+              "DocumentMoniker": "C:\\Users\\AMRO\\Desktop\\Forfill\\asp2\\ForFIll\\Components\\Pages\\EditProduct.razor",
+              "RelativeDocumentMoniker": "ForFIll\\Components\\Pages\\EditProduct.razor",
+              "ToolTip": "C:\\Users\\AMRO\\Desktop\\Forfill\\asp2\\ForFIll\\Components\\Pages\\EditProduct.razor",
+              "RelativeToolTip": "ForFIll\\Components\\Pages\\EditProduct.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-05T15:22:23.304Z",
+              "EditorCaption": ""
             }
           ]
         }

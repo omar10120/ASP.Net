@@ -12,6 +12,8 @@ namespace ForFIll.Models
         [StringLength(8, ErrorMessage = "Name length can't be more than 8.")]
 
         public string Username { get; set; }
+        [Required]
+
         public string Token { get; set; }
 
         [Required]
