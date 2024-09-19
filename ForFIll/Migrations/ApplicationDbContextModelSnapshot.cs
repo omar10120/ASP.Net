@@ -56,7 +56,16 @@ namespace ForFIll.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Password")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.Property<string>("Password2")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -66,6 +75,7 @@ namespace ForFIll.Migrations
 
                     b.Property<string>("Username")
                         .IsRequired()
+                        .HasMaxLength(8)
                         .HasColumnType("nvarchar(MAX)");
 
                     b.HasKey("Id");

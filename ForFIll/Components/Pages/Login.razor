@@ -38,9 +38,9 @@
     private bool _successes = false;
     private string claimType = "CanEdit";
     [Parameter] public string UsernameClaim { get; set; }
+    [Parameter] public string UserClaim { get; set; }
     // private string antiforgeryToken;
     public IEnumerable<User> User = new List<User>();
-    [Parameter] public string UserClaim { get; set; } 
 
     private IEnumerable<System.Security.Claims.Claim> claims1;
     protected override async Task OnInitializedAsync()

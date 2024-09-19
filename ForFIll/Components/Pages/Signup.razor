@@ -16,7 +16,9 @@
 
 
 
+
 <MudPopoverProvider />
+
 <MudDialogProvider />
 <MudSnackbarProvider />
 
@@ -44,15 +46,16 @@
                     <MudTextField Label="Password confirm " HelperText="Repeat the password" Class="mt-3"
                                   @bind-Value="user.Password2" For="@(() => user.Password2)" InputType="InputType.Password" />
                     @* <MudCheckBox @bind-Value="Basic_CheckBox2" Color="Color.Primary">allow add product</MudCheckBox> *@
+
                     <MudSelect @bind-Value="user.Token" Label="choose permission" For="@(() => user.Token)" HelperText="Required Faield">
                         <MudSelectItem Value=@("admin")>admin</MudSelectItem>
                         <MudSelectItem Value=@("user")>user</MudSelectItem>
                         @* <MudSelectItem Value=@("coadmin")>CoAdmin</MudSelectItem> *@
                     </MudSelect>
+                  
 
 
 
->>>>>>> 178006bfeef2cf36dd9e6276b8c9f245118277ac
 
                 </MudCardContent>
                 <MudCardActions>
@@ -111,11 +114,10 @@
         success = true;
         try
         {
+
             // user.Token = "1";
 
-=======
-            
->>>>>>> 178006bfeef2cf36dd9e6276b8c9f245118277ac
+
             var userList = user;
             var request = await ProductService.CreateUserAsync(userList);
             if (request.Success == false)
@@ -123,6 +125,8 @@
                 Snackbar.Add(request.Message, Severity.Error);
                 return;
             }
+
+
             Snackbar.Add("Add User done successfully", Severity.Success);
 
             user = new User();// Resets the form
@@ -139,7 +143,7 @@
         }
     }
 
-   
+
 
 
 }
