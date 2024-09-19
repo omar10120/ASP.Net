@@ -1,5 +1,7 @@
 ﻿@* @page "/login" *@
-@page "/login/{UsernameClaim}"
+@* @page "/login/{UsernameClaim}" *@
+@page "/login/{UsernameClaim}/{UserClaim}"
+
 
 
 @using Microsoft.AspNetCore.Authentication
@@ -39,6 +41,7 @@
     private bool _successes = false;
     private string claimType = "CanEdit";
     [Parameter] public string UsernameClaim { get; set; }
+    [Parameter] public string UserClaim { get; set; }
     // private string antiforgeryToken;
     public IEnumerable<User> User = new List<User>();
 
@@ -48,12 +51,26 @@
         try
         {
 
-            var claims = new List<Claim>
-                {
-                    new Claim("Permission", "CanViewPage"),
-                    new Claim(ClaimTypes.Name, UsernameClaim),
-                };
 
+         
+            var claims = Enumerable.Empty<System.Security.Claims.Claim>(); 
+            if (UserClaim == "user")
+            {
+                claims = new List<Claim>
+                    {
+                        new Claim("Permission", "CanViewPage"),
+                        new Claim(ClaimTypes.Name, UsernameClaim),
+                    };
+            }
+            else
+            if(UserClaim == "admin")
+            {
+                 claims = new List<Claim>
+                    {
+                        new Claim("Permission", "CanEditPage"),
+                        new Claim(ClaimTypes.Name, UsernameClaim),
+                    };
+            }
             var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
             var authProperties = new AuthenticationProperties
                 {

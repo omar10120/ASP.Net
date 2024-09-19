@@ -27,6 +27,9 @@ namespace ForFIll.Models
         public string Password2 { get; set; }
 
 
+        [Required]
+        public string UserClaim { get; set; }
+
 
     }
 }

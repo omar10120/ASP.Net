@@ -38,7 +38,7 @@
 
 <CascadingAuthenticationState>
 
-    <AuthorizeView Policy="admin">
+    <AuthorizeView Policy="CanEditProduct">
         <Authorized>
             <div class="d-flex">
                 <MudButton Variant="Variant.Filled" @onclick="OpenDialog" Color="Color.Primary" StartIcon="@Icons.Material.Filled.Add">Add Product</MudButton>
@@ -67,10 +67,6 @@
                         <div class="d-flex align-center justify-space-between">
                             <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="AddProduct" Disabled="@(!successShow)" Class="ml-auto">Add Product</MudButton>
                         </div>
-
-
-
-
                     </MudForm>
                 </MudPaper>
             </MudItem>
@@ -111,7 +107,7 @@ else
 
             <CascadingAuthenticationState>
 
-                <AuthorizeView Policy="admin">
+                <AuthorizeView Policy="CanEditProduct">
                     <Authorized>
                         <MudTh>Actions</MudTh>
                     </Authorized>

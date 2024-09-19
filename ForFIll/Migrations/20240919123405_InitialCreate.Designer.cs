@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ForFIll.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240803084657_InitialCreateUpdate")]
-    partial class InitialCreateUpdate
+    [Migration("20240919123405_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -59,7 +59,16 @@ namespace ForFIll.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Password")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.Property<string>("Password2")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -67,8 +76,13 @@ namespace ForFIll.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("UserClaim")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Username")
                         .IsRequired()
+                        .HasMaxLength(8)
                         .HasColumnType("nvarchar(MAX)");
 
                     b.HasKey("Id");

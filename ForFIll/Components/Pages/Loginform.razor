@@ -38,22 +38,30 @@
             <ValidationSummary />
             <MudTextField T="string" @bind-Value="loginModel.Username" Label="Username or Email" Required="true" />
             <MudTextField T="string" @bind-Value="loginModel.Password" Label="Password" InputType="@(ShowPassword ? InputType.Text : InputType.Password)" Required="true" />
+           
             <MudCheckBox @bind-Value="ShowPassword">Show Password</MudCheckBox>
+            <MudCheckBox @bind-Value="AllowEdit">AllowEdit</MudCheckBox>
 
             <MudSpacer />
             <MudButton ButtonType="MudBlazor.ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary">Login</MudButton>
             <MudButton OnClick="NavigateToLSignup" Variant="Variant.Filled" Color="Color.Primary">Register</MudButton>
         </EditForm>
-
+  
     </MudContainer>
 </MudPaper>
 
-
-
+@* <MudSelect @bind-Value="UserClaim" T="string">
+    <MudSelectItem Value="@("admin")">admin</MudSelectItem>
+    <MudSelectItem Value="@("user")">user</MudSelectItem>
+</MudSelect>
+ *@
 @code {
     public LoginModel loginModel = new LoginModel();
     public IEnumerable<User> User = new List<User>();
     public bool ShowPassword { get; set; } = false;
+    public bool AllowEdit { get; set; } = false;
+    public string UserClaim { get; set; } = "user";
+
 
     protected override async Task OnInitializedAsync()
     {
@@ -81,12 +89,7 @@
         try
         {
             var request = await ProductService.GetUsers();
-
-            if (request.Success)
-            {
-                User = request.Data!;
-            }
-
+            if (request.Success) User = request.Data!;
         }
         catch (Exception ex)
         {
@@ -98,7 +101,7 @@
     {
         try
         {
-       
+
 
 
 
@@ -109,10 +112,17 @@
                 if ((request.Username == loginModel.Username || request.Email == loginModel.Username) && hashpassword)
                 {
                     if (request.Username == "admin") loginModel.Username = "admin";
+                    // if (AllowEdit == true) UserClaim = "user"; 
+  
+
 
                     Snackbar.Add("Login Done Successflly", Severity.Success);
 
-                    Navigation.NavigateTo($"/login/{loginModel.Username}");
+                     // Navigation.NavigateTo($"/login/{loginModel.Username}");
+                    Navigation.NavigateTo($"/login/{Uri.EscapeDataString(loginModel.Username)}/{Uri.EscapeDataString(UserClaim)}");
+
+
+
 
                 }
                 else Snackbar.Add("Username or password not valid", Severity.Warning);
