@@ -17,11 +17,14 @@
 @inject ISnackbar Snackbar
 @inject NavigationManager NavigationManager
 @inject NavigationManager Navigation
-@attribute [Authorize(Policy = "CanEditProduct")]
+@attribute [Authorize(Policy = "CanEditUser")]
 
 @using Microsoft.AspNetCore.Components.Authorization
 @using Microsoft.AspNetCore.Authorization
 
+
+
+<MudPopoverProvider />
 <MudDialogProvider />
 <MudSnackbarProvider />
 
@@ -29,7 +32,7 @@
 
 <p>This is a protected area accessible only by admin.</p>
 
-<MudTable Items="@UsersList" Hover="true" Breakpoint="Breakpoint.Sm" Height="400px" Loading="@_loading" LoadingProgressColor="Color.Info">
+<MudTable Items="@UsersList" Hover="true" Breakpoint="Breakpoint.Sm"  Loading="@_loading" LoadingProgressColor="Color.Info">
     <HeaderContent>
         <MudTh>Username</MudTh>
         <MudTh>password</MudTh>
@@ -55,11 +58,25 @@
          
                 <MudTd><MudTextField T="string" Label="Username" @bind-Value="context.Username" Required="true" RequiredError="Username is required!" /></MudTd>
                 <MudTd> <MudTextField Label="Password" HelperText="Choose a strong password" Class="mt-3" @bind-Value="Password" For="@(() =>  Password)" InputType="InputType.Password" /></MudTd>
-            <MudTd><MudTextField T="string" Label="Email" @bind-Value="context.Email" Required="true" RequiredError="Email is required!" /></MudTd>
-                <div style="width:100px; overflow:scroll"><MudTd><MudTextField T="string" Label="Token" @bind-Value="edituser.Token" Required="true" RequiredError="Token is required!" /></MudTd></div>
+                  <MudTd><MudTextField T="string" Label="Email" @bind-Value="context.Email" Required="true" RequiredError="Email is required!" /></MudTd>
+                @* <MudTd><MudTextField T="string" Label="Token" @bind-Value="edituser.Token" Required="true" RequiredError="Token is required!" /></MudTd> *@
+                <MudTd>
+                        <MudSelect @bind-Value="context.Token" Label="permissions" For="@(() => context.Token)" HelperText="Required Faield">
+                        <MudSelectItem Value=@("admin")>admin</MudSelectItem>
+                        <MudSelectItem Value=@("user")>user</MudSelectItem>
+                        <MudSelectItem Value=@("coadmin")>coadmin</MudSelectItem>
+                    </MudSelect>
+
+                        @if(context.Token == "coadmin"){
+
+                                <MudCheckBox @bind-Value="context.AllowEdit" Color="Color.Primary">allow user to Edit Product</MudCheckBox>
+                        <MudCheckBox @bind-Value="context.AllowAdd" Color="Color.Primary">allow user to Add Product</MudCheckBox>
+                        <MudCheckBox @bind-Value="context.AllowEditUser" Color="Color.Primary">Allow user to Display user control page</MudCheckBox>
+                    }
+                </MudTd>
                 <MudTd DataLabel="Action">
-                    <MudIconButton Icon="@Icons.Material.Filled.Save" OnClick="@(() => EditProduct(context.Id,context.Username,context.Email))" Class="mx-2" Variant="Variant.Filled" Color="Color.Primary" Size="Size.Medium" />
-<MudIconButton Icon="@Icons.Material.Filled.Close" OnClick="@(() => Close())" Variant="Variant.Filled" Color="Color.Error" Size="Size.Medium" />
+                    <MudIconButton Icon="@Icons.Material.Filled.Save" OnClick="@(() => EditProduct(context.Id,context.Username,context.Email, context.Token,context.AllowEdit,context.AllowAdd, context.AllowEditUser))" Class="mx-2" Variant="Variant.Filled" Color="Color.Primary" Size="Size.Medium" />
+                    <MudIconButton Icon="@Icons.Material.Filled.Close" OnClick="@(() => Close())" Variant="Variant.Filled" Color="Color.Error" Size="Size.Medium" />
                 </MudTd>       
         }
     </RowTemplate>
@@ -139,14 +156,17 @@
         StateHasChanged();
     }
     // private async Task EditProduct(int id, string username, string email)
-    private async Task EditProduct(int id, string username, string email)
+    private async Task EditProduct(int id, string username, string email, string Token , bool AllowEdit , bool AddProduct , bool userpage)
     {
 
         edituser.Username = username;
         edituser.Password = Password;
         edituser.Password2 = Password;
         edituser.Email = email;
-        edituser.Token = "1";
+        edituser.Token = Token;
+        edituser.AllowEdit = AllowEdit;
+        edituser.AllowAdd = AddProduct;
+        edituser.AllowEditUser = userpage;
         if (string.IsNullOrEmpty(edituser.Password))
         {
             Snackbar.Add("Password Failed is Required", Severity.Error);

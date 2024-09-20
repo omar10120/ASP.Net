@@ -1,5 +1,5 @@
 ﻿@* @page "/login" *@
-@page "/login/{UsernameClaim}/{UserClaim}"
+@page "/login/{UsernameClaim}/{UserClaim}/{EditProduct}/{AllowAdd}/{AllowEditUser}"
 
 @using Microsoft.AspNetCore.Authentication
 @using Microsoft.AspNetCore.Authentication.Cookies
@@ -39,18 +39,24 @@
     private string claimType = "CanEdit";
     [Parameter] public string UsernameClaim { get; set; }
     [Parameter] public string UserClaim { get; set; }
+
+    [Parameter] public string EditProduct { get; set; }
+    [Parameter] public string AllowAdd { get; set; }
+    [Parameter] public string AllowEditUser { get; set; }
     // private string antiforgeryToken;
     public IEnumerable<User> User = new List<User>();
 
     private IEnumerable<System.Security.Claims.Claim> claims1;
     protected override async Task OnInitializedAsync()
     {
+        Console.WriteLine("=====================");
+        Console.WriteLine(AllowEditUser);
+        Console.WriteLine(EditProduct);
+        Console.WriteLine("=====================");
         try
         {
-
-
-
-            var claims = Enumerable.Empty<System.Security.Claims.Claim>();
+            // var claims = Enumerable.Empty<System.Security.Claims.Claim>();
+            var claims = new List<Claim>();
             if (UserClaim == "user")
             {
                 claims = new List<Claim>
@@ -59,16 +65,36 @@
                         new Claim(ClaimTypes.Name, UsernameClaim),
                     };
             }
-            else
-            if (UserClaim == "admin")
+            else if (UserClaim == "admin")
             {
                 claims = new List<Claim>
                     {
                         new Claim("Permission", "CanEditPage"),
+                        new Claim("Permission", "CanAddPage"),
+                        new Claim("Permission", "CanEditUserPage"),
                         new Claim(ClaimTypes.Name, UsernameClaim),
                     };
             }
+            else if (UserClaim == "coadmin")
+            {
 
+                claims = new List<Claim>
+                    {
+
+                        new Claim(ClaimTypes.Name, UsernameClaim),
+                    };
+
+                if (EditProduct == "True") claims.Add(new Claim("Permission", "CanEditPage"));
+                if (AllowAdd == "True")claims.Add(new Claim("Permission", "CanAddPage"));
+
+                if (AllowEditUser == "True")
+                {
+
+                    claims.Add(new Claim("Permission", "CanEditUserPage"));
+
+                }
+           
+            }
             var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
             var authProperties = new AuthenticationProperties
                 {
@@ -89,7 +115,7 @@
         }
         if (_successes == true)
         {
-            _Done = true;   
+            _Done = true;
             Navigation.NavigateTo($"/fetchdata");
         }
         StateHasChanged();

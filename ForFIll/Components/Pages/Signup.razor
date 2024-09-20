@@ -18,7 +18,6 @@
 
 
 <MudPopoverProvider />
-
 <MudDialogProvider />
 <MudSnackbarProvider />
 
@@ -45,15 +44,20 @@
                                   @bind-Value="user.Password" For="@(() =>  user.Password)" InputType="InputType.Password" />
                     <MudTextField Label="Password confirm " HelperText="Repeat the password" Class="mt-3"
                                   @bind-Value="user.Password2" For="@(() => user.Password2)" InputType="InputType.Password" />
-                    @* <MudCheckBox @bind-Value="Basic_CheckBox2" Color="Color.Primary">allow add product</MudCheckBox> *@
 
                     <MudSelect @bind-Value="user.Token" Label="choose permission" For="@(() => user.Token)" HelperText="Required Faield">
                         <MudSelectItem Value=@("admin")>admin</MudSelectItem>
                         <MudSelectItem Value=@("user")>user</MudSelectItem>
-                        @* <MudSelectItem Value=@("coadmin")>CoAdmin</MudSelectItem> *@
-                    </MudSelect>
-                  
+                        <MudSelectItem Value=@("coadmin")>coadmin</MudSelectItem>
 
+                    </MudSelect>
+
+                    @if(user.Token == "coadmin"){
+
+                        <MudCheckBox @bind-Value="user.AllowEdit" Color="Color.Primary">allow user to Edit Product</MudCheckBox>
+                        <MudCheckBox @bind-Value="user.AllowAdd" Color="Color.Primary">allow user to Add Product</MudCheckBox>
+                        <MudCheckBox @bind-Value="user.AllowEditUser" Color="Color.Primary">Allow user to Display user control page</MudCheckBox>
+                    }
 
 
 
@@ -92,26 +96,14 @@
             Snackbar.Add(ex.Message, Severity.Error);
         }
     }
-    bool success;
+
     private async void OnValidSubmit(EditContext context)
     {
 
-        //start user auth
-        // var claims = new List<Claim>
-        // {
-        // new Claim(ClaimTypes.Name, "John Doe"),
-        // new Claim("EditProduct", "true") // Adding custom claim for product editing
-        // };
-
-        // var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-        // var principal = new ClaimsPrincipal(identity);
-        // await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
+     
 
 
-        //End user auth
 
-
-        success = true;
         try
         {
 

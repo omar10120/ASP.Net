@@ -56,14 +56,23 @@ namespace ForFIll.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<bool>("AllowAdd")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("AllowEdit")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("AllowEditUser")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Password")
                         .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
+                        .HasMaxLength(300)
+                        .HasColumnType("nvarchar(300)");
 
                     b.Property<string>("Password2")
                         .IsRequired()

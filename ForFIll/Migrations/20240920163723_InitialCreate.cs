@@ -5,7 +5,7 @@
 namespace ForFIll.Migrations
 {
     /// <inheritdoc />
-    public partial class InititalCreate : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -35,8 +35,11 @@ namespace ForFIll.Migrations
                     Username = table.Column<string>(type: "nvarchar(MAX)", maxLength: 8, nullable: false),
                     Token = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Password = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
-                    Password2 = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Password = table.Column<string>(type: "nvarchar(300)", maxLength: 300, nullable: false),
+                    Password2 = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    AllowEdit = table.Column<bool>(type: "bit", nullable: false),
+                    AllowAdd = table.Column<bool>(type: "bit", nullable: false),
+                    AllowEditUser = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {

@@ -50,17 +50,27 @@ builder.Services.AddAuthorization(options =>
         policy.RequireClaim("Permission", "CanEditPage"));
 });
 
+
 builder.Services.AddAuthorization(options =>
 {
-    options.AddPolicy("CanEditProduct", policy =>
-        policy.RequireClaim("Permission", "CanEditPage"));
+    options.AddPolicy("CanViewProducts", policy =>
+        policy.RequireClaim("Permission", "CanViewPage"));
 });
 
 builder.Services.AddAuthorization(options =>
 {
-    options.AddPolicy("CanViewPage", policy =>
-        policy.RequireClaim("Permission", "CanViewPage"));
+    options.AddPolicy("CanAddProduct", policy =>
+        policy.RequireClaim("Permission", "CanAddPage"));
 });
+
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("CanEditUser", policy =>
+        policy.RequireClaim("Permission", "CanEditUserPage"));
+});
+
+
+
 
 
 

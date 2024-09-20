@@ -38,7 +38,7 @@
 
 <CascadingAuthenticationState>
 
-    <AuthorizeView Policy="CanEditProduct">
+    <AuthorizeView Policy="CanAddProduct">
         <Authorized>
             <div class="d-flex">
                 <MudButton Variant="Variant.Filled" @onclick="OpenDialog" Color="Color.Primary" StartIcon="@Icons.Material.Filled.Add">Add Product</MudButton>
@@ -107,7 +107,7 @@ else
 
             <CascadingAuthenticationState>
 
-                <AuthorizeView Policy="CanEditProduct">
+                <AuthorizeView Policy="CanAddProduct">
                     <Authorized>
                         <MudTh>Actions</MudTh>
                     </Authorized>
@@ -125,6 +125,7 @@ else
                 <MudTd DataLabel="Name">@context.Name</MudTd>
                 <MudTd DataLabel="Price">@context.Price</MudTd>
                 <MudTd DataLabel="Category">@context.Category</MudTd>
+
             }
             else
             {
@@ -134,7 +135,7 @@ else
             }
 
             <CascadingAuthenticationState>
-                <AuthorizeView Policy="admin" Context="auth">
+                <AuthorizeView Policy="CanEditProduct" Context="auth">
                     <Authorized>
                         <MudTd DataLabel="Actions">
 

@@ -20,13 +20,18 @@ namespace ForFIll.Models
         [EmailAddress]
         public string Email { get; set; }
         [Required]
-        [StringLength(30, ErrorMessage = "Password must be at least 8 characters long.", MinimumLength = 8)]
+        [StringLength(300, ErrorMessage = "Password must be at least 8 characters long.", MinimumLength = 8)]
 
         public string Password { get; set; }
 
         [Required]
+ 
+
         [Compare(nameof(Password))]
         public string Password2 { get; set; }
+        public bool AllowEdit { get; set; }
+        public bool AllowAdd { get; set; }
+        public bool AllowEditUser { get; set; }
 
 
 
