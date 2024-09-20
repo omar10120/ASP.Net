@@ -71,16 +71,6 @@ builder.Services.AddAuthorization(options =>
 
 
 
-
-
-
-//builder.Services.AddAuthorization(options =>
-//{
-//    options.AddPolicy("CanEditProduct", policy =>
-//        policy.RequireClaim("EditProduct", "true"));
-
-//    options.AddPolicy("admin", policy => policy.RequireAssertion(context => context.User.Identity.Name == "admin"));
-//});
 builder.Services.AddHttpContextAccessor(); // Required to access HttpContext
 
 
@@ -100,8 +90,6 @@ builder.Services.AddAntiforgery(options => options.HeaderName = "X-CSRF-TOKEN");
 
 //  builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer($"Server={Environment.MachineName}\\{Environment.UserName};Database=TS_TestUser;Trusted_Connection=True;TrustServerCertificate=True;"));
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer($"Server={Environment.MachineName};Database=TS_TestUser;Trusted_Connection=True;TrustServerCertificate=True;"));
-    //builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer($"Server={Environment.MachineName};Database=TS_TestUser;Trusted_Connection=True;TrustServerCertificate=True;"));
-    //builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer($"Server={Environment.MachineName};Database=TS_TestUser;Trusted_Connection=True;TrustServerCertificate=True;"));
 
 
 builder.Services.AddMudServices(); // Add MudBlazor services

@@ -20,7 +20,6 @@
 @using ForFIll.Data
 @using System.Net.Http.Json
 @inject HttpClient httpClient
-@* @using static Microsoft.AspNetCore.Components.Web.RenderMode *@
 
 @if (_Done)
 {
@@ -39,25 +38,18 @@
     private string claimType = "CanEdit";
     [Parameter] public string UsernameClaim { get; set; }
     [Parameter] public string UserClaim { get; set; }
-
     [Parameter] public string EditProduct { get; set; }
     [Parameter] public string AllowAdd { get; set; }
     [Parameter] public string AllowEditUser { get; set; }
     // private string antiforgeryToken;
     public IEnumerable<User> User = new List<User>();
-
     private IEnumerable<System.Security.Claims.Claim> claims1;
     protected override async Task OnInitializedAsync()
     {
-        Console.WriteLine("=====================");
-        Console.WriteLine(AllowEditUser);
-        Console.WriteLine(EditProduct);
-        Console.WriteLine("=====================");
         try
         {
-            // var claims = Enumerable.Empty<System.Security.Claims.Claim>();
             var claims = new List<Claim>();
-            if (UserClaim == "user")
+            if (UserClaim == "user")    
             {
                 claims = new List<Claim>
                     {
@@ -77,23 +69,10 @@
             }
             else if (UserClaim == "coadmin")
             {
-
-                claims = new List<Claim>
-                    {
-
-                        new Claim(ClaimTypes.Name, UsernameClaim),
-                    };
-
+                claims.Add(new Claim(ClaimTypes.Name, UsernameClaim));
                 if (EditProduct == "True") claims.Add(new Claim("Permission", "CanEditPage"));
-                if (AllowAdd == "True")claims.Add(new Claim("Permission", "CanAddPage"));
-
-                if (AllowEditUser == "True")
-                {
-
-                    claims.Add(new Claim("Permission", "CanEditUserPage"));
-
-                }
-           
+                if (AllowAdd == "True") claims.Add(new Claim("Permission", "CanAddPage"));
+                if (AllowEditUser == "True")claims.Add(new Claim("Permission", "CanEditUserPage"));
             }
             var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
             var authProperties = new AuthenticationProperties
@@ -105,7 +84,6 @@
             await HttpContextAccessor.HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
                 new ClaimsPrincipal(claimsIdentity), authProperties);
             ((CustomAuthenticationStateProvider)AuthenticationStateProvider).NotifyUserAuthentication(new ClaimsPrincipal(claimsIdentity));
-            // Snackbar.Add("Login Done Successflly", Severity.Success);
 
             _successes = true;
         }
@@ -117,6 +95,7 @@
         {
             _Done = true;
             Navigation.NavigateTo($"/fetchdata");
+
         }
         StateHasChanged();
 

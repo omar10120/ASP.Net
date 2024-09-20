@@ -7,15 +7,8 @@
 @inject HttpClient httpClient
 @rendermode InteractiveServer
 @inject ISnackbar Snackbar
-@inject NavigationManager NavigationManager
-
-
-@inject NavigationManager Navigation
 @inject AuthenticationStateProvider AuthenticationStateProvider
 @inject IServiceProvider ServiceProvider
-
-
-
 
 <MudPopoverProvider />
 <MudDialogProvider />
@@ -58,9 +51,6 @@
                         <MudCheckBox @bind-Value="user.AllowAdd" Color="Color.Primary">allow user to Add Product</MudCheckBox>
                         <MudCheckBox @bind-Value="user.AllowEditUser" Color="Color.Primary">Allow user to Display user control page</MudCheckBox>
                     }
-
-
-
                 </MudCardContent>
                 <MudCardActions>
                     <MudLink Href="Loginform" Underline="Underline.Always" Class="mx-2">Allready Has Account ?</MudLink>
@@ -99,17 +89,8 @@
 
     private async void OnValidSubmit(EditContext context)
     {
-
-     
-
-
-
         try
         {
-
-            // user.Token = "1";
-
-
             var userList = user;
             var request = await ProductService.CreateUserAsync(userList);
             if (request.Success == false)
@@ -117,13 +98,8 @@
                 Snackbar.Add(request.Message, Severity.Error);
                 return;
             }
-
-
             Snackbar.Add("Add User done successfully", Severity.Success);
-
             user = new User();// Resets the form
-
-
             var requestRefresh = await ProductService.GetUsers();
             if (request.Success) UsersList = requestRefresh.Data!;
             StateHasChanged();
@@ -131,7 +107,6 @@
         catch (Exception ex)
         {
             Snackbar.Add(ex.Message, Severity.Error);
-
         }
     }
 
