@@ -25,6 +25,8 @@ using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Components.Authorization;
+using Microsoft.AspNetCore.Authorization;
 
 
 
@@ -97,6 +99,7 @@ namespace ForFIll.Data
             var hashedPassword = HashPassword(createUser, createUser.Password);
             createUser.Password = hashedPassword;
 
+
             var request = await GetUserByIdAsync(id);
             var user = request.Success ? request.Data : null;
 
@@ -105,6 +108,9 @@ namespace ForFIll.Data
             user.Password2 = createUser.Password;
             user.Token = createUser.Token;
             user.Email = createUser.Email;
+            user.AllowAdd = createUser.AllowAdd;
+            user.AllowEditUser= createUser.AllowEditUser;
+            user.AllowEdit = createUser.AllowEdit;
 
 
             if (user == null)
@@ -292,6 +298,7 @@ namespace ForFIll.Data
 
             var hashedPassword = HashPassword(createuser, createuser.Password);
             createuser.Password = hashedPassword;
+            createuser.Password2 = hashedPassword;
 
 
             var request = await _context.User.Where(p => p.Username == createuser.Username).FirstOrDefaultAsync();
@@ -441,9 +448,10 @@ namespace ForFIll.Data
 
         }
         //end crud opreation from sql
+
         public async Task<List<Product>> GetProducts()
         {
-
+      
 
             try
             {

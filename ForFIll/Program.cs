@@ -30,8 +30,22 @@ builder.Services.AddControllersWithViews();
 
 /*************************************************************User Auther*/
 
+//builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+//    .AddCookie();
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-    .AddCookie();
+    .AddCookie(options =>
+    {
+        options.Events.OnRedirectToLogin = context =>
+        {
+            context.Response.StatusCode = 403; // Change to 401 if needed
+            return Task.CompletedTask;
+        };
+        options.Events.OnRedirectToAccessDenied = context =>
+        {
+            context.Response.StatusCode = 401; // This ensures a 401 Forbidden
+            return Task.CompletedTask;
+        };
+    });
 
 
 
@@ -71,7 +85,6 @@ builder.Services.AddAuthorization(options =>
 
 
 
-builder.Services.AddHttpContextAccessor(); // Required to access HttpContext
 
 
 builder.Services.AddAuthorization();

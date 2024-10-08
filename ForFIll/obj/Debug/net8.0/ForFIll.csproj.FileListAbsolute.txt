@@ -655,3 +655,4 @@ C:\Users\AMRO\Desktop\Forfill\asp2\ForFIll\obj\Debug\net8.0\refint\ForFIll.dll
 C:\Users\AMRO\Desktop\Forfill\asp2\ForFIll\obj\Debug\net8.0\ForFIll.pdb
 C:\Users\AMRO\Desktop\Forfill\asp2\ForFIll\obj\Debug\net8.0\ForFIll.genruntimeconfig.cache
 C:\Users\AMRO\Desktop\Forfill\asp2\ForFIll\obj\Debug\net8.0\ref\ForFIll.dll
+C:\Users\AMRO\Desktop\Forfill\asp2\ForFIll\bin\Debug\net8.0\Microsoft.AspNetCore.Components.Authorization.dll

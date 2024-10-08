@@ -86,8 +86,11 @@
                 var hashpassword = _productser.VerifyPassword(request, request.Password, loginModel.Password);
                 if ((request.Username == loginModel.Username || request.Email == loginModel.Username) && hashpassword)
                 {
+
                     if (request.Username == "admin") loginModel.Username = "admin";
                      // UserClaim = request.Token;
+           
+
 
                     Snackbar.Add("Login Done Successflly", Severity.Success);
 
