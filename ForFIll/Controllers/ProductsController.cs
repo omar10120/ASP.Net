@@ -382,7 +382,7 @@ namespace ForFIll.Controllers
             };
 
             var token = tokenHandler.CreateToken(tokenDescriptor);
-
+            //edit token
             // Implement your JWT token generation logic here.
             // This is just a placeholder.
             return ".AspNetCore.Cookies=CfDJ8APoXJoiMH5LksVPQVo7OVUJKqM7eUqjgrMEGCFNx9W17gRta3inqqDGvYyfGFaSivpaxsZdeenjQDW4paN8JIMsxXGkkAgGeBldivZCxORrjxUZKrzxsq81nknj9O0Stxnwg_6P-dX4cdZoOvmxZDdw7vmVaw5_9440Voz42xKi0y1Cjvz_q-g0JuwuW9Q8hbrF_h9Cu6eC9tucozRTGvVWYEGUMQC5E3NDixnshjvHTjOMXSMhqSOMa5IFqtPl3wSvY2QDpyU51eabzVeryBS8eeAHTMQUicSh3wj4F7TwgkpI1HmEsS0sYlJDHsBZ4wVnELvhU9ExG9KTeyJGlp5sANPgSH7lfRFg7FIzS4lSAW3ZqJfwBCw5-WfM8GyxnU_YvSO3Vgt9940x3mXI2AhhQesFNv5QRGflSAGG6od2lT7PB9BKSOXv1d3jbwb9XQ"; // Replace with actual token generation logic
